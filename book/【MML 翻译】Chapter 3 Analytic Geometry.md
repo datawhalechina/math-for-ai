@@ -151,7 +151,7 @@ Consider an n-dimensional vector space V with an inner product h·, ·i :× V �
 Recall from Section 2.6.1 that any vectors x, y ∈ V can be written as linear combinations of the basis vectors so that x = P n i=1 ψibi ∈ V and y = P n j=1 λjbj ∈ V for suitable ψi , λj ∈ R. 
 在 2.6.1 节中我们知道任意$x, y \in V$，可以找到$\lambda_{i}, \psi_{i} \in \mathbb{R}, i=1,\dots,n$，使得两个向量可以写成基$B$中向量的线性组合，即$\displaystyle x = \sum\limits_{i=1}^{n} \psi_{i}b_{i} \in V$，$\displaystyle y = \sum\limits_{j=1}^{n} \lambda_{j}b_{j} \in V$。
 
-Due to the bilinearity of the inner product, it holds for all x, y ∈ V that
+Due to the bilinearity of the inner product, it holds for all $x, y ∈ V$ that
 由内积的双线性性，对所有的$x, y \in V$，有
 $$
 \left\langle x, y \right\rangle =
@@ -171,7 +171,7 @@ The symmetry of the inner product also means that A is symmetric.
 Furthermore, the positive definiteness of the inner product implies that
 进一步地，根据内积的正定性，我们可以得出下面的结论：
 $$
-\forall x \in V \textbackslash \{ 0 \}: x^{\top}Ax > 0. \tag{3.11}
+\forall x \in V - \{ 0 \}: x^{\top}Ax > 0. \tag{3.11}
 $$
 ![500](Pasted%20image%2020240302125526.png)
 > **定义 3.4**（对称正定矩阵）
@@ -181,17 +181,20 @@ $$
 > **示例 3.4**（对称正定矩阵）
 > 考虑下面两个矩阵
 > $$A_{1} = \left[ \begin{matrix} 9 & 6 \\ 6 & 5 \end{matrix}\right] , \quad A_{2} = \left[  \begin{matrix} 9 & 6 \\ 6 & 3 \end{matrix} \right],\tag{3.12}$$
-> 其中$A_{1}$是对称且正定的，因为它不仅对称（译者注：这显而易见），而且对于任意$x \in \mathbb{R}^{2} \textbackslash \{ 0 \}$都有，
+> 其中 $A_{1}$ 是对称且正定的，因为它不仅对称（译者注：这显而易见），而且对于任意 $x \in \mathbb{R}^{2} - \{ 0 \}$ 都有，
 > $$\begin{align} x^{\top}A_{1}x &= \left[ \begin{matrix} x_{1} & x_{2} \end{matrix}\right]\left[ \begin{matrix} 9 & 6 \\ 6 & 5 \end{matrix}\right]\left[ \begin{matrix} x_{1} \\ x_{2}  \end{matrix}\right] \\\ &= 9x_{1}^{2} + 12x_{1}x_{2} + 5x_{2}^{2} \\ &= (3x_{1} + 2x_{2})^{2} + x_{2}^{2} > 0.\end{align} \tag{3.13}$$
 > 相反地，$A_{2}$不是正定矩阵。如果取$x = [2, -3]^{\top}$，可以验证二次型$x^\top Ax$是负数。
 
 
-If A ∈ Rn×n is symmetric, positive definite, then \[formula 3.15\] defines an inner product with respect to an ordered basis B, where ˆx and
+If A ∈ Rn×n is symmetric, positive definite, then [formula 3.15] defines an inner product with respect to an ordered basis B, where ˆx and
 ˆy are the coordinate representations of x, y ∈ V with respect to B.
+
 假设$A \in \mathbb{R}^{n \times n}$是一个对称正定矩阵，则它可以定义一个在基$B$下的内积：
+
 $$
 \left\langle x, y \right\rangle = \hat{x}^{\top}A\hat{y}, \tag{3.15}
 $$
+
 其中$x, y \in V$。
 
 ![500](Pasted%20image%2020240302131154.png)
@@ -366,28 +369,83 @@ vectors. In the following, we will discuss the special case where the basis
 vectors are orthogonal to each other and where the length of each basis
 vector is 1. We will call this basis then an orthonormal basis.
 
-$$
-\begin{align}
-\left\langle b_{i}, b_{j} \right\rangle &= 0, & i \ne j \tag{3.33}\\
-\left\langle b_{i}, b_{i} \right\rangle &= 1 \tag{3.34}
-\end{align}
-$$
+在2.6.1节中，我们讨论了基向量的性质，我们发现在$n$维空间中，我们需要$n$个基向量（也就是$n$个线性无关的向量）。在3.3和3.4两节中，我们使用内积计算向量的长度和向量之间的夹角。在本节中，我们将讨论基向量互相垂直且长度为$1$这一特殊情况，我们称其为**正交基**。
 
-$$
-b_{1} = \frac{1}{\sqrt{ 2 }} \left[ \begin{matrix}
-1\\1
-\end{matrix} \right], \quad
-b_{2} = \frac{1}{\sqrt{ 2 }} \left[ \begin{matrix}
-1\\-1
-\end{matrix} \right] \tag{3.35}
-$$
+Let us introduce this more formally.
+Definition 3.9 (Orthonormal Basis). Consider an n-dimensional vector
+space V and a basis {b1, . . . , bn} of V . If for all i, j = 1, . . . , n then the basis is called an orthonormal basis (ONB). orthonormal basis
+ONB If only (3.33) is satisfied, then the basis is called an orthogonal basis. Note
+orthogonal basis that (3.34) implies that every basis vector has length/norm 1.
+
+我们不妨使用更加严谨的语言介绍它们：
+
+> **定义 3.9 （正交基）**
+> 考虑一个$n$维向量空间$V$和它上面的一个基$\{ b_{1}, \dots, b_{n} \}$，如果$$\begin{align}\left\langle b_{i}, b_{j} \right\rangle &= 0, & i \ne j \tag{3.33}\\\left\langle b_{i}, b_{i} \right\rangle &= 1 \tag{3.34}\end{align}$$
+> 对于所有的$i,j = 1, \dots, n$都成立，那么$\{ b_{1}, \dots, b_{n} \}$就被称为**标准正交基（orthonormal basis，ONB）**，注意所有的向量的长度均为$1$。假如这个基只满足$(3.33)$，则它就被称为**正交基（orthogonal basis）**。
+
+Recall from Section 2.6.1 that we can use Gaussian elimination to find a
+basis for a vector space spanned by a set of vectors. Assume we are given
+a set {
+˜b1, . . . ,
+˜bn} of non-orthogonal and unnormalized basis vectors. We
+concatenate them into a matrix ˜B = [˜b1, . . . ,
+˜bn] and apply Gaussian elimination to the augmented matrix (Section 2.3.2) [
+˜B ˜B
+ |
+˜B] to obtain an
+orthonormal basis. This constructive way to iteratively build an orthonormal basis {b1, . . . , bn} is called the Gram-Schmidt process (Strang, 2003).
+
+让我们回忆一下，在2.6.1节中我们使用Gauss消元法寻找一个向量组张成空间的基的过程。假设我们有一个未标准化（unnormalized）且非正交的向量组$\{ \tilde{b}_{1}, \dots, \tilde{b}_{n} \}$，我们将其堆叠成一个矩阵$\tilde{B} = [\tilde{b}_{1}, \dots, \tilde{b}_{n}]$，然后在增广矩阵$[\tilde{B}\tilde{B}^{\top}|\tilde{B}]$上应用Gauss消元法，就可以得到一个标准正交基。像这样迭代地构造正交基$\{ b_{1}, \dots, b_{n} \}$的方法被称为**Gram-Schmidt正交化过程**。
+
+
+Example 3.8 (Orthonormal Basis)
+The canonical/standard basis for a Euclidean vector space Rn
+is an orthonormal basis, where the inner product is the dot product of vectors.
+In R2
+, the vectors form an orthonormal basis since b1 b2 = 0 and k b1k = 1 = k b2k .
+We will exploit the concept of an orthonormal basis in Chapter 12 and
+Chapter 10 when we discuss support vector machines and principal component analysis.
+
+> **示例 3.8（正交基）**
+> Euclid空间$\mathbb{R}^{n}$上的标准基是标准正交基，其中内积为两个向量的点积。
+> 特别地，在$\mathbb{R}^{2}$中，两个向量$$b_{1} = \frac{1}{\sqrt{ 2 }} \left[ \begin{matrix}1\\1\end{matrix} \right], \quad b_{2} = \frac{1}{\sqrt{ 2 }} \left[ \begin{matrix} 1\\-1 \end{matrix} \right] \tag{3.35}$$组成一个正交基，因为$b_{1}^{\top}b_{2} =0$且$\|b_{1}\| = \|b_{2}\| = 1$。
+
+We will exploit the concept of an orthonormal basis in Chapter 12 and
+Chapter 10 when we discuss support vector machines and principal component analysis.
+
+我们将在第十章和第十二章介绍支持向量机和主成分分析时深入讲解标准正交基这一概念。
 
 ## 3.6 正交补
 
+Having defined orthogonality, we will now look at vector spaces that are
+orthogonal to each other. This will play an important role in Chapter 10,
+when we discuss linear dimensionality reduction from a geometric perspective.
+Consider a D-dimensional vector space V and an M-dimensional subspace U ⊆ V . Then its orthogonal complement U
+⊥ is a (D−M)-dimensional orthogonal
+complement subspace of V and contains all vectors in V that are orthogonal to every
+vector in U. Furthermore, U ∩ U
+⊥ = {0} so that any vector x ∈ V can be uniquely decomposed into
 
 $$
 x = \sum\limits_{m=1}^{M} \lambda b_{m} + \sum\limits_{j=1}^{D-M} \psi_{i}b_{j}^{\bot}, \quad \lambda_{m}, \psi_{j} \in \mathbb{R} \tag{3.36}
 $$
+
+where (b1, . . . , bM) is a basis of U and (b
+⊥
+1
+, . . . , b
+⊥
+D−M) is a basis of U
+⊥.
+Therefore, the orthogonal complement can also be used to describe a
+plane U (two-dimensional subspace) in a three-dimensional vector space.
+More specifically, the vector w with k wk = 1, which is orthogonal to the
+plane U, is the basis vector of U
+⊥. Figure 3.7 illustrates this setting. All
+vectors that are orthogonal to w must (by construction) lie in the plane
+U. The vector w is called the normal vector of U. normal vector
+Generally, orthogonal complements can be used to describe hyperplanes
+in n-dimensional vector and affine spaces.
 
 ## 3.7 函数的点积
 
