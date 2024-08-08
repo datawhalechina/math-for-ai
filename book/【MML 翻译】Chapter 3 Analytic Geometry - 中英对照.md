@@ -358,6 +358,14 @@ which gives exactly the angle between x and y. This means that orthogonal matric
 
 ## 3.5 正交基
 
+In Section 2.6.1, we characterized properties of basis vectors and found
+that in an n-dimensional vector space, we need n basis vectors, i.e., n
+vectors that are linearly independent. In Sections 3.3 and 3.4, we used
+inner products to compute the length of vectors and the angle between
+vectors. In the following, we will discuss the special case where the basis
+vectors are orthogonal to each other and where the length of each basis
+vector is 1. We will call this basis then an orthonormal basis.
+
 $$
 \begin{align}
 \left\langle b_{i}, b_{j} \right\rangle &= 0, & i \ne j \tag{3.33}\\

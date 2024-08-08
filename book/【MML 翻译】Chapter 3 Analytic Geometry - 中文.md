@@ -200,7 +200,6 @@ A metric d satisfies the following:
 Remark. At first glance, the lists of properties of inner products and metrics look very similar. However, by comparing Definition 3.3 with Definition 3.6 we observe that h x, yi and d(x, y) behave in opposite directions. Very similar x and y will result in a large value for the inner product and a small value for the metric.
 注：第一次看到度量的定义时，读者会发现它和内积十分相似。但如果细致比对定义 3.3 和定义 3.6，我们会发现二者的“方向”截然相反。如果两向量$x, y \in V$的内积较大，则它们之间的度量较小，反之亦然。
 
-ashdui
 ## 3.4 向量夹角和正交
 
 
