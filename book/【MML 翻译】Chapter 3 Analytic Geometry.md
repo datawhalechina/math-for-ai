@@ -439,29 +439,56 @@ where (b1, . . . , bM) is a basis of U and (b⊥1, . . . , b⊥D−M) is a basis
 Therefore, the orthogonal complement can also be used to describe a
 plane U (two-dimensional subspace) in a three-dimensional vector space.
 More specifically, the vector w with k wk = 1, which is orthogonal to the
-plane U, is the basis vector of U⊥. Figure 3.7 illustrates this setting. 
+plane U, is the basis vector of U⊥. Figure 3.7 illustrates this setting. All vectors that are orthogonal to w must (by construction) lie in the plane
+U. The vector w is called the normal vector of U.
 
-因此，三维向量空间中的平面$U$的正交补也可以用来描述平面本身（平面是二维的）。具体来说，三维空间的一个向量$w$如果满足$\|w\| = 1$，是某个平面$U$的正交补空间$U^{\perp}$的一个基，如图3.7所示。
+因此，三维向量空间中的平面$U$的正交补也可以用来描述平面本身（平面是二维的）。具体来说，三维空间的一个向量$w$如果满足$\|w\| = 1$，是某个平面$U$的正交补空间$U^{\perp}$的一个基，如图3.7所示。在图中，所有与$w$垂直的向量一定在平面$U$中，故$w$也被称作平面$U$的**法向量（normal vector）**
 
-All vectors that are orthogonal to w must (by construction) lie in the plane
-U. The vector w is called the normal vector of U. normal vector
 Generally, orthogonal complements can be used to describe hyperplanes
 in n-dimensional vector and affine spaces.
+一般地，正交补空间可被用来刻画$n$维向量空间和仿射空间（affine space，译者注：也称线性流形）中的**超平面（hyperplanes）**
 
 
+## 3.7 函数的内积
 
-## 3.7 函数的点积
+Thus far, we looked at properties of inner products to compute lengths, angles and distances. We focused on inner products of finite-dimensional vectors. In the following, we will look at an example of inner products of a different type of vectors: inner products of functions.
+到现在我们了解了内积的各种性质，并利用它们计算有限维向量的长度、夹角和距离。在本节中，我们将看到另一种向量之间的内积：函数的内积。
 
+The inner products we discussed so far were defined for vectors with a finite number of entries. We can think of a vector x ∈ Rn as a function with n function values. The concept of an inner product can be generalized to vectors with an infinite number of entries (countably infinite) and also continuous-valued functions (uncountably infinite). Then the sum over individual components of vectors (see Equation (3.5) for example) turns into an integral.
+到此为止我们讨论的所有内积都定义在具有有限个分量的向量之上。我们可以将向量$x \in \mathbb{R}^{n}$视作有$n$个取值的函数，这样一来内积的概念可以推广至具有无限个分量（可数无穷）以及连续（不可数无穷）的向量之上。在这样的意义下，原来对不同向量分量的（乘积后）的加和（例如式$(3.5)$）将变为积分。
+
+An inner product of two functions u : R → R and v : R → R can be defined as the definite integral
+两个函数$u: \mathbb{R} \rightarrow \mathbb{R}$和$v: \mathbb{R} \rightarrow \mathbb{R}$之间的内积可被定义为下面的定积分：
 $$
-\left\langle u, v \right\rangle := \int_{a}^{b} {u(x)v(x)} \, \mathrm d{x} \tag{3.37} 
+\left\langle u, v \right\rangle := \int_{a}^{b} {u(x)v(x)} \, \mathrm d{x}, \tag{3.37} 
 $$
+for lower and upper limits a, b < ∞, respectively.
+其中积分限满足$a,b < \infty$。
+
+As with our usual inner product, we can define norms and orthogonality by looking at the inner product. If (3.37) evaluates to 0, the functions u and v are orthogonal. To make the preceding inner product mathematically precise, we need to take care of measures and the definition of integrals, leading to the definition of a Hilbert space. Furthermore, unlike inner products on finite-dimensional vectors, inner products on functions may diverge (have infinite value). All this requires diving into some more intricate details of real and functional analysis, which we do not cover in this book.
+和通常的内积一样，我们也可以通过内积定义函数的范数和正交关系。如果式$(3.37)$的结果为零，则两个函数$u$和$v$相互正交。如果需要给出更加严格的定义，我们需要考虑测度和积分定义的方式，这将引出Hilbert空间。进一步地，与有限维向量之间的内积不同，函数之间的内积可能发散（值为无穷大）。对上述情形的讨论涉及实分析和泛函分析中的细节，不是本书讨论的内容。
 
 
-$$
-\{ 1, \cos(x), \cos(2x), \cos(3x), \dots \} \tag{3.38}
-$$
+Example 3.9 (Inner Product of Functions)
+If we choose u = sin(x) and v = cos(x), the integrand f(x) = u(x)v(x) Figure 3.8 f(x) =
+sin(x) cos(x).
+of (3.37), is shown in Figure 3.8. We see that this function is odd, i.e.,
+f(−x) = −f(x). Therefore, the integral with limits a = −π, b = π of this
+product evaluates to 0. Therefore, sin and cos are orthogonal functions.
 
+> **示例 3.9（函数之间的内积）**
+> 假如我们令$u = \sin(x)$，$v = \cos(x)$，则内积定义$(3.37)$中的被积函数为$f = u(x)v(x)$，如图3.38所示。我们发现这个函数是奇函数，也即$f(-x) = -f(x)$。所以积分限为$a=-\pi,b=\pi$的定积分的值为零，因此我们可以得到$\sin$和$\cos$互相正交的结论。
+> ![300](Pasted%20image%2020240811182908.png)
+> <center>图3.8 被积函数 f(x) = sin(x)cos(x) 的图像</center>
+> 
 
+Remark. It also holds that the collection of functions is orthogonal if we integrate from −π to π, i.e., any pair of functions are orthogonal to each other. The collection of functions in (3.38) spans a large subspace of the functions that are even and periodic on \[−π, π\), and projecting functions onto this subspace is the fundamental idea behind
+Fourier series.
+> 注：上述结论对于下面的函数族依然成立：$$\{ 1, \cos(x), \cos(2x), \cos(3x), \dots \}, \tag{3.38}$$（如果将积分限设置为$-\pi$和$\pi$）。换句话说，这个函数族中的函数两两正交，它们张成的巨大空间是所有以区间$[-\pi, \pi)$为周期的连续函数。将函数向这个子空间上投影是**Fourier级数**的核心思想。
+
+In Section 6.4.6, we will have a look at a second type of unconventional
+inner products: the inner product of random variables.
+在6.4.6节，我们还会遇见第二种不常见的内积——随机变量之间的内积。
 
 ## 3.8 正交投影
 ### 3.8.1 向一维子空间（直线）投影
