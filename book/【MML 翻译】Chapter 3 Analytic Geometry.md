@@ -531,21 +531,35 @@ When we compress or visualize high-dimensional data, we will lose information. T
 当我们对高维数据进行压缩或可视化时，我们将失去一些信息。为了将压缩造成的信息损失最小化，我们往往选择数据中最关键的几个维度。
 
 As discussed in Chapter 1, data can be represented as vectors, and in this chapter, we will discuss some of the fundamental tools for data compression. 
+我们在第一章中提到，数据可被表示成向量。在本章中，我们将对基础的数据压缩方法进行讨论。
 
 More specifically, we can project the original high-dimensional data onto a lower-dimensional feature space and work in this lower-dimensional space to learn more about the dataset and extract relevant patterns. 
+具体而言，我们可以将原来的高维数据投影到低维**特征空间（feature space）**，然后在此空间中对数据进行处理和分析，以更好的了解数据集并抽取相关的**模式（pattern）**。
 
-For example, machine learning algorithms, such as principal component analysis (PCA) by Pearson (1901) and Hotelling (1933) and deep neural networks (e.g., deep
-auto-encoders (Deng et al., 2010)), heavily exploit the idea of dimensionality reduction. 
+For example, machine learning algorithms, such as principal component analysis (PCA) by Pearson (1901) and Hotelling (1933) and deep neural networks (e.g., deep auto-encoders (Deng et al., 2010)), heavily exploit the idea of dimensionality reduction. 
+举例来说，以主成分分析（principal component analysis，PCA）为例的机器学习算法（Pearson, 1901 和 Hotelling, 1933）以及以自编码器（auto-encoders，Deng et al., 2010）深度神经网络充分利用了降维的思想。
 
 In the following, we will focus on orthogonal projections, which we will use in Chapter 10 for linear dimensionality reduction and in Chapter 12 for classification. 
+接下来，我们将将注意力集中在第十章将被使用于线性降维和在十二章中的分类问题中的正交投影上。
 
 Even linear regression, which we discuss in Chapter 9, can be interpreted using orthogonal projections. 
+即使是我们将在第九章中讨论的线性回归算法，也可以从正交投影的角度进行解读。
 
 For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/error between the original data and the corresponding projection. 
+给定一个低维子空间，来自高维空间中数据的正交投影会保留尽可能多的信息，并最小化元数据和投影数据的区别或损失。
 
 An illustration of such an orthogonal projection is given in Figure 3.9. Before we detail how to obtain these projections, let us define what a projection actually is.
+正交投影的直观几何描述可见图 3.9。在我们介紹细节之前，需要首先定义投影这个概念。
 
+> **定义 3.10 （投影）**
+> 令 $V$ 为一个向量空间，$U\subset V$ 是 $V$ 的子空间，如果一个线性映射 $\pi: V \rightarrow U$ 满足 $\pi^2 = \pi \circ \pi = \pi$，则 $\pi$ 被称为一个**投影（projection）**。
 
+Since linear mappings can be expressed by transformation matrices (see Section 2.7), the preceding definition applies equally to a special kind
+of transformation matrices, the projection matrices P π, which exhibit the property that P2 π = P π.
+由于线性映射可以表示为矩阵（参见 2.7 节），上面的定义等价于确定了一类特殊的矩阵变换 $P_\pi$，它们满足 $P_\pi^2 = P_\pi$。
+
+In the following, we will derive orthogonal projections of vectors in the inner product space (Rn ,h·, ·i) onto subspaces. We will start with one dimensional subspaces, which are also called lines. If not mentioned otherwise, we assume the dot product h x, yi = xTy as the inner product.
+在接下来的内容中将推导内积空间 $(\mathbb{R}^n, \langle \cdot, \cdot \rangle)$ 中向量至其子空间的正交投影，我们将从一维子空间（也称为直线）开始。如果没有特殊说明，我们约定向量的内积为点积，即 $\langle x, y \rangle = x^\top y$。
 
 ### 3.8.1 向一维子空间（直线）投影
 
