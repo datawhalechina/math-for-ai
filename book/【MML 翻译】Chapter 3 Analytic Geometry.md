@@ -1,5 +1,5 @@
-
 翻译：何瑞杰
+
 # 第三章 解析几何（70）
 
 In Chapter 2, we studied vectors, vector spaces, and linear mappings at a general but abstract level.
@@ -21,12 +21,12 @@ Figure 3.1 gives an overview of how concepts in this chapter are related and how
 图 3.1 给出了本章中概念之间及与本书中其他章节关系的概览。
 
 #TODO 图片汉化
+
 ![500](Pasted%20image%2020240302105358.png)
 
 <center>Figure 3.1 A mind map of the concepts introduced in this chapter, <br>
 along with when they are used in other parts of the book.</center>
 <center>图 3.1：本章中概念之间和与本书中其他章节间联系的思维导图</center>
-
 
 ## 3.1 范数（71）
 
@@ -37,8 +37,9 @@ In the following, we will discuss the notion of the length of vectors using the 
 下面我们将使用范数的概念讨论向量的长度。
 
 ![500](Pasted%20image%2020240302110312.png)
+
 > **定义 3.1**（范数）一个*范数*是向量空间$V$上的一个函数：
-> $$ \begin{align} \| \cdot \|: V &\rightarrow \mathbb{R} \tag{3.1}\\ x &\mapsto \| x \|,  \tag{3.2}\end{align} $$
+> $$ \begin{align} \| \cdot \|: V &\rightarrow \mathbb{R} \tag{3.1}\\ x &\mapsto \| x \|, \tag{3.2}\end{align} $$
 > 它给出每个向量空间中每个向量$x$的实值*长度*$\| x \| \in \mathbb{R}$，且对于任意的$x, y \in V$以及$\lambda \in \mathbb{R}$，满足下面的条件：
 > * （绝对一次齐次）$\| \lambda x\| = |\lambda| \|x\|$，
 > * （三角不等式）$\|x + y\| \leqslant \|x\| + \|y\|$，
@@ -48,6 +49,7 @@ In geometric terms, the triangle inequality states that for any triangle, the su
 如图 3.2 所示，在几何中，三角不等式是说任意三角形的两边之和一定大于等于第三边。
 
 ![150](Screenshot%202024-03-02%20at%2011.10.09.png)
+
 <center>Figure 3.2 Triangle inequality.</center>
 <center>图 3.2：三角不等式的几何表示</center>
 
@@ -58,12 +60,14 @@ Recall that for a vector x ∈ Rn we denote the elements of the vector using a s
 最后别忘了，我们使用下标$i$表示$\mathbb{R}^{n}$中的向量$x$的第$i$个分量。
 
 ![500](Pasted%20image%2020240302111756.png)
+
 > **示例 3.1**（曼哈顿范数）
 > $\mathbb{R}^{n}$上的*曼哈顿范数*（又叫$\mathscr{l}_{1}$范数）的定义如下：
 > $$\|x\|_{1} := \sum\limits_{i=1}^{n} | x_{i} |, \tag{3.3}$$
 > 其中$| \cdot |$是绝对值函数。 图 3.3 的左侧显示了平面$\mathbb{R}^{2}$上所有满足$\| x\| =  1$的点集。
 
 ![500](Pasted%20image%2020240302112542.png)
+
 > **示例 3.2** （欧几里得范数）
 > 向量$x \in \mathbb{R}^{n}$的*欧几里得范数*（又叫$\mathscr{l}_{2}$范数）定义如下：
 > $$ \|x\|_{2} := \sqrt{ \sum\limits_{i=1}^{n} x_{i}^{2} } = \sqrt{ x^{\top}x }, \tag{3.4}$$
@@ -77,6 +81,7 @@ Recall that for a vector x ∈ Rn we denote the elements of the vector using a s
 注：在本书中，若不指明，范数一般是指欧几里得范数（式 3.4）。
 
 ## 3.2 内积（72）
+
 Inner products allow for the introduction of intuitive geometrical concepts, such as the length of a vector and the angle or distance between two vectors. 
 内积的引入是后面若干几何直觉上的概念，如向量长度、向量间夹角的铺垫。
 
@@ -84,6 +89,7 @@ A major purpose of inner products is to determine whether vectors are orthogonal
 引入内积的一个主要目的是确认两个向量是否*正交*。
 
 ### 3.2.1 点积
+
 We may already be familiar with a particular type of inner product, the scalar product/dot product in Rn, which is given by
 我们已经熟悉一些特殊形式的点积，如标量积或$\mathbb{R}^{n}$中的点积，由下面的式子给出：
 $$
@@ -110,17 +116,17 @@ $$
 Here, (3.6) asserts that Ω is linear in the first argument, and (3.7) asserts that Ω is linear in the second argument (see also (2.87)).
 在式中，（式 3.6）表示函数对第一个变量线性；（式 3.7）表示函数对第二个变量线性（见式 2.87）。
 
-
-
 ![500](Pasted%20image%2020240302120456.png)
+
 > **定义 3.2**
 > 设$V$为向量空间，双线性映射$\Omega:  V \times V \rightarrow \mathbb{R}$将两个$V$中的向量映射到一个实数，则
 > * 若对所有$x, y \in V$，都有$\Omega(x, y) = \Omega(y, x)$，也即两个变量可以调换顺序，则称$\Omega$为*对称*的
 > * 若对所有$x \in V$，都有
-> $$\forall x \in V \textbackslash \{ 0 \}: \Omega(x, x) > 0, ~~ ~~ \Omega(0, 0) = 0,\tag{3.8}$$
->   则称$\Omega$为*正定*的。
+> $$\forall x \in V \textbackslash \{ 0 \}: \Omega(x, x) > 0, ~~ ~~ \Omega(0, 0) = 0, \tag{3.8}$$
+> 则称$\Omega$为*正定*的。
 
 ![500](Pasted%20image%2020240302120513.png)
+
 > **定义 3.3**
 > 设$V$为向量空间，双线性映射$\Omega:  V \times V \rightarrow \mathbb{R}$将两个$V$中的向量映射到一个实数，则
 > * 对称且正定的双线性映射$\Omega$被称为$V$上的一个*内积*，并简写$\Omega(x, y)$为$\left\langle x, y \right\rangle$。
@@ -130,12 +136,14 @@ We will refer to these spaces as inner product spaces in this book.
 本书中我们称这些空间为内积空间。
 
 ![500](Pasted%20image%2020240302120624.png)
+
 > **示例 3.3**（不是点积的内积）
 > 考虑$V = \mathbb{R}^{2}$，定义下面的内积：
-> $$\left\langle x, y \right\rangle := x_{1}y_{1} - (x_{1}y_{2} + x_{2}y_{1}) + 2x_{2}y_{2},\tag{3.9}$$
+> $$\left\langle x, y \right\rangle := x_{1}y_{1} - (x_{1}y_{2} + x_{2}y_{1}) + 2x_{2}y_{2}, \tag{3.9}$$
 > 可以验证这是一个与点积不同的内积，证明留作练习。
 
 ### 3.2.3 对称和正定矩阵
+
 Symmetric, positive definite matrices play an important role in machine learning, and they are defined via the inner product. 
 对称和正定矩阵在机器学习中十分重要，它们是由内积定义的。
 
@@ -145,22 +153,22 @@ In Section 4.3, we will return to symmetric, positive definite matrices in the c
 The idea of symmetric positive semidefinite matrices is key in the definition of kernels (Section 12.4).
 在 12.4 节中，对称和半正定矩阵还在核的定义中起到关键作用。
 
-Consider an n-dimensional vector space V with an inner product h·, ·i :× V → R (see Definition 3.3) and an ordered basis B = (b1, . . . , bn) of V . 
+Consider an n-dimensional vector space V with an inner product h·, ·i :× V → R (see Definition 3.3) and an ordered basis B = (b1, ... , bn) of V . 
 假设$n$维线性空间$V$装配有内积$\left\langle \cdot, \cdot \right\rangle: V \times V \rightarrow \mathbb{R}$（参见定义 3.3）并取$V$中的一个基（已排序）$B = (b_{1}, \dots, b_{n})$，
 
 Recall from Section 2.6.1 that any vectors x, y ∈ V can be written as linear combinations of the basis vectors so that x = P n i=1 ψibi ∈ V and y = P n j=1 λjbj ∈ V for suitable ψi , λj ∈ R. 
-在 2.6.1 节中我们知道任意$x, y \in V$，可以找到$\lambda_{i}, \psi_{i} \in \mathbb{R}, i=1,\dots,n$，使得两个向量可以写成基$B$中向量的线性组合，即$\displaystyle x = \sum\limits_{i=1}^{n} \psi_{i}b_{i} \in V$，$\displaystyle y = \sum\limits_{j=1}^{n} \lambda_{j}b_{j} \in V$。
+在 2.6.1 节中我们知道任意$x, y \in V$，可以找到$\lambda_{i}, \psi_{i} \in \mathbb{R}, i=1, \dots, n$，使得两个向量可以写成基$B$中向量的线性组合，即$\displaystyle x = \sum\limits_{i=1}^{n} \psi_{i}b_{i} \in V$，$\displaystyle y = \sum\limits_{j=1}^{n} \lambda_{j}b_{j} \in V$。
 
 Due to the bilinearity of the inner product, it holds for all $x, y ∈ V$ that
 由内积的双线性性，对所有的$x, y \in V$，有
 $$
 \left\langle x, y \right\rangle =
 \left\langle \sum\limits_{i=1}^{n} \psi_{i}b_{i}, \sum\limits_{j=1}^{n} \lambda_{j}b_{j} \right\rangle 
-= \sum\limits_{i=1}^{n} \sum\limits_{j=1}^{n} \psi_{i} \lambda_{j} \left\langle b_{i}, b_{j} \right\rangle = \hat{x}^{\top} A \hat{y},
+= \sum\limits_{i=1}^{n} \sum\limits_{j=1}^{n} \psi_{i} \lambda_{j} \left\langle b_{i}, b_{j} \right\rangle = \hat{x}^{\top} A \hat{y}, 
 $$
 
 where Aij := h bi, bj i and ˆx, ˆy are the coordinates of x and y with respect to the basis B
-其中$A_{i,j} := \left\langle b_{i}, b_{j} \right\rangle$（译者注：这就是线性空间$V$中的一个*度量矩阵*），$\hat{x}$和$\hat{y}$为原向量在基$B$下的*坐标*。
+其中$A_{i, j} := \left\langle b_{i}, b_{j} \right\rangle$（译者注：这就是线性空间$V$中的一个*度量矩阵*），$\hat{x}$和$\hat{y}$为原向量在基$B$下的*坐标*。
 
  This implies that the inner product h·, ·i is uniquely determined through A.
 这意味着内积$\left\langle \cdot, \cdot \right\rangle$被矩阵$A$*唯一确定*，
@@ -173,18 +181,20 @@ Furthermore, the positive definiteness of the inner product implies that
 $$
 \forall x \in V - \{ 0 \}: x^{\top}Ax > 0. \tag{3.11}
 $$
+
 ![500](Pasted%20image%2020240302125526.png)
+
 > **定义 3.4**（对称正定矩阵）
 > 一个$n$级对称矩阵$A \in \mathbb{R}^{n \times n}$若满足（式 3.11），则被称为*对称正定矩阵*（或仅称为正定矩阵）。如果只满足将（式 3.11）中的不等号改成$\geqslant$的条件，则称为*对称半正定矩阵*
 
 ![500](Pasted%20image%2020240302125539.png)
+
 > **示例 3.4**（对称正定矩阵）
 > 考虑下面两个矩阵
-> $$A_{1} = \left[ \begin{matrix} 9 & 6 \\ 6 & 5 \end{matrix}\right] , \quad A_{2} = \left[  \begin{matrix} 9 & 6 \\ 6 & 3 \end{matrix} \right],\tag{3.12}$$
+> $$A_{1} = \left[ \begin{matrix} 9 & 6 \\ 6 & 5 \end{matrix}\right] , \quad A_{2} = \left[  \begin{matrix} 9 & 6 \\ 6 & 3 \end{matrix} \right], \tag{3.12}$$
 > 其中 $A_{1}$ 是对称且正定的，因为它不仅对称（译者注：这显而易见），而且对于任意 $x \in \mathbb{R}^{2} - \{ 0 \}$ 都有，
 > $$\begin{align} x^{\top}A_{1}x &= \left[ \begin{matrix} x_{1} & x_{2} \end{matrix}\right]\left[ \begin{matrix} 9 & 6 \\ 6 & 5 \end{matrix}\right]\left[ \begin{matrix} x_{1} \\ x_{2}  \end{matrix}\right] \\\ &= 9x_{1}^{2} + 12x_{1}x_{2} + 5x_{2}^{2} \\ &= (3x_{1} + 2x_{2})^{2} + x_{2}^{2} > 0.\end{align} \tag{3.13}$$
 > 相反地，$A_{2}$不是正定矩阵。如果取$x = [2, -3]^{\top}$，可以验证二次型$x^\top Ax$是负数。
-
 
 If A ∈ Rn×n is symmetric, positive definite, then [formula 3.15] defines an inner product with respect to an ordered basis B, where ˆx and
 ˆy are the coordinate representations of x, y ∈ V with respect to B.
@@ -198,6 +208,7 @@ $$
 其中$x, y \in V$。
 
 ![500](Pasted%20image%2020240302131154.png)
+
 > **定理 3.5**
 > 考虑一个有限维实向量空间$V$及它的一个基（有序）$B$，双线性函数$\left\langle \cdot, \cdot \right\rangle: V \times V \rightarrow R$是其上的一个内积<u>当且仅当</u>有一个对称正定矩阵$A \in \mathbb{R}^{n \times n}$，与之对应，即
 > $$\left\langle x, y \right\rangle = \hat{x}^{\top} A \hat{y}.$$
@@ -212,7 +223,9 @@ The following properties hold if A ∈ Rn×n is symmetric and positive definite:
 * 矩阵$A$的所有对角元（$a_{ii}$，$i=1, \dots, n$）都是正数，因为$a_{i i} = e_{i}^{\top} Ae_{i} > 0$，其中$e$是$B$中第$i$个基向量。
 
 ## 3.3 向量长度和距离（75）
+
 ## 3.3 向量长度和距离（75）
+
 In Section 3.1, we already discussed norms that we can use to compute the length of a vector. 
 在 3.1 节中，我们已经讨论过计算向量长度需要用到的范数。
 
@@ -233,13 +246,14 @@ The Manhattan norm (3.3) is an example of a norm without a corresponding inner p
 In the following, we will focus on norms that are induced by inner products and introduce geometric concepts, such as lengths, distances, and angles.
 下面我们聚焦于内积诱导的范数进行讨论，并引出相关的几何直观概念，如长度、距离和夹角。
 
-Remark (Cauchy-Schwarz Inequality). For an inner product vector space (V,h·, ·i) the induced norm k · k satisfies the Cauchy-Schwarz inequality
+Remark (Cauchy-Schwarz Inequality). For an inner product vector space (V, h·, ·i) the induced norm k · k satisfies the Cauchy-Schwarz inequality
 注（柯西-施瓦兹不等式）：内积空间$(V, \left\langle \cdot, \cdot \right\rangle)$中由内积$\left\langle \cdot, \cdot \right\rangle$诱导的范数$\|\cdot\|$满足*柯西-施瓦兹不等式*：
 $$
 |\!\left\langle{x, y}\right\rangle | \leqslant \|x\| \cdot\|y\|. \tag{3.17}
 $$
 
 ![500](Pasted%20image%2020240302134439.png)
+
 > **示例 3.5**（使用内积计算向量长度）
 > 在几何中，我们常关心向量的长度。现在我们可以使用内积和柯西不等式计算它们。例如取$x = [1, 1]^{\top}\in \mathbb{R}^{2}$，并令其上的内积为点积，则可以得到其长度
 > $$\|x\| = \sqrt{ x^{\top}x } = \sqrt{ 1^{2} + 1^{2} } = \sqrt{ 2 }. \tag{3.18}$$
@@ -249,7 +263,9 @@ $$
 > $$\left\langle x, x \right\rangle = x_{1}^{2} - x_{1}x_{2} + x_{2}^{2} = 1 - 1 + 1 = 1 \implies \|x\| = \sqrt{ 1 } = 1. \tag{3.20}$$
 
 ![500](Pasted%20image%2020240302134505.png)
+
 ![500](Pasted%20image%2020240302134537.png)
+
 > **定义 3.6**（距离和度量）
 > 考虑一个内积空间$(V, \left\langle \cdot, \cdot \right\rangle)$，任取向量$x, y \in V$，称
 > $$d(x, y) := \|x - y\| = \sqrt{ \left\langle x - y, x - y \right\rangle  } \tag{3.21}$$
@@ -282,14 +298,15 @@ $$
 $$
 
 Therefore, there exists a unique ω ∈ [0, π], illustrated in Figure 3.4, with
-如图3.4所示，在$[0,\pi]$中有唯一的$\omega$满足下面的等式：
+如图3.4所示，在$[0, \pi]$中有唯一的$\omega$满足下面的等式：
 $$
 \cos\omega = \frac{\left\langle x, y \right\rangle}{\|x\| \|y\|}. \tag{3.25}
 $$
 
 ![300](Pasted%20image%2020240627164202.png)
+
 Figure 3.4 When restricted to [0, π] then f(ω) = cos(ω) returns a unique number in the interval [−1, 1].
-图3.4 定义域为$[0,\pi]$时的余弦函数图像，此时角度值和余弦函数值一一对应
+图3.4 定义域为$[0, \pi]$时的余弦函数图像，此时角度值和余弦函数值一一对应
 
 The number ω is the angle between the vectors x and y. Intuitively, the angle angle between two vectors tells us how similar their orientations are. For example, using the dot product, the angle between x and y = 4x, i.e., y is a scaled version of x, is 0: Their orientation is the same.
 而$\omega$就是$x$和$y$之间的夹角。直观意义上，两向量之间的夹角给出了其方向的相似程度，例如两向量$x$和$y=4x$（$x$经过常数缩放后的版本）的夹角为零，因此它们的方向相同。
@@ -301,7 +318,10 @@ The number ω is the angle between the vectors x and y. Intuitively, the angle a
 > $$ \cos\omega = \frac{\left\langle x, y \right\rangle}{\sqrt{ \left\langle x, x \right\rangle \left\langle y, y \right\rangle  }} = \frac{x^{\top}y}{\sqrt{ x^{\top}xy^{\top}y }} = \frac{3}{\sqrt{ 10 }}, \tag{3.26} $$
 > and the angle between the two vectors is arccos( √ 3  10 ) ≈ 0.32 rad, which corresponds to about 18◦
 > 于是两个向量的夹角余弦值为$\displaystyle \arccos\left( \frac{3}{\sqrt{ 10 }} \right) \approx 0.32\text{ rad}$，大约为$18^{\circ}$。
-> ![150](Pasted%20image%2020240627165050.png)
+>  
+
+![150](Pasted%20image%2020240627165050.png)
+
 > Figure 3.5 The angle ω between two vectors x, y is computed using the inner product.
 > 图3.5 使用向量$x$和$y$之间的内积计算它们之间的夹角$\omega$。
 
@@ -322,24 +342,28 @@ Remark. Orthogonality is the generalization of the concept of perpendicularity t
 > Figure 3.6 The  angle ω between two vectors x, y can change depending on the inner product.
 > Consider two vectors x = [1, 1]> , y = [−1, 1]> ∈ R2  ; see Figure 3.6. We are interested in determining the angle ω between them using two different inner products. Using the dot product as the inner product yields an angle ω between x and y of 90◦ , such that x ⊥ y. However, if we choose the inner product
 > **示例3.7（单位正交向量）**
-> ![300](Pasted%20image%2020240627170238.png)
+>  
+
+![300](Pasted%20image%2020240627170238.png)
+
 > 图3.6 使用不同的内积定义计算得到的两向量$x$和$y$之间的夹角不同
-> 如图3.6所示，考虑向量$x=[1,1]^{\top}, y = [-1, 1]^{\top} \in \mathbb{R}^{2}$，考虑它们在不同内积定义下的夹角大小。如果使用通常的点积作为内积，则它们之间的夹角为$90^{\circ}$，也即$x \bot y$。但如果使用下面的内积定义则会得到不同的结果： $$ \left\langle x, y \right\rangle  = x^{\top} \left[ \begin{matrix} 2 & 0 \\ 0 & 1
+> 如图3.6所示，考虑向量$x=[1, 1]^{\top}, y = [-1, 1]^{\top} \in \mathbb{R}^{2}$，考虑它们在不同内积定义下的夹角大小。如果使用通常的点积作为内积，则它们之间的夹角为$90^{\circ}$，也即$x \bot y$。但如果使用下面的内积定义则会得到不同的结果： $$ \left\langle x, y \right\rangle  = x^{\top} \left[ \begin{matrix} 2 & 0 \\ 0 & 1
+
 \end{matrix}\right] y, \tag{3.27} $$
+
 > we get that the angle ω between x and y is given by
 > 可以计算得到在这个内积之下两向量之间的夹角为> $$ \cos \omega = \frac{\left\langle x, y \right\rangle}{\|x\| \|y\|} = -\frac{1}{3} \implies \omega \approx 1.91 \text{ rad} \approx 109.5^{\circ}, \tag{3.28} $$
 > and x and y are not orthogonal. Therefore, vectors that are orthogonal with respect to one inner product do not have to be orthogonal with respect to a different inner product.
 > 于是$x$和$y$并不正交。因此在一个内积下正交的两个向量在另一个内积下不一定正交。
 
-
 > Definition 3.8 (Orthogonal Matrix). 
 > A square matrix A ∈ Rn×n is an orthogonal matrix if and only if its columns are orthonormal so that
->  **定义3.8（正交矩阵）**
->  方阵$A \in \mathbb{R}^{n \times n}$为正交矩阵当且仅当满足下面的条件：
->  $$ A A^{\top} = I = A^{\top} A, \tag{3.29} $$
->  which implies that
->  进而有
->  $$ A^{-1} = A^{\top}, \tag{3.30} $$
+> **定义3.8（正交矩阵）**
+> 方阵$A \in \mathbb{R}^{n \times n}$为正交矩阵当且仅当满足下面的条件：
+> $$ A A^{\top} = I = A^{\top} A, \tag{3.29} $$
+> which implies that
+> 进而有
+> $$ A^{-1} = A^{\top}, \tag{3.30} $$
 > i.e., the inverse is obtained by simply transposing the matrix. 
 > 这是说，正交矩阵的逆是它的转置。
 
@@ -373,7 +397,7 @@ vector is 1. We will call this basis then an orthonormal basis.
 
 Let us introduce this more formally.
 Definition 3.9 (Orthonormal Basis). Consider an n-dimensional vector
-space V and a basis {b1, . . . , bn} of V . If for all i, j = 1, . . . , n then the basis is called an orthonormal basis (ONB). orthonormal basis
+space V and a basis {b1, ... , bn} of V . If for all i, j = 1, ... , n then the basis is called an orthonormal basis (ONB). orthonormal basis
 ONB If only (3.33) is satisfied, then the basis is called an orthogonal basis. Note
 orthogonal basis that (3.34) implies that every basis vector has length/norm 1.
 
@@ -381,22 +405,21 @@ orthogonal basis that (3.34) implies that every basis vector has length/norm 1.
 
 > **定义 3.9 （正交基）**
 > 考虑一个$n$维向量空间$V$和它上面的一个基$\{ b_{1}, \dots, b_{n} \}$，如果$$\begin{align}\left\langle b_{i}, b_{j} \right\rangle &= 0, & i \ne j \tag{3.33}\\\left\langle b_{i}, b_{i} \right\rangle &= 1 \tag{3.34}\end{align}$$
-> 对于所有的$i,j = 1, \dots, n$都成立，那么$\{ b_{1}, \dots, b_{n} \}$就被称为**标准正交基（orthonormal basis，ONB）**，注意所有的向量的长度均为$1$。假如这个基只满足$(3.33)$，则它就被称为**正交基（orthogonal basis）**。
+> 对于所有的$i, j = 1, \dots, n$都成立，那么$\{ b_{1}, \dots, b_{n} \}$就被称为**标准正交基（orthonormal basis，ONB）**，注意所有的向量的长度均为$1$。假如这个基只满足$(3.33)$，则它就被称为**正交基（orthogonal basis）**。
 
 Recall from Section 2.6.1 that we can use Gaussian elimination to find a
 basis for a vector space spanned by a set of vectors. Assume we are given
 a set {
-˜b1, . . . ,
+˜b1, ... , 
 ˜bn} of non-orthogonal and unnormalized basis vectors. We
-concatenate them into a matrix ˜B = [˜b1, . . . ,
+concatenate them into a matrix ˜B = [˜b1, ... , 
 ˜bn] and apply Gaussian elimination to the augmented matrix (Section 2.3.2) [
 ˜B ˜B
  |
 ˜B] to obtain an
-orthonormal basis. This constructive way to iteratively build an orthonormal basis {b1, . . . , bn} is called the Gram-Schmidt process (Strang, 2003).
+orthonormal basis. This constructive way to iteratively build an orthonormal basis {b1, ... , bn} is called the Gram-Schmidt process (Strang, 2003).
 
 让我们回忆一下，在2.6.1节中我们使用Gauss消元法寻找一个向量组张成空间的基的过程。假设我们有一个未标准化（unnormalized）且非正交的向量组$\{ \tilde{b}_{1}, \dots, \tilde{b}_{n} \}$，我们将其堆叠成一个矩阵$\tilde{B} = [\tilde{b}_{1}, \dots, \tilde{b}_{n}]$，然后在增广矩阵$[\tilde{B}\tilde{B}^{\top}|\tilde{B}]$上应用Gauss消元法，就可以得到一个标准正交基。像这样迭代地构造正交基$\{ b_{1}, \dots, b_{n} \}$的方法被称为**Gram-Schmidt正交化过程**。
-
 
 Example 3.8 (Orthonormal Basis)
 The canonical/standard basis for a Euclidean vector space Rn
@@ -418,7 +441,7 @@ Chapter 10 when we discuss support vector machines and principal component analy
 ## 3.6 正交补
 
 Having defined orthogonality, we will now look at vector spaces that are
-orthogonal to each other. This will play an important role in Chapter 10,
+orthogonal to each other. This will play an important role in Chapter 10, 
 when we discuss linear dimensionality reduction from a geometric perspective.
 
 我们在定义了正交这一概念之后可以来看看互相正交的向量空间了。这样的向量空间在第十章讨论线性降维的几何视角时十分重要。
@@ -429,11 +452,12 @@ Consider a D-dimensional vector space V and an M-dimensional subspace U ⊆ V . 
 $$
 x = \sum\limits_{m=1}^{M} \lambda b_{m} + \sum\limits_{j=1}^{D-M} \psi_{i}b_{j}^{\bot}, \quad \lambda_{m}, \psi_{j} \in \mathbb{R} \tag{3.36}
 $$
-where (b1, . . . , bM) is a basis of U and (b⊥1, . . . , b⊥D−M) is a basis of U⊥.
+where (b1, ... , bM) is a basis of U and (b⊥1, ... , b⊥D−M) is a basis of U⊥.
 
 其中$(b_{1}, \dots, b_{M})$是$U$的一个基，$(b^{\perp}_{1}, \dots, b^{\perp}_{D-M})$是$U^{\perp}$的一个基。
 
 ![300](Pasted%20image%2020240809151317.png)
+
 <center>图3.7 三维向量空间的平面可被与其垂直单位向量唯一确定，后者是其正交补空间的基</center>
 
 Therefore, the orthogonal complement can also be used to describe a
@@ -447,7 +471,6 @@ U. The vector w is called the normal vector of U.
 Generally, orthogonal complements can be used to describe hyperplanes
 in n-dimensional vector and affine spaces.
 一般地，正交补空间可被用来刻画$n$维向量空间和仿射空间（affine space，译者注：也称线性流形）中的**超平面（hyperplanes）**
-
 
 ## 3.7 函数的内积
 
@@ -463,27 +486,30 @@ $$
 \left\langle u, v \right\rangle := \int_{a}^{b} {u(x)v(x)} \, \mathrm d{x}, \tag{3.37} 
 $$
 for lower and upper limits a, b < ∞, respectively.
-其中积分限满足$a,b < \infty$。
+其中积分限满足$a, b < \infty$。
 
 As with our usual inner product, we can define norms and orthogonality by looking at the inner product. If (3.37) evaluates to 0, the functions u and v are orthogonal. To make the preceding inner product mathematically precise, we need to take care of measures and the definition of integrals, leading to the definition of a Hilbert space. Furthermore, unlike inner products on finite-dimensional vectors, inner products on functions may diverge (have infinite value). All this requires diving into some more intricate details of real and functional analysis, which we do not cover in this book.
 和通常的内积一样，我们也可以通过内积定义函数的范数和正交关系。如果式$(3.37)$的结果为零，则两个函数$u$和$v$相互正交。如果需要给出更加严格的定义，我们需要考虑测度和积分定义的方式，这将引出Hilbert空间。进一步地，与有限维向量之间的内积不同，函数之间的内积可能发散（值为无穷大）。对上述情形的讨论涉及实分析和泛函分析中的细节，不是本书讨论的内容。
 
-
 Example 3.9 (Inner Product of Functions)
 If we choose u = sin(x) and v = cos(x), the integrand f(x) = u(x)v(x) Figure 3.8 f(x) =
 sin(x) cos(x).
-of (3.37), is shown in Figure 3.8. We see that this function is odd, i.e.,
+of (3.37), is shown in Figure 3.8. We see that this function is odd, i.e., 
 f(−x) = −f(x). Therefore, the integral with limits a = −π, b = π of this
 product evaluates to 0. Therefore, sin and cos are orthogonal functions.
 
 > **示例 3.9（函数之间的内积）**
-> 假如我们令$u = \sin(x)$，$v = \cos(x)$，则内积定义$(3.37)$中的被积函数为$f = u(x)v(x)$，如图3.38所示。我们发现这个函数是奇函数，也即$f(-x) = -f(x)$。所以积分限为$a=-\pi,b=\pi$的定积分的值为零，因此我们可以得到$\sin$和$\cos$互相正交的结论。
-> ![300](Pasted%20image%2020240811182908.png)
+> 假如我们令$u = \sin(x)$，$v = \cos(x)$，则内积定义$(3.37)$中的被积函数为$f = u(x)v(x)$，如图3.38所示。我们发现这个函数是奇函数，也即$f(-x) = -f(x)$。所以积分限为$a=-\pi, b=\pi$的定积分的值为零，因此我们可以得到$\sin$和$\cos$互相正交的结论。
+>  
+
+![300](Pasted%20image%2020240811182908.png)
+
 > <center>图3.8 被积函数 f(x) = sin(x)cos(x) 的图像</center>
-> 
+>  
 
 Remark. It also holds that the collection of functions is orthogonal if we integrate from −π to π, i.e., any pair of functions are orthogonal to each other. The collection of functions in (3.38) spans a large subspace of the functions that are even and periodic on \[−π, π\), and projecting functions onto this subspace is the fundamental idea behind
 Fourier series.
+
 > 注：上述结论对于下面的函数族依然成立：$$\{ 1, \cos(x), \cos(2x), \cos(3x), \dots \}, \tag{3.38}$$（如果将积分限设置为$-\pi$和$\pi$）。换句话说，这个函数族中的函数两两正交，它们张成的巨大空间是所有以区间$[-\pi, \pi)$为周期的连续函数。将函数向这个子空间上投影是**Fourier级数**的核心思想。
 
 In Section 6.4.6, we will have a look at a second type of unconventional
@@ -491,6 +517,36 @@ inner products: the inner product of random variables.
 在6.4.6节，我们还会遇见第二种不常见的内积——随机变量之间的内积。
 
 ## 3.8 正交投影
+
+Projections are an important class of linear transformations (besides rotations and reflections) and play an important role in graphics, coding theory, statistics and machine learning. 
+投影是一类重要的线性变换（其他重要的线性变换还有旋转和反射），在图形学、编码理论、统计学和机器学习中占有重要的地位。
+
+In machine learning, we often deal with data that is high-dimensional. High-dimensional data is often hard to analyze or visualize. 
+在机器学习中，我们经常需要与高维数据打交道，它们往往难以进行分析和可视化。
+
+However, high-dimensional data quite often possesses the property that only a few dimensions contain most information, and most other dimensions are not essential to describe key properties of the data. 
+然而，高维数据往往具有大部分信息被包含在仅仅几个维度之中，其他维度对于数据关键信息的刻画并不重要的特点。
+
+When we compress or visualize high-dimensional data, we will lose information. To minimize this compression loss, we ideally find the most informative dimensions in the data. 
+当我们对高维数据进行压缩或可视化时，我们将失去一些信息。为了将压缩造成的信息损失最小化，我们往往选择数据中最关键的几个维度。
+
+As discussed in Chapter 1, data can be represented as vectors, and in this chapter, we will discuss some of the fundamental tools for data compression. 
+
+More specifically, we can project the original high-dimensional data onto a lower-dimensional feature space and work in this lower-dimensional space to learn more about the dataset and extract relevant patterns. 
+
+For example, machine learning algorithms, such as principal component analysis (PCA) by Pearson (1901) and Hotelling (1933) and deep neural networks (e.g., deep
+auto-encoders (Deng et al., 2010)), heavily exploit the idea of dimensionality reduction. 
+
+In the following, we will focus on orthogonal projections, which we will use in Chapter 10 for linear dimensionality reduction and in Chapter 12 for classification. 
+
+Even linear regression, which we discuss in Chapter 9, can be interpreted using orthogonal projections. 
+
+For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/error between the original data and the corresponding projection. 
+
+An illustration of such an orthogonal projection is given in Figure 3.9. Before we detail how to obtain these projections, let us define what a projection actually is.
+
+
+
 ### 3.8.1 向一维子空间（直线）投影
 
 $$
@@ -593,7 +649,7 @@ $$
 \boldsymbol{B}^{\top}\boldsymbol{B} = \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2
 \end{matrix} \right] \left[ \begin{matrix} 1 & 0\\1 & 1\\1 & 2
 \end{matrix} \right] = \left[ \begin{matrix} 3 & 3 \\ 3 & 5
-\end{matrix} \right],\quad \boldsymbol{B}^{\top}x = \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2
+\end{matrix} \right], \quad \boldsymbol{B}^{\top}x = \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2
 \end{matrix} \right] \left[ \begin{matrix} 6\\0\\0
 \end{matrix} \right] = \left[ \begin{matrix} 6\\0
 \end{matrix} \right]. \tag{3.60}
@@ -632,25 +688,18 @@ $$
 \boldsymbol{\lambda} = \boldsymbol{B}^{\top}x. \tag{3.66}
 $$
 
-
 ### 3.8.3 Gram-Schmidt 正交化
-
 
 ### 3.8.4 向仿射子空间投影
 
-
 ## 3.9 旋转
-### 3.9.1 $\mathbb{R}^{2}$中的旋转
 
+### 3.9.1 $\mathbb{R}^{2}$中的旋转
 
 ### 3.9.2 $\mathbb{R}^{3}$中的旋转
 
-
 ### 3.9.3 $n$维空间中的旋转
-
 
 ### 3.9.4 旋转算子的性质
 
-
 ## 3.10 拓展阅读
-
