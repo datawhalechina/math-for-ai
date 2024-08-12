@@ -536,6 +536,8 @@ As discussed in Chapter 1, data can be represented as vectors, and in this chapt
 More specifically, we can project the original high-dimensional data onto a lower-dimensional feature space and work in this lower-dimensional space to learn more about the dataset and extract relevant patterns. 
 具体而言，我们可以将原来的高维数据投影到低维**特征空间（feature space）**，然后在此空间中对数据进行处理和分析，以更好的了解数据集并抽取相关的**模式（pattern）**。
 
+> “Feature” is a common expression for data representation.
+
 For example, machine learning algorithms, such as principal component analysis (PCA) by Pearson (1901) and Hotelling (1933) and deep neural networks (e.g., deep auto-encoders (Deng et al., 2010)), heavily exploit the idea of dimensionality reduction. 
 举例来说，以主成分分析（principal component analysis，PCA）为例的机器学习算法（Pearson, 1901 和 Hotelling, 1933）以及以自编码器（auto-encoders，Deng et al., 2010）深度神经网络充分利用了降维的思想。
 
@@ -548,6 +550,8 @@ Even linear regression, which we discuss in Chapter 9, can be interpreted using 
 For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/error between the original data and the corresponding projection. 
 给定一个低维子空间，来自高维空间中数据的正交投影会保留尽可能多的信息，并最小化元数据和投影数据的区别或损失。
 
+<center>图 3.9 </center>
+
 An illustration of such an orthogonal projection is given in Figure 3.9. Before we detail how to obtain these projections, let us define what a projection actually is.
 正交投影的直观几何描述可见图 3.9。在我们介紹细节之前，需要首先定义投影这个概念。
 
@@ -558,41 +562,97 @@ Since linear mappings can be expressed by transformation matrices (see Section 2
 of transformation matrices, the projection matrices P π, which exhibit the property that P2 π = P π.
 由于线性映射可以表示为矩阵（参见 2.7 节），上面的定义等价于确定了一类特殊的矩阵变换 $P_\pi$，它们满足 $P_\pi^2 = P_\pi$。
 
-In the following, we will derive orthogonal projections of vectors in the inner product space (Rn ,h·, ·i) onto subspaces. We will start with one dimensional subspaces, which are also called lines. If not mentioned otherwise, we assume the dot product h x, yi = xTy as the inner product.
+In the following, we will derive orthogonal projections of vectors in the inner product space (Rn , h·, ·i) onto subspaces. We will start with one dimensional subspaces, which are also called lines. If not mentioned otherwise, we assume the dot product h x, yi = xTy as the inner product.
 在接下来的内容中将推导内积空间 $(\mathbb{R}^n, \langle \cdot, \cdot \rangle)$ 中向量至其子空间的正交投影，我们将从一维子空间（也称为直线）开始。如果没有特殊说明，我们约定向量的内积为点积，即 $\langle x, y \rangle = x^\top y$。
 
 ### 3.8.1 向一维子空间（直线）投影
 
-$$
-\left\langle x - \pi_{U}(x), b \right\rangle = 0 \mathop{\iff}\limits^{\pi_{U}(x) = \lambda b} \left\langle x - \lambda b, b \right\rangle = 0. \tag{3.39}  
-$$
+Assume we are given a line (one-dimensional subspace) through the origin with basis vector b ∈ Rn
+. The line is a one-dimensional subspace U ⊆ Rn spanned by b. When we project x ∈ Rn onto U, we seek the vector πU (x) ∈ U that is closest to x. Using geometric arguments, let us characterize some properties of the projection πU (x) (Figure 3.10(a)
+serves as an illustration):
+假设给定一条通过原点的直线（一维子空间），和该空间的一个基 $b \in \mathbb{R}^n$。这条直线是$b$章程的子空间$U \subset \mathbb{R}^n$。当我们将向量$x \in \mathbb{R}^n$投影至$U$中时，我们需要在$U$中寻找距离$x$最近的向量$\pi_U(x) \in U$。下面列举一些投影向量$\pi_U(x)$的性质（参考图 3.10）
 
-$$
-\left\langle x, b \right\rangle - \lambda\left\langle b, b \right\rangle = 0 \iff \lambda = \frac{\left\langle x, b \right\rangle}{\left\langle b, b \right\rangle } = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} = 0 . \tag{3.40}
-$$
-$$
-\lambda = \frac{b^{\top}x}{b^{\top}b} = \frac{b^{\top}x}{\|b\|^{2}}. \tag{3.41}
-$$
+<center>图 3.10 投影至一位子空间的示例。</center>
+<!-- TODO: 需要将其中的英文改成中文 -->
 
-$$
-\pi_{U}(x) = \lambda b = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} \cdot b = \frac{b^{\top}x}{\|b\|^{2}} \cdot b, \tag{3.42}
-$$
+* The projection πU (x) is closest to x, where “closest” implies that the distance k x−πU (x)k is minimal. It follows that the segment πU (x)−x from πU (x) to x is orthogonal to U, and therefore the basis vector b of U. The orthogonality condition yields h πU (x) − x, bi = 0 since angles between vectors are defined via the inner product.
+* 投影向量 $\pi_U(x)$ 是（子空间中）距离 $x$ 最近的向量，“最近”的意思是距离 $\|x - \pi_U(x)\|$ 是最小的。这表示从 $\pi_U(x)$ 到 $x$ 的线段 $\pi_U(x) - x$ 与 $U$ 是垂直的，也和 $U$ 的基 $b$ 垂直。
 
-$$
-\|\pi_{U}(x)\| = \|\lambda b\| = |\lambda| \|b\|. \tag{3.43}
-$$
+* The projection πU (x) of x onto U must be an element of U and, therefore, a multiple of the basis vector b that spans U. Hence, πU (x) = λb, for some λ ∈ R.
+* $x$ 到 $U$ 的投影向量 $\pi_U(x)$ 一定是 $U$ 中的元素，因此也和 $U$ 的基 $b$ 共线。于是存在 $\lambda \in \mathbb{R}$，使得 $\pi_U(x) = \lambda b$。
 
-$$
-\|\pi_{U}(x)\| ~\mathop{=\!=\!=}\limits^{(3.42)} ~\frac{|b^{\top}x|}{\|b\|^{2}} \|b\|~ \mathop{=\!=\!=}\limits^{(3.25)} ~|\!\cos\omega| \cdot \|x\| \cdot \|b\| \cdot \frac{\|b\|}{\|b\|^{2}} = |\!\cos{\omega}| \cdot \|x\|. \tag{3.44}
-$$
+> Remark. λ is then the coordinate of πU (x) with respect to b.
 
-$$
-\pi_{U}(x) = \lambda b = b\lambda =b \frac{b^{\top}x}{\|b\|^{2}} = \frac{bb^{\top}}{\|b\|^{2}} x, \tag{3.45}
-$$
+In the following three steps, we determine the coordinate λ, the projection
+πU (x) ∈ U, and the projection matrix P π that maps any x ∈ Rn onto U:
 
-$$
-P_{\pi} = \frac{b b^{\top}}{\|b\|^{2}}. \tag{3.46}
-$$
+1. Finding the coordinate λ. The orthogonality condition yields
+
+    $$
+    \left\langle x - \pi_{U}(x), b \right\rangle = 0 \mathop{\iff}\limits^{\pi_{U}(x) = \lambda b} \left\langle x - \lambda b, b \right\rangle = 0. \tag{3.39}  
+    $$
+    
+    We can now exploit the bilinearity of the inner product and arrive at
+
+    $$
+    \left\langle x, b \right\rangle - \lambda\left\langle b, b \right\rangle = 0 \iff \lambda = \frac{\left\langle x, b \right\rangle}{\left\langle b, b \right\rangle } = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} = 0 . \tag{3.40}
+    $$
+
+    > With a general inner product, we get λ = h x, bi if k bk = 1.
+
+    In the last step, we exploited the fact that inner products are symmetric. If we choose h·, ·i to be the dot product, we obtain
+
+    $$
+    \lambda = \frac{b^{\top}x}{b^{\top}b} = \frac{b^{\top}x}{\|b\|^{2}}. \tag{3.41}
+    $$
+
+    If k bk = 1, then the coordinate λ of the projection is given by bTx.
+
+2. Finding the projection point πU (x) ∈ U. Since πU (x) = λb, we immediately obtain with (3.40) that 
+    $$
+    \pi_{U}(x) = \lambda b = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} \cdot b = \frac{b^{\top}x}{\|b\|^{2}} \cdot b, \tag{3.42}
+    $$
+
+    where the last equality holds for the dot product only. We can also compute the length of πU (x) by means of Definition 3.1 as
+
+    $$
+    \|\pi_{U}(x)\| = \|\lambda b\| = |\lambda| \|b\|. \tag{3.43}
+    $$
+
+    Hence, our projection is of length |λ| times the length of b. This also adds the intuition that λ is the coordinate of πU (x) with respect to the basis vector b that spans our one-dimensional subspace U.
+
+    If we use the dot product as an inner product, we get
+
+    $$
+    \|\pi_{U}(x)\| ~\mathop{=\!=\!=}\limits^{(3.42)} ~\frac{|b^{\top}x|}{\|b\|^{2}} \|b\|~ \mathop{=\!=\!=}\limits^{(3.25)} ~|\!\cos\omega| \cdot \|x\| \cdot \|b\| \cdot \frac{\|b\|}{\|b\|^{2}} = |\!\cos{\omega}| \cdot \|x\|. \tag{3.44}
+    $$
+
+    Here, ω is the angle between x and b. This equation should be familiar from trigonometry: If k xk = 1, then x lies on the unit circle. It follows that the projection onto the horizontal axis spanned by b is exactly cos ω, and the length of the corresponding vector πU (x) = |cos ω|. An
+    illustration is given in Figure 3.10(b).
+
+    > The horizontal axis is a one-dimensional subspace.
+
+3. Finding the projection matrix P π. We know that a projection is a linear mapping (see Definition 3.10). Therefore, there exists a projection matrix P π, such that πU (x) = P πx. With the dot product as inner product and
+
+    $$
+    \pi_{U}(x) = \lambda b = b\lambda =b \frac{b^{\top}x}{\|b\|^{2}} = \frac{bb^{\top}}{\|b\|^{2}} x, \tag{3.45}
+    $$
+
+    we immediately see that
+
+    $$
+    P_{\pi} = \frac{b b^{\top}}{\|b\|^{2}}. \tag{3.46}
+    $$
+
+    Note that bb> (and, consequently, P π) is a symmetric matrix (of rank 1), and kbk2 = h b, bi is a scalar.
+
+The projection matrix P π projects any vector x ∈ Rn onto the line through the origin with direction b (equivalently, the subspace U spanned by b).
+
+> Remark. The projection πU (x) ∈ Rn is still an n-dimensional vector and not a scalar. However, we no longer require n coordinates to represent the projection, but only a single one if we want to express it with respect to the basis vector b that spans the subspace U: λ. ♦
+
+
+Example 3.10 (Projection onto a Line)
+Find the projection matrix P π onto the line through the origin spanned by b = 1 2 2 > . b is a direction and a basis of the one-dimensional subspace (line through origin). With (3.46), we obtain
 
 $$
 P_{\pi} = \frac{b b^{\top}}{b^{\top}b} = \frac{1}{9} \left[ \begin{matrix} 1\\2\\2
@@ -600,6 +660,9 @@ P_{\pi} = \frac{b b^{\top}}{b^{\top}b} = \frac{1}{9} \left[ \begin{matrix} 1\\2\
 1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4
 \end{matrix} \right] . \tag{3.47}
 $$
+
+Let us now choose a particular x and see whether it lies in the subspace
+spanned by b. For x =  1 1 1 > , the projection is
 
 $$
 \pi_{U}(x) = P_{\pi}(x) = \frac{1}{9} \left[ \begin{matrix}
@@ -612,6 +675,10 @@ $$
 1\\2\\2
 \end{matrix} \right]  \right\} . \tag{3.48}
 $$
+
+Note that the application of P π to πU (x) does not change anything, i.e., P ππU (x) = πU (x). This is expected because according to Definition 3.10, we know that a projection matrix P π satisfies P2π x = Pπ x for all x
+
+> Remark. With the results from Chapter 4, we can show that πU (x) is an eigenvector of P π, and the corresponding eigenvalue is 1.
 
 ### 3.8.2 向一般子空间投影
 
