@@ -537,6 +537,7 @@ More specifically, we can project the original high-dimensional data onto a lowe
 具体而言，我们可以将原来的高维数据投影到低维**特征空间（feature space）**，然后在此空间中对数据进行处理和分析，以更好的了解数据集并抽取相关的**模式（pattern）**。
 
 > “Feature” is a common expression for data representation.
+> “特征”是数据表示的一个常见说法。
 
 For example, machine learning algorithms, such as principal component analysis (PCA) by Pearson (1901) and Hotelling (1933) and deep neural networks (e.g., deep auto-encoders (Deng et al., 2010)), heavily exploit the idea of dimensionality reduction. 
 举例来说，以主成分分析（principal component analysis，PCA）为例的机器学习算法（Pearson, 1901 和 Hotelling, 1933）以及以自编码器（auto-encoders，Deng et al., 2010）深度神经网络充分利用了降维的思想。
@@ -550,7 +551,8 @@ Even linear regression, which we discuss in Chapter 9, can be interpreted using 
 For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/error between the original data and the corresponding projection. 
 给定一个低维子空间，来自高维空间中数据的正交投影会保留尽可能多的信息，并最小化元数据和投影数据的区别或损失。
 
-<center>图 3.9 </center>
+![400](Pasted%20image%2020240813213937.png)
+<center>图 3.9 二维数据点（蓝色点）至一维子空间（直线）的投影（橙色点）</center>
 
 An illustration of such an orthogonal projection is given in Figure 3.9. Before we detail how to obtain these projections, let us define what a projection actually is.
 正交投影的直观几何描述可见图 3.9。在我们介紹细节之前，需要首先定义投影这个概念。
@@ -572,7 +574,6 @@ Assume we are given a line (one-dimensional subspace) through the origin with ba
 serves as an illustration):
 假设给定一条通过原点的直线（一维子空间），和该空间的一个基 $b \in \mathbb{R}^n$。这条直线是$b$章程的子空间$U \subset \mathbb{R}^n$。当我们将向量$x \in \mathbb{R}^n$投影至$U$中时，我们需要在$U$中寻找距离$x$最近的向量$\pi_U(x) \in U$。下面列举一些投影向量$\pi_U(x)$的性质（参考图 3.10）
 
-<center>图 3.10 投影至一位子空间的示例。</center>
 <!-- TODO: 需要将其中的英文改成中文 -->
 
 * The projection πU (x) is closest to x, where “closest” implies that the distance k x−πU (x)k is minimal. It follows that the segment πU (x)−x from πU (x) to x is orthogonal to U, and therefore the basis vector b of U. The orthogonality condition yields h πU (x) − x, bi = 0 since angles between vectors are defined via the inner product.
@@ -582,103 +583,109 @@ serves as an illustration):
 * $x$ 到 $U$ 的投影向量 $\pi_U(x)$ 一定是 $U$ 中的元素，因此也和 $U$ 的基 $b$ 共线。于是存在 $\lambda \in \mathbb{R}$，使得 $\pi_U(x) = \lambda b$。
 
 > Remark. λ is then the coordinate of πU (x) with respect to b.
+> 注：$\lambda$ 是 $\pi_{U}(x)$ 在基 $b$ 下的坐标。
 
 In the following three steps, we determine the coordinate λ, the projection
 πU (x) ∈ U, and the projection matrix P π that maps any x ∈ Rn onto U:
+下面我们将通过三个步骤确定坐标 $\lambda$，投影向量 $\pi_{U}(x) \in U$，以及将 $x \in \mathbb{R}^{n}$ 投影至子空间 $U$ 的投影矩阵 $P_{\pi}$ 。
 
 1. Finding the coordinate λ. The orthogonality condition yields
-
+    计算坐标 $\lambda$ 的值。由正交性条件得到
     $$
     \left\langle x - \pi_{U}(x), b \right\rangle = 0 \mathop{\iff}\limits^{\pi_{U}(x) = \lambda b} \left\langle x - \lambda b, b \right\rangle = 0. \tag{3.39}  
     $$
     
     We can now exploit the bilinearity of the inner product and arrive at
-
+    我们可以利用内积的双线性性，得到
     $$
-    \left\langle x, b \right\rangle - \lambda\left\langle b, b \right\rangle = 0 \iff \lambda = \frac{\left\langle x, b \right\rangle}{\left\langle b, b \right\rangle } = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} = 0 . \tag{3.40}
+    \left\langle x, b \right\rangle - \lambda\left\langle b, b \right\rangle = 0 \iff \lambda = \frac{\left\langle x, b \right\rangle}{\left\langle b, b \right\rangle } = \frac{\left\langle b, x \right\rangle}{\|b\|^{2}} . \tag{3.40}
     $$
 
     > With a general inner product, we get λ = h x, bi if k bk = 1.
+    > 若使用一般的内积，如果$\|b\| = 1$，我们有 $\lambda = \left\langle x, b \right\rangle$。
 
     In the last step, we exploited the fact that inner products are symmetric. If we choose h·, ·i to be the dot product, we obtain
-
+    最后，我们利用内积的对称性对原式进行变换。如果我们令 $\left\langle \cdot, \cdot \right\rangle$ 为点积，我们就可以得到
     $$
     \lambda = \frac{b^{\top}x}{b^{\top}b} = \frac{b^{\top}x}{\|b\|^{2}}. \tag{3.41}
     $$
 
     If k bk = 1, then the coordinate λ of the projection is given by bTx.
+    如果 $\|b\| =1$，则 $\lambda$ 的值为 $b^{\top}x$。
 
 2. Finding the projection point πU (x) ∈ U. Since πU (x) = λb, we immediately obtain with (3.40) that 
+   计算投影点 $\pi_{U}(x) \in U$。由于 $\pi_{U}(x) = \lambda b$，由 $(3.40)$，立刻有
     $$
     \pi_{U}(x) = \lambda b = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} \cdot b = \frac{b^{\top}x}{\|b\|^{2}} \cdot b, \tag{3.42}
     $$
 
     where the last equality holds for the dot product only. We can also compute the length of πU (x) by means of Definition 3.1 as
-
+    其中最后的等号成立条件为内积取为点积。我们还可以根据定义3.1计算 $\pi_U(x)$ 的长度：
     $$
     \|\pi_{U}(x)\| = \|\lambda b\| = |\lambda| \|b\|. \tag{3.43}
     $$
 
     Hence, our projection is of length |λ| times the length of b. This also adds the intuition that λ is the coordinate of πU (x) with respect to the basis vector b that spans our one-dimensional subspace U.
-
+    因此，投影向量的长度为 $|\lambda|$ 乘以 $b$ 的长度。这也增加了一个直观理解方式：$\lambda$ 是投影向量在子空间 $U$ 的基 $b$ 下的坐标。
+    
     If we use the dot product as an inner product, we get
-
+    如果我们令内积为点积，就有
     $$
-    \|\pi_{U}(x)\| ~\mathop{=\!=\!=}\limits^{(3.42)} ~\frac{|b^{\top}x|}{\|b\|^{2}} \|b\|~ \mathop{=\!=\!=}\limits^{(3.25)} ~|\!\cos\omega| \cdot \|x\| \cdot \|b\| \cdot \frac{\|b\|}{\|b\|^{2}} = |\!\cos{\omega}| \cdot \|x\|. \tag{3.44}
+    \begin{align}
+    \|\pi_{U}(x)\| ~&\mathop{=\!=\!=}\limits^{(3.42)} ~\frac{|b^{\top}x|}{\|b\|^{2}} \|b\|~ \mathop{=\!=\!=}\limits^{(3.25)} ~|\!\cos\omega| \cdot \|x\| \cdot \|b\| \cdot \frac{\|b\|}{\|b\|^{2}} \\&= |\!\cos{\omega}| \cdot \|x\|.
+    \end{align} \tag{3.44}
     $$
 
-    Here, ω is the angle between x and b. This equation should be familiar from trigonometry: If k xk = 1, then x lies on the unit circle. It follows that the projection onto the horizontal axis spanned by b is exactly cos ω, and the length of the corresponding vector πU (x) = |cos ω|. An
+    
+![600](Pasted%20image%2020240813214150.png)
+<center>图 3.10 投影至一位子空间的示例。</center>
+
+Here, ω is the angle between x and b. This equation should be familiar from trigonometry: If k xk = 1, then x lies on the unit circle. It follows that the projection onto the horizontal axis spanned by b is exactly cos ω, and the length of the corresponding vector πU (x) = |cos ω|. An
     illustration is given in Figure 3.10(b).
+    这里的 $\omega$ 是向量 $x$ 和$b$ 之间的夹角。如图3.10所示，从三角学的角度看，该结果是似曾相识的：如果 $\|x\| = 1$，则向量 $x$ 的终点位于单位圆上。接着可以得到 $x$ 向横轴的投影在基 $b$ 下的坐标恰好就是 $\cos \omega$，投影向量的长度也满足 $|\pi_{U}(x)| = |\cos\omega|$。
 
-    > The horizontal axis is a one-dimensional subspace.
+> The horizontal axis is a one-dimensional subspace.
+    > 注：所谓的横轴就是一个一维子空间。
+
 
 3. Finding the projection matrix P π. We know that a projection is a linear mapping (see Definition 3.10). Therefore, there exists a projection matrix P π, such that πU (x) = P πx. With the dot product as inner product and
-
+    计算投影矩阵 $P_{\pi}$。通过定义 3.10 我们知道投影是一个线性变换。因此存在一个投影矩阵$P_{\pi}$，使得 $\pi_{U}(x) = P_{\pi} x$。若令点积为内积，我们有
     $$
     \pi_{U}(x) = \lambda b = b\lambda =b \frac{b^{\top}x}{\|b\|^{2}} = \frac{bb^{\top}}{\|b\|^{2}} x, \tag{3.45}
     $$
 
     we immediately see that
-
+    这样立刻得到
     $$
     P_{\pi} = \frac{b b^{\top}}{\|b\|^{2}}. \tag{3.46}
     $$
 
     Note that bb> (and, consequently, P π) is a symmetric matrix (of rank 1), and kbk2 = h b, bi is a scalar.
+    注意 $bb^{\top}$（也就是 $P_{\pi}$）是秩为 $1$ 的对称矩阵，而 $\|b\|^{2} = \left\langle b, b \right\rangle$ 是一个标量。
 
 The projection matrix P π projects any vector x ∈ Rn onto the line through the origin with direction b (equivalently, the subspace U spanned by b).
+投影矩阵 $P_{\pi}$ 将任意向量 $x \in \mathbb{R}^{n}$ 投影到通过原点，方向为 $b$ 的直线上（这等价于由 $b$ 张成的子空间 $U$）。
 
 > Remark. The projection πU (x) ∈ Rn is still an n-dimensional vector and not a scalar. However, we no longer require n coordinates to represent the projection, but only a single one if we want to express it with respect to the basis vector b that spans the subspace U: λ. ♦
-
+> 注：投影向量 $\pi_{U}(x) \in \mathbb{R}^{n}$ 依然是一个 $n$ 维向量，不是一个标量。然而，我们不再需要使用 $n$ 个分量来描述它——我们只需要使用一个分量 $\lambda$，因为这是投影向量关于子空间 $U$ 中的基 $b$ 的坐标。
 
 Example 3.10 (Projection onto a Line)
 Find the projection matrix P π onto the line through the origin spanned by b = 1 2 2 > . b is a direction and a basis of the one-dimensional subspace (line through origin). With (3.46), we obtain
-
-$$
-P_{\pi} = \frac{b b^{\top}}{b^{\top}b} = \frac{1}{9} \left[ \begin{matrix} 1\\2\\2
-\end{matrix} \right] [1, 2, 2] = \frac{1}{9} \left[ \begin{matrix}
-1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4
-\end{matrix} \right] . \tag{3.47}
-$$
-
 Let us now choose a particular x and see whether it lies in the subspace
 spanned by b. For x =  1 1 1 > , the projection is
-
-$$
-\pi_{U}(x) = P_{\pi}(x) = \frac{1}{9} \left[ \begin{matrix}
-1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4
-\end{matrix} \right] \left[ \begin{matrix}
-1\\1\\1
-\end{matrix} \right] = \frac{1}{9 } \left[ \begin{matrix}
-5\\10\\10
-\end{matrix} \right] \in \text{span}\left\{ \left[ \begin{matrix}
-1\\2\\2
-\end{matrix} \right]  \right\} . \tag{3.48}
-$$
-
 Note that the application of P π to πU (x) does not change anything, i.e., P ππU (x) = πU (x). This is expected because according to Definition 3.10, we know that a projection matrix P π satisfies P2π x = Pπ x for all x
 
+> **示例 3.10（向直线投影）**
+> 求投影至通过原点，由向量 $b = [1, 2, 2]^{\top}$ 张成直线的投影矩阵 $P_{\pi}$，其中 $b$ 是该过原点直线的方向，也就是一维子空间的基。
+> 
+> 通过 $(3.46)$，我们有
+> $$P_{\pi} = \frac{b b^{\top}}{b^{\top}b} = \frac{1}{9} \left[ \begin{matrix} 1\\2\\2\end{matrix} \right] [1, 2, 2] = \frac{1}{9} \left[ \begin{matrix}1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4\end{matrix}\right] . \tag{3.47}$$
+> 现在我们选一个特定的向量 $x$，然后检查它的投影是否在这条直线上。不妨令 $x = [1, 1, 1]^{\top}$，然后计算它的投影：
+> $$\pi_{U}(x) = P_{\pi}(x) = \frac{1}{9} \left[ \begin{matrix}1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4\end{matrix} \right] \left[ \begin{matrix}1\\1\\1\end{matrix} \right] = \frac{1}{9 } \left[ \begin{matrix}5\\10\\10\end{matrix} \right] \in \text{span}\left\{ \left[ \begin{matrix}1\\2\\2\end{matrix} \right]  \right\} . \tag{3.48}$$
+> 注意，$P_{\pi}$ 作用在 $\pi_{U}(x)$ 上的结果等于它本身，这是说 $P_{\pi}\pi_{U}(x) = \pi_{U}(x)$。这并不令我们以外，因为根据定义 3.10，我们知道 $P_{\pi}$ 是**幂等**的，也即对于任意的$x$，有 $P_{\pi}^{2}x = P_{\pi}$。
+
 > Remark. With the results from Chapter 4, we can show that πU (x) is an eigenvector of P π, and the corresponding eigenvalue is 1.
+> 注：在第四章，我们将证明 $\pi_{U}(x)$ 是矩阵 $P_{\pi}$ 的一个特征向量，对应的特征值为 $1$。
 
 ### 3.8.2 向一般子空间投影
 
