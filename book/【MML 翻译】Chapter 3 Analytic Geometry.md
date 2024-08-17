@@ -129,7 +129,7 @@ Here, (3.6) asserts that Ω is linear in the first argument, and (3.7) asserts 
 
 > **定义 3.3**
 > 设$V$为向量空间，双线性映射$\Omega:  V \times V \rightarrow \mathbb{R}$将两个$V$中的向量映射到一个实数，则
-> * 对称且正定的双线性映射$\Omega$被称为$V$上的一个*内积*，并简写$\Omega(x, y)$为$\left\langle x, y \right\rangle$。
+> * 对称且正定的双线性映射$\Omega$叫做$V$上的一个*内积*，并简写$\Omega(x, y)$为$\left\langle x, y \right\rangle$。
 > * 二元组$(V, \left\langle \cdot, \cdot \right\rangle)$称为*内积空间*或*装配有内积的（实）向量空间*。特别地，如果内积采用（式 3.5）中定义的点积，则称$(V, \left\langle \cdot, \cdot \right\rangle)$为欧几里得向量空间（译者注：简称欧氏空间）
 
 We will refer to these spaces as inner product spaces in this book.
@@ -185,7 +185,7 @@ $$
 ![500](Pasted%20image%2020240302125526.png)
 
 > **定义 3.4**（对称正定矩阵）
-> 一个$n$级对称矩阵$A \in \mathbb{R}^{n \times n}$若满足（式 3.11），则被称为*对称正定矩阵*（或仅称为正定矩阵）。如果只满足将（式 3.11）中的不等号改成$\geqslant$的条件，则称为*对称半正定矩阵*
+> 一个$n$级对称矩阵$A \in \mathbb{R}^{n \times n}$若满足（式 3.11），则叫做*对称正定矩阵*（或仅称为正定矩阵）。如果只满足将（式 3.11）中的不等号改成$\geqslant$的条件，则称为*对称半正定矩阵*
 
 ![500](Pasted%20image%2020240302125539.png)
 
@@ -368,7 +368,7 @@ Remark. Orthogonality is the generalization of the concept of perpendicularity t
 > 这是说，正交矩阵的逆是它的转置。
 
 Remark：It is convention to call these matrices “orthogonal” but a more precise description would be “orthonormal”. Transformations with orthogonal matrices preserve distances and angles.
-注：一般我们将这些矩阵称为“orthogonal matrix”，严格意义上它们应该被称为“orthonormal matrix”。因为“orthonormal matrix”对应的变换在线性空间内保持向量的长度和向量之间的夹角。译者注：中文中不做区分，统一称为“正交矩阵”。正交矩阵对应的变换在$\mathbb{R}^{2}$和$\mathbb{R}^{3}$中属于刚体变换。
+注：一般我们将这些矩阵称为“orthogonal matrix”，严格意义上它们应该叫做“orthonormal matrix”。因为“orthonormal matrix”对应的变换在线性空间内保持向量的长度和向量之间的夹角。译者注：中文中不做区分，统一称为“正交矩阵”。正交矩阵对应的变换在$\mathbb{R}^{2}$和$\mathbb{R}^{3}$中属于刚体变换。
 
 Transformations by orthogonal matrices are special because the length of a vector x is not changed when transforming it using an orthogonal matrix A. For the dot product, we obtain
 正交矩阵作用在向量$x$上不改变它的长度。当范数为向量点积作为内积诱导的范数时，我们有
@@ -405,7 +405,7 @@ orthogonal basis that (3.34) implies that every basis vector has length/norm 1.
 
 > **定义 3.9 （正交基）**
 > 考虑一个$n$维向量空间$V$和它上面的一个基$\{ b_{1}, \dots, b_{n} \}$，如果$$\begin{align}\left\langle b_{i}, b_{j} \right\rangle &= 0, & i \ne j \tag{3.33}\\\left\langle b_{i}, b_{i} \right\rangle &= 1 \tag{3.34}\end{align}$$
-> 对于所有的$i, j = 1, \dots, n$都成立，那么$\{ b_{1}, \dots, b_{n} \}$就被称为**标准正交基（orthonormal basis，ONB）**，注意所有的向量的长度均为$1$。假如这个基只满足$(3.33)$，则它就被称为**正交基（orthogonal basis）**。
+> 对于所有的$i, j = 1, \dots, n$都成立，那么$\{ b_{1}, \dots, b_{n} \}$就叫做**标准正交基（orthonormal basis，ONB）**，注意所有的向量的长度均为$1$。假如这个基只满足$(3.33)$，则它就叫做**正交基（orthogonal basis）**。
 
 Recall from Section 2.6.1 that we can use Gaussian elimination to find a
 basis for a vector space spanned by a set of vectors. Assume we are given
@@ -419,7 +419,7 @@ concatenate them into a matrix ˜B = [˜b1, ... ,
 ˜B] to obtain an
 orthonormal basis. This constructive way to iteratively build an orthonormal basis {b1, ... , bn} is called the Gram-Schmidt process (Strang, 2003).
 
-让我们回忆一下，在2.6.1节中我们使用Gauss消元法寻找一个向量组张成空间的基的过程。假设我们有一个未标准化（unnormalized）且非正交的向量组$\{ \tilde{b}_{1}, \dots, \tilde{b}_{n} \}$，我们将其堆叠成一个矩阵$\tilde{B} = [\tilde{b}_{1}, \dots, \tilde{b}_{n}]$，然后在增广矩阵$[\tilde{B}\tilde{B}^{\top}|\tilde{B}]$上应用Gauss消元法，就可以得到一个标准正交基。像这样迭代地构造正交基$\{ b_{1}, \dots, b_{n} \}$的方法被称为**Gram-Schmidt正交化过程**。
+让我们回忆一下，在2.6.1节中我们使用Gauss消元法寻找一个向量组张成空间的基的过程。假设我们有一个未标准化（unnormalized）且非正交的向量组$\{ \tilde{b}_{1}, \dots, \tilde{b}_{n} \}$，我们将其堆叠成一个矩阵$\tilde{B} = [\tilde{b}_{1}, \dots, \tilde{b}_{n}]$，然后在增广矩阵$[\tilde{B}\tilde{B}^{\top}|\tilde{B}]$上应用Gauss消元法，就可以得到一个标准正交基。像这样迭代地构造正交基$\{ b_{1}, \dots, b_{n} \}$的方法叫做**Gram-Schmidt正交化过程**。
 
 Example 3.8 (Orthonormal Basis)
 The canonical/standard basis for a Euclidean vector space Rn
@@ -558,7 +558,7 @@ An illustration of such an orthogonal projection is given in Figure 3.9. Before 
 正交投影的直观几何描述可见图 3.9。在我们介紹细节之前，需要首先定义投影这个概念。
 
 > **定义 3.10 （投影）**
-> 令 $V$ 为一个向量空间，$U\subset V$ 是 $V$ 的子空间，如果一个线性映射 $\pi: V \rightarrow U$ 满足 $\pi^2 = \pi \circ \pi = \pi$，则 $\pi$ 被称为一个**投影（projection）**。
+> 令 $V$ 为一个向量空间，$U\subset V$ 是 $V$ 的子空间，如果一个线性映射 $\pi: V \rightarrow U$ 满足 $\pi^2 = \pi \circ \pi = \pi$，则称 $\pi$ 为一个**投影（projection）**。
 
 Since linear mappings can be expressed by transformation matrices (see Section 2.7), the preceding definition applies equally to a special kind
 of transformation matrices, the projection matrices P π, which exhibit the property that P2 π = P π.
@@ -583,16 +583,16 @@ serves as an illustration):
 * $x$ 到 $U$ 的投影向量 $\pi_U(x)$ 一定是 $U$ 中的元素，因此也和 $U$ 的基 $b$ 共线。于是存在 $\lambda \in \mathbb{R}$，使得 $\pi_U(x) = \lambda b$。
 
 > Remark. λ is then the coordinate of πU (x) with respect to b.
-> 注：$\lambda$ 是 $\pi_{U}(x)$ 在基 $b$ 下的坐标。
+> 注：$\lambda$ 是 $\pi_{U}(\boldsymbol{x})$ 在基 $b$ 下的坐标。
 
 In the following three steps, we determine the coordinate λ, the projection
 πU (x) ∈ U, and the projection matrix P π that maps any x ∈ Rn onto U:
-下面我们将通过三个步骤确定坐标 $\lambda$，投影向量 $\pi_{U}(x) \in U$，以及将 $x \in \mathbb{R}^{n}$ 投影至子空间 $U$ 的投影矩阵 $P_{\pi}$ 。
+下面我们将通过三个步骤确定坐标 $\lambda$，投影向量 $\pi_{U}(\boldsymbol{x}) \in U$，以及将 $x \in \mathbb{R}^{n}$ 投影至子空间 $U$ 的投影矩阵 $\boldsymbol{P}_{\pi}$ 。
 
 1. Finding the coordinate λ. The orthogonality condition yields
     计算坐标 $\lambda$ 的值。由正交性条件得到
     $$
-    \left\langle x - \pi_{U}(x), b \right\rangle = 0 \mathop{\iff}\limits^{\pi_{U}(x) = \lambda b} \left\langle x - \lambda b, b \right\rangle = 0. \tag{3.39}  
+    \left\langle x - \pi_{U}(\boldsymbol{x}), b \right\rangle = 0 \mathop{\iff}\limits^{\pi_{U}(\boldsymbol{x}) = \lambda b} \left\langle x - \lambda b, b \right\rangle = 0. \tag{3.39}  
     $$
     
     We can now exploit the bilinearity of the inner product and arrive at
@@ -614,15 +614,15 @@ In the following three steps, we determine the coordinate λ, the projection
     如果 $\|b\| =1$，则 $\lambda$ 的值为 $b^{\top}x$。
 
 2. Finding the projection point πU (x) ∈ U. Since πU (x) = λb, we immediately obtain with (3.40) that 
-   计算投影点 $\pi_{U}(x) \in U$。由于 $\pi_{U}(x) = \lambda b$，由 $(3.40)$，立刻有
+   计算投影点 $\pi_{U}(\boldsymbol{x}) \in U$。由于 $\pi_{U}(\boldsymbol{x}) = \lambda b$，由 $(3.40)$，立刻有
     $$
-    \pi_{U}(x) = \lambda b = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} \cdot b = \frac{b^{\top}x}{\|b\|^{2}} \cdot b, \tag{3.42}
+    \pi_{U}(\boldsymbol{x}) = \lambda b = \frac{\left\langle x, b \right\rangle}{\|b\|^{2}} \cdot b = \frac{b^{\top}x}{\|b\|^{2}} \cdot b, \tag{3.42}
     $$
 
     where the last equality holds for the dot product only. We can also compute the length of πU (x) by means of Definition 3.1 as
     其中最后的等号成立条件为内积取为点积。我们还可以根据定义3.1计算 $\pi_U(x)$ 的长度：
     $$
-    \|\pi_{U}(x)\| = \|\lambda b\| = |\lambda| \|b\|. \tag{3.43}
+    \|\pi_{U}(\boldsymbol{x})\| = \|\lambda b\| = |\lambda| \|b\|. \tag{3.43}
     $$
 
     Hence, our projection is of length |λ| times the length of b. This also adds the intuition that λ is the coordinate of πU (x) with respect to the basis vector b that spans our one-dimensional subspace U.
@@ -632,7 +632,7 @@ In the following three steps, we determine the coordinate λ, the projection
     如果我们令内积为点积，就有
     $$
     \begin{align}
-    \|\pi_{U}(x)\| ~&\mathop{=\!=\!=}\limits^{(3.42)} ~\frac{|b^{\top}x|}{\|b\|^{2}} \|b\|~ \mathop{=\!=\!=}\limits^{(3.25)} ~|\!\cos\omega| \cdot \|x\| \cdot \|b\| \cdot \frac{\|b\|}{\|b\|^{2}} \\&= |\!\cos{\omega}| \cdot \|x\|.
+    \|\pi_{U}(\boldsymbol{x})\| ~&\mathop{=\!=\!=}\limits^{(3.42)} ~\frac{|b^{\top}x|}{\|b\|^{2}} \|b\|~ \mathop{=\!=\!=}\limits^{(3.25)} ~|\!\cos\omega| \cdot \|x\| \cdot \|b\| \cdot \frac{\|b\|}{\|b\|^{2}} \\&= |\!\cos{\omega}| \cdot \|x\|.
     \end{align} \tag{3.44}
     $$
 
@@ -642,32 +642,32 @@ In the following three steps, we determine the coordinate λ, the projection
 
 Here, ω is the angle between x and b. This equation should be familiar from trigonometry: If k xk = 1, then x lies on the unit circle. It follows that the projection onto the horizontal axis spanned by b is exactly cos ω, and the length of the corresponding vector πU (x) = |cos ω|. An
     illustration is given in Figure 3.10(b).
-    这里的 $\omega$ 是向量 $x$ 和$b$ 之间的夹角。如图3.10所示，从三角学的角度看，该结果是似曾相识的：如果 $\|x\| = 1$，则向量 $x$ 的终点位于单位圆上。接着可以得到 $x$ 向横轴的投影在基 $b$ 下的坐标恰好就是 $\cos \omega$，投影向量的长度也满足 $|\pi_{U}(x)| = |\cos\omega|$。
+    这里的 $\omega$ 是向量 $x$ 和$b$ 之间的夹角。如图3.10所示，从三角学的角度看，该结果是似曾相识的：如果 $\|x\| = 1$，则向量 $x$ 的终点位于单位圆上。接着可以得到 $x$ 向横轴的投影在基 $b$ 下的坐标恰好就是 $\cos \omega$，投影向量的长度也满足 $|\pi_{U}(\boldsymbol{x})| = |\cos\omega|$。
 
 > The horizontal axis is a one-dimensional subspace.
     > 注：所谓的横轴就是一个一维子空间。
 
 
 3. Finding the projection matrix P π. We know that a projection is a linear mapping (see Definition 3.10). Therefore, there exists a projection matrix P π, such that πU (x) = P πx. With the dot product as inner product and
-    计算投影矩阵 $P_{\pi}$。通过定义 3.10 我们知道投影是一个线性变换。因此存在一个投影矩阵$P_{\pi}$，使得 $\pi_{U}(x) = P_{\pi} x$。若令点积为内积，我们有
+    计算投影矩阵 $\boldsymbol{P}_{\pi}$。通过定义 3.10 我们知道投影是一个线性变换。因此存在一个投影矩阵$\boldsymbol{P}_{\pi}$，使得 $\pi_{U}(\boldsymbol{x}) = \boldsymbol{P}_{\pi} x$。若令点积为内积，我们有
     $$
-    \pi_{U}(x) = \lambda b = b\lambda =b \frac{b^{\top}x}{\|b\|^{2}} = \frac{bb^{\top}}{\|b\|^{2}} x, \tag{3.45}
+    \pi_{U}(\boldsymbol{x}) = \lambda b = b\lambda =b \frac{b^{\top}x}{\|b\|^{2}} = \frac{bb^{\top}}{\|b\|^{2}} x, \tag{3.45}
     $$
 
     we immediately see that
     这样立刻得到
     $$
-    P_{\pi} = \frac{b b^{\top}}{\|b\|^{2}}. \tag{3.46}
+    \boldsymbol{P}_{\pi} = \frac{b b^{\top}}{\|b\|^{2}}. \tag{3.46}
     $$
 
     Note that bb> (and, consequently, P π) is a symmetric matrix (of rank 1), and kbk2 = h b, bi is a scalar.
-    注意 $bb^{\top}$（也就是 $P_{\pi}$）是秩为 $1$ 的对称矩阵，而 $\|b\|^{2} = \left\langle b, b \right\rangle$ 是一个标量。
+    注意 $bb^{\top}$（也就是 $\boldsymbol{P}_{\pi}$）是秩为 $1$ 的对称矩阵，而 $\|b\|^{2} = \left\langle b, b \right\rangle$ 是一个标量。
 
 The projection matrix P π projects any vector x ∈ Rn onto the line through the origin with direction b (equivalently, the subspace U spanned by b).
-投影矩阵 $P_{\pi}$ 将任意向量 $x \in \mathbb{R}^{n}$ 投影到通过原点，方向为 $b$ 的直线上（这等价于由 $b$ 张成的子空间 $U$）。
+投影矩阵 $\boldsymbol{P}_{\pi}$ 将任意向量 $x \in \mathbb{R}^{n}$ 投影到通过原点，方向为 $b$ 的直线上（这等价于由 $b$ 张成的子空间 $U$）。
 
 > Remark. The projection πU (x) ∈ Rn is still an n-dimensional vector and not a scalar. However, we no longer require n coordinates to represent the projection, but only a single one if we want to express it with respect to the basis vector b that spans the subspace U: λ. ♦
-> 注：投影向量 $\pi_{U}(x) \in \mathbb{R}^{n}$ 依然是一个 $n$ 维向量，不是一个标量。然而，我们不再需要使用 $n$ 个分量来描述它——我们只需要使用一个分量 $\lambda$，因为这是投影向量关于子空间 $U$ 中的基 $b$ 的坐标。
+> 注：投影向量 $\pi_{U}(\boldsymbol{x}) \in \mathbb{R}^{n}$ 依然是一个 $n$ 维向量，不是一个标量。然而，我们不再需要使用 $n$ 个分量来描述它——我们只需要使用一个分量 $\lambda$，因为这是投影向量关于子空间 $U$ 中的基 $b$ 的坐标。
 
 Example 3.10 (Projection onto a Line)
 Find the projection matrix P π onto the line through the origin spanned by b = 1 2 2 > . b is a direction and a basis of the one-dimensional subspace (line through origin). With (3.46), we obtain
@@ -676,109 +676,109 @@ spanned by b. For x =  1 1 1 > , the projection is
 Note that the application of P π to πU (x) does not change anything, i.e., P ππU (x) = πU (x). This is expected because according to Definition 3.10, we know that a projection matrix P π satisfies P2π x = Pπ x for all x
 
 > **示例 3.10（向直线投影）**
-> 求投影至通过原点，由向量 $b = [1, 2, 2]^{\top}$ 张成直线的投影矩阵 $P_{\pi}$，其中 $b$ 是该过原点直线的方向，也就是一维子空间的基。
+> 求投影至通过原点，由向量 $b = [1, 2, 2]^{\top}$ 张成直线的投影矩阵 $\boldsymbol{P}_{\pi}$，其中 $b$ 是该过原点直线的方向，也就是一维子空间的基。
 > 
 > 通过 $(3.46)$，我们有
-> $$P_{\pi} = \frac{b b^{\top}}{b^{\top}b} = \frac{1}{9} \left[ \begin{matrix} 1\\2\\2\end{matrix} \right] [1, 2, 2] = \frac{1}{9} \left[ \begin{matrix}1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4\end{matrix}\right] . \tag{3.47}$$
+> $$\boldsymbol{P}_{\pi} = \frac{b b^{\top}}{b^{\top}b} = \frac{1}{9} \left[ \begin{matrix} 1\\2\\2\end{matrix} \right] [1, 2, 2] = \frac{1}{9} \left[ \begin{matrix}1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4\end{matrix}\right] . \tag{3.47}$$
 > 现在我们选一个特定的向量 $x$，然后检查它的投影是否在这条直线上。不妨令 $x = [1, 1, 1]^{\top}$，然后计算它的投影：
-> $$\pi_{U}(x) = P_{\pi}(x) = \frac{1}{9} \left[ \begin{matrix}1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4\end{matrix} \right] \left[ \begin{matrix}1\\1\\1\end{matrix} \right] = \frac{1}{9 } \left[ \begin{matrix}5\\10\\10\end{matrix} \right] \in \text{span}\left\{ \left[ \begin{matrix}1\\2\\2\end{matrix} \right]  \right\} . \tag{3.48}$$
-> 注意，$P_{\pi}$ 作用在 $\pi_{U}(x)$ 上的结果等于它本身，这是说 $P_{\pi}\pi_{U}(x) = \pi_{U}(x)$。这并不令我们以外，因为根据定义 3.10，我们知道 $P_{\pi}$ 是**幂等**的，也即对于任意的$x$，有 $P_{\pi}^{2}x = P_{\pi}$。
+> $$\pi_{U}(\boldsymbol{x}) = \boldsymbol{P}_{\pi}(x) = \frac{1}{9} \left[ \begin{matrix}1 & 2 &2 \\ 2 & 4 & 4 \\ 2 & 4 & 4\end{matrix} \right] \left[ \begin{matrix}1\\1\\1\end{matrix} \right] = \frac{1}{9 } \left[ \begin{matrix}5\\10\\10\end{matrix} \right] \in \text{span}\left\{ \left[ \begin{matrix}1\\2\\2\end{matrix} \right]  \right\} . \tag{3.48}$$
+> 注意，$\boldsymbol{P}_{\pi}$ 作用在 $\pi_{U}(\boldsymbol{x})$ 上的结果等于它本身，这是说 $\boldsymbol{P}_{\pi}\pi_{U}(\boldsymbol{x}) = \pi_{U}(\boldsymbol{x})$。这并不令我们以外，因为根据定义 3.10，我们知道 $\boldsymbol{P}_{\pi}$ 是**幂等**的，也即对于任意的$x$，有 $\boldsymbol{P}_{\pi}^{2}x = \boldsymbol{P}_{\pi}$。
 
 > Remark. With the results from Chapter 4, we can show that πU (x) is an eigenvector of P π, and the corresponding eigenvalue is 1.
-> 注：在第四章，我们将证明 $\pi_{U}(x)$ 是矩阵 $P_{\pi}$ 的一个特征向量，对应的特征值为 $1$。
+> 注：在第四章，我们将证明 $\pi_{U}(\boldsymbol{x})$ 是矩阵 $\boldsymbol{P}_{\pi}$ 的一个特征向量，对应的特征值为 $1$。
 
 ### 3.8.2 向一般子空间投影
 
+接下来我们讨论将向量 $x \in \mathbb{R}^{n}$ 投影至较低维度的一般子空间 $U \subset \mathbb{R}^{n}$，其中 $U$ 满足 $\dim U = m \geqslant 1$。如图 3.11 所示。
+
+假设 $(b_{1}, \dots, b_{m})$ 是 $U$ 的一个正交基，$U$ 上的任意投影向量 $\pi_{U}(\boldsymbol{x})$ 必定是它的元素，因此 $U$ 中存在基向量 $b_{1}, \dots, b_{m}$ 的一个线性组合，满足 $\displaystyle \pi_{U}(\boldsymbol{x}) = \sum\limits_{i=1}^{m} \lambda_{i} b_{i}$。
+
+> 注意，如果子空间 $U$ 是通过由一些向量张成的空间而给出的，读者在进行下面的计算之前需要确定其上的一个正交基 $b_{1}, \dots, b_{m}$。
+
+和前文中投影至一维子空间类似，我们按照下面三步就可以找到投影向量 $\pi_{U}(\boldsymbol{x})$ 和投影矩阵 $\boldsymbol{P}_{\pi}$。
+
+1. 确定投影向量在 $U$ 上的基下的坐标 $\lambda_{1}, \dots, \lambda_{m}$，使得下面的线性组合距离 $x \in \mathbb{R}^{n}$ 是最近的。$$\begin{align}\pi_{U}(\boldsymbol{x}) &= \sum\limits_{i=1}^{m} \lambda_{i}b_{i} = \boldsymbol{B\lambda}, \tag{3.49}\\\boldsymbol{B} &= [b_{1}, \dots, b_{m}] \in \mathbb{R}^{n \times m}, \boldsymbol{\lambda} = [\lambda_{1}, \dots, \lambda_{m}]^{\top} \in \mathbb{R}^{m} \tag{3.50}\end{align}$$
+   和一维的例子一样，“最近”表示距离最短，这可以推断出连接 $\pi_{U}(\boldsymbol{x})$ 和 $x$ 的向量一定与 $U$ 的所有基向量都垂直（假设内积为点积）。$$\begin{align}\left\langle b_{1}, x - \pi_{U}(\boldsymbol{x}) \right\rangle =&~\, b_{1}^{\top}(x - \pi_{U}(\boldsymbol{x})) = 0, \tag{3.51}\\&\vdots\\\left\langle b_{m}, x - \pi_{U}(\boldsymbol{x}) \right\rangle =&~\, b_{m}^{\top}(x - \pi_{U}(\boldsymbol{x})) = 0, \tag{3.52}\\\end{align}$$
+   依据 $\pi_{U}(\boldsymbol{x}) = \boldsymbol{B}\boldsymbol{\lambda}$ 对上式进行替换，有$$\begin{align}b_{1}^{\top}(x& - \boldsymbol{B\lambda}) = 0, \tag{3.53}\\&\vdots\\b_{m}^{\top}(x& - \boldsymbol{B\lambda}) = 0, \tag{3.53}\\\end{align}$$
+   这样我们就得到了一个齐次线性方程$$\begin{align}\left[ \begin{matrix}b_{1}^{\top}\\ \vdots \\ b_{m}^{\top}\end{matrix} \right] (x - \boldsymbol{B\lambda}) & \iff \boldsymbol{B}^{\top}(x - \boldsymbol{B\lambda}) = 0 \tag{3.55}\\&\iff  \boldsymbol{B}^{\top}\boldsymbol{B\lambda} = \boldsymbol{B}^{\top}x \tag{3.56}\end{align}$$
+   最后得到的方程 $(3.56)$ 叫**正规方程（normal equation）**。由于 $b_{1}, \dots, b_{m}$ 是 $U$ 的一个基，因此它们线性无关，所以矩阵 $\boldsymbol{B}^{\top}\boldsymbol{B} \in \mathbb{R}^{m \times m}$ 是正规矩阵，存在逆矩阵。所以我们可以求得解析解
+    $$
+    \boldsymbol{\lambda} = (\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top}x. \tag{3.57}
+    $$
+    其中 $(\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top}$ 叫矩阵 $\boldsymbol{B}$ 的**伪逆（pseudo-inverse）**，这对不是方形的矩阵也有效，唯一的要求就是 $\boldsymbol{B}^{\top}\boldsymbol{B}$ 是正定的，这表示 $\boldsymbol{B}$ 为**列满秩（full column rank）**。在实际操作中，我们常常对 $\boldsymbol{B}^{\top}\boldsymbol{B}$ 添加一个**摄动项（jitter term）** $\varepsilon \boldsymbol{I}, (\varepsilon > 0)$ 来满足其正定性和数值稳定性。这一对角线上的“山脊”将在第九章中使用Bayesian推断严格推导。
+    
+    > 译者注：揭示正规矩阵和摄动后的正规矩阵的正定性是显而易见的。任取 $x \in \mathbb{R}^{m}$，构造二次型 $x^{\top}B^{\top}Bx$，立刻有 $x^{\top}B^{\top}Bx = \|Bx\|_{2} \geqslant 0$，由范数的正定性知 $B^{\top}B$ 正定，因此满秩。
+    > 对于摄动的情况，类似有 $x^{\top}(B^{\top}B + \varepsilon I)x = \|Bx\|_{2} + \varepsilon\|x\|_{2} > 0$，可知二次型严格大于零，因此摄动后的矩阵必然正定（满秩）。
+
+2. 计算投影向量 $\pi_{U}(\boldsymbol{x}) \in U$。由于我们已经得到 $\pi_{U}(\boldsymbol{x}) = \boldsymbol{B}\boldsymbol{\lambda}$，因此由 $(3.57)$，有 $$\pi_{U}(\boldsymbol{x}) = \boldsymbol{B}(\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top}x. \tag{3.58}$$
+3. 计算投影矩阵 $\boldsymbol{P}_{\pi}$，从 $(3.58)$ 中我们可以立刻看出方程的解：
 $$
-\begin{align}
-\pi_{U}(x) &= \sum\limits_{i=1}^{m} \lambda_{i}b_{i} = \boldsymbol{B\lambda}, \tag{3.49}\\
-\boldsymbol{B} &= [b_{1}, \dots, b_{m}] \in \mathbb{R}^{n \times m}, \boldsymbol{\lambda} = [\lambda_{1}, \dots, \lambda_{m}]^{\top} \in \mathbb{R}^{m} \tag{3.50}
-\end{align}
+\boldsymbol{P}_{\pi} = \boldsymbol{B} (\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top}. \tag{3.59}
 $$
 
-$$
-\begin{align}
-\left\langle b_{1}, x - \pi_{U}(x) \right\rangle =&~\, b_{1}^{\top}(x - \pi_{U}(x)) = 0, \tag{3.51}\\
-&\vdots\\
-\left\langle b_{m}, x - \pi_{U}(x) \right\rangle =&~\, b_{m}^{\top}(x - \pi_{U}(x)) = 0, \tag{3.52}\\
-\end{align}
-$$
+> 注：上面对于至一般子空间的投影包含了一维的特殊情形。如果 $\dim U = 1$，则 $B^{\top}B \in \mathbb{R}$ 是一个标量，$(3.59)$ 可以被重写成 $\displaystyle \boldsymbol{P}_{\pi} = \frac{B B^{\top}}{B^{\top}B}$，这和 $(3.46)$ 中的矩阵完全一致。
 
-$$
-\begin{align}
-b_{1}^{\top}(x& - \boldsymbol{B\lambda}) = 0, \tag{3.53}\\
-&\vdots\\
-b_{m}^{\top}(x& - \boldsymbol{B\lambda}) = 0, \tag{3.53}\\
-\end{align}
-$$
+> **示例 3.11（向二维子空间投影）**
+> 对于子空间 $\displaystyle U = \text{span} \left\{ \begin{bmatrix} 1\\1\\1 \end{bmatrix}, \begin{bmatrix}0\\1\\2\end{bmatrix}\right\} \subset \mathbb{R}^{3}$ 和向量 $x = \begin{bmatrix}6\\0\\0\end{bmatrix} \in \mathbb{R}^{3}$，找到 $x$ 投影在 $U$ 中的坐标 $\boldsymbol{\lambda}$，投影向量 $\pi_{U}(\boldsymbol{x})$ 以及投影矩阵 $\boldsymbol{P}_{\pi}$
+> ---
+> 首先，我们检查张成 $U$ 的两个向量，发现它们线性无关，于是可以写成一个矩阵 $\boldsymbol{B} = \begin{bmatrix}1 & 0 \\ 1 & 1 \\ 1 & 2\end{bmatrix}$。
+> 然后我们计算正规矩阵和 $\boldsymbol{x}$ 对两个向量的点积：$$\begin{align}\boldsymbol{B}^{\top}\boldsymbol{B} &= \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2\end{matrix} \right] \left[ \begin{matrix} 1 & 0\\1 & 1\\1 & 2\end{matrix} \right] = \left[ \begin{matrix} 3 & 3 \\ 3 & 5\end{matrix} \right], \\\boldsymbol{B}^{\top}x &= \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2\end{matrix} \right] \left[ \begin{matrix} 6\\0\\0\end{matrix} \right] = \left[ \begin{matrix} 6\\0\end{matrix} \right]. \end{align} \tag{3.60}$$
+> 第三步，我们解正规方程 $\boldsymbol{B}^{\top}\boldsymbol{B\lambda} = \boldsymbol{B}^{\top}x$ 得到 $\boldsymbol{\lambda}$：$$\left[ \begin{matrix} 3 & 3 \\ 3 & 5\end{matrix} \right] \left[ \begin{matrix} \lambda_{1}\\\lambda_{2}\end{matrix} \right] = \left[ \begin{matrix} 6\\0\end{matrix} \right] \iff \boldsymbol{\lambda} = \left[ \begin{matrix}5\\-3\end{matrix} \right] $$
+> 这样依赖，向量 $\boldsymbol{x}$ 投影至子空间 $U$ 的投影向量 $\pi_{U}(\boldsymbol{x})$，也就是向矩阵 $\boldsymbol{B}$ 的列空间投影的向量可以按下式直接进行计算：$$\pi_{U}(\boldsymbol{x}) = \boldsymbol{B\lambda} = \left[ \begin{matrix}5 \\ 2 \\ -1\end{matrix} \right]. \tag{3.62} $$
+> 将原来的向量与投影后的向量作差得到向量的长度就是**投影损失（projection error）**：$$\|x - \pi_{U}(\boldsymbol{x})\| = \Big\|[1, -2, 1]^{\top}\Big\| = \sqrt{ 6 }. \tag{3.63}$$
+> 相应地，对于任意 $\boldsymbol{x} \in \mathbb{R}^{3}$ 的投影矩阵 $\boldsymbol{P}_{\pi}$ 由下式给出：$$\boldsymbol{P}_{\pi} = \boldsymbol{B} (\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top} =- \frac{1}{6}\left[ \begin{matrix}5 & 2 & -1\\2 & 2 & 2\\-1&2&5\end{matrix} \right]. \tag{3.64}$$
+> 我们可以通过验证残差向量 $x - \pi_{U}(\boldsymbol{x})$ 是否和所有 $U$ 的基垂直并考察 $\boldsymbol{P}_{\pi}^{2} = \boldsymbol{P}_{\pi}$ （参见定义 3.10）是否成立来验证计算结果的正确性。
 
-$$
-\begin{align}
-\left[ \begin{matrix}
-b_{1}^{\top}\\ \vdots \\ b_{m}^{\top}
-\end{matrix} \right] (x - \boldsymbol{B\lambda}) & \iff B^{\top}(x - B\lambda) = 0 \tag{3.55}\\
-&\iff  \boldsymbol{B}^{\top}\boldsymbol{B\lambda} = \boldsymbol{B}^{\top}x \tag{3.56}
-\end{align}
-$$
+> 注1：投影向量 $\pi_{U}(\boldsymbol{x})$ 虽然在子空间 $U \subset \mathbb{R}^{m}$ 中，但它依然是 $\mathbb{R}^{n}$ 中的向量。但我们只需用 $U$ 中关于基向量 $b_{1}, \dots, b_{m}$ 的坐标 $\lambda_{1}, \dots, \lambda_m$ 来表示它就足够了。
 
-$$
-\boldsymbol{\lambda} = (\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top}x. \tag{3.57}
-$$
+> 注2：在使用一般内积定义的向量空间中，我们在通过内积计算向量之间的夹角和距离是需要额外注意。
 
-$$
-\pi_{U}(x) = \boldsymbol{B}(\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top}x. \tag{3.58}
-$$
+投影可以让我们对无解的线性系统 $\boldsymbol{Ax}  =\boldsymbol{b}$ 进行研究。让我们回忆 $\boldsymbol{b}$ 不在 $\boldsymbol{A}$ 张成的空间，也就是 $\boldsymbol{A}$ 所有列张成的空间（列空间）中的情形。在给出这样一个无解的线性系统时，我们可以找到一个**近似解**，也就是 $\boldsymbol{A}$ 的列空间中最接近 $\boldsymbol{b}$ 的向量。换句话说，我们计算 $\boldsymbol{b}$ 到 $\boldsymbol{A}$ 的列空间的投影，就是所求的近似解。这种问题在实作中非常常见，其得到的结果叫做超定系统（over-determined system）的**最小二乘估计（least-squares solution）**，类似地问题将在 9.4 节中继续讨论。如果再引入**重构损失（reconstruction error）**，就构成了推导主成分分析（10.3 节）的一种方式。
 
-$$
-P_{\pi} = \boldsymbol{B} (\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top}
-$$
-
-$$
-\boldsymbol{B}^{\top}\boldsymbol{B} = \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2
-\end{matrix} \right] \left[ \begin{matrix} 1 & 0\\1 & 1\\1 & 2
-\end{matrix} \right] = \left[ \begin{matrix} 3 & 3 \\ 3 & 5
-\end{matrix} \right], \quad \boldsymbol{B}^{\top}x = \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2
-\end{matrix} \right] \left[ \begin{matrix} 6\\0\\0
-\end{matrix} \right] = \left[ \begin{matrix} 6\\0
-\end{matrix} \right]. \tag{3.60}
-$$
-
-$$
-\left[ \begin{matrix} 3 & 3 \\ 3 & 5
-\end{matrix} \right] \left[ \begin{matrix} \lambda_{1}\\\lambda_{2}
-\end{matrix} \right] = \left[ \begin{matrix} 6\\0
-\end{matrix} \right] \iff \boldsymbol{\lambda} = \left[ \begin{matrix}
-5\\-3
-\end{matrix} \right] 
-$$
-
-$$
-\pi_{U}(x) = \boldsymbol{B\lambda} = \left[ \begin{matrix}
-5 \\ 2 \\ -1
-\end{matrix} \right]. \tag{3.62} 
-$$
-
-$$
-\|x - \pi_{U}(x)\| = \Big\|[1, -2, 1]^{\top}\Big\| = \sqrt{ 6 }. \tag{3.63}
-$$
-
-$$
-P_{\pi} = \boldsymbol{B} (\boldsymbol{B}^{\top}\boldsymbol{B})^{-1}\boldsymbol{B}^{\top} =- \frac{1}{6}\left[ \begin{matrix}
-5 & 2 & -1\\2 & 2 & 2\\-1&2&5
-\end{matrix} \right]. \tag{3.64}
-$$
-
-$$
-\pi_{U}(x) = \boldsymbol{B B}^{\top}x \tag{3.65}
-$$
-
-$$
-\boldsymbol{\lambda} = \boldsymbol{B}^{\top}x. \tag{3.66}
-$$
+> 注：前文中我们只要求 $\{ \boldsymbol{b}_{1}, \dots, \boldsymbol{b}_{k} \}$ 是子空间 $U$ 的一个基，如果它是标准正交基，则 $(3.33)$ 和 $(3.34)$ 可以被用来化简 $(3.58)$。由于 $\boldsymbol{B}^{\top}\boldsymbol{B} = \boldsymbol{I}$，我们可以得到下面更加简洁的投影表达式：$$\pi_{U}(\boldsymbol{x}) = \boldsymbol{B B}^{\top}x \tag{3.65}$$
+> 以及坐标 $\boldsymbol{\lambda}$ ：$$\boldsymbol{\lambda} = \boldsymbol{B}^{\top}x. \tag{3.66}$$
+> 这意味着我们不再需要进行耗时的求逆计算了。
 
 ### 3.8.3 Gram-Schmidt 正交化
 
+投影是 Gram-Schmidt正交化的核心，后者让我们可以从任意的 $n$ 维向量空间 $V$ 的一个基 $(\boldsymbol{b}_{1}, \dots, \boldsymbol{b}_{n})$ 构造出该空间的一个标准正交基 $(\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{n})$ 。这个正交基总是存在，且满足 $\text{span}\{ \boldsymbol{b}_{1}, \dots, \boldsymbol{b}_{n} \} = \text{span}\{ \boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{n} \}$。所谓的 Gram-Schmidt 正交化方法在给定 $V$ 的任意基 $(\boldsymbol{b}_{1}, \dots, \boldsymbol{b}_{n})$ 的情况下迭代地构造出正交基 $(\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{n})$，其过程如下：
+$$
+\begin{align}
+\boldsymbol{u}_{1} &:= \boldsymbol{b}_{1}, \tag{3.67}\\
+\boldsymbol{u}_{k} &:= \boldsymbol{b}_{k} - \pi_{\text{span}\{ \boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{k-1} \}}(\boldsymbol{b}_{k}), \quad k = 2, \dots, n.
+\end{align}
+$$
+在式 $(3.68)$ 中，第 $k$ 个基向量 $\boldsymbol{b}_{k}$ 被投影至前 $k-1$ 个构造得到的单位正交向量 $\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{k-1}$ 张成的子空间上（参见 3.8.2 节）。向量 $\boldsymbol{b}_{k}$ 减去这个投影向量所得的向量 $\boldsymbol{u}_{k}$ 与 $\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{k-1}$ 张成的 $k-1$ 维子空间垂直。对所有 $n$ 个基向量 $\boldsymbol{b}_{1}, \dots, \boldsymbol{b}_{n}$ 逐个应用这个算法，就得到了空间 $V$ 的一个正交基 $(\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{n})$ 。如果我们将正交基中的向量全部标准化，使得对所有的 $k = 1, \dots, n$ 都有 $\|\boldsymbol{u}_{k}\| = 1$，我们就得到了原空间的一个标准正交基（ONB）。
+
+> **示例 3.12（Gram-Schmidt 正交化）**
+> ![](Pasted%20image%2020240817143850.png)
+> <center>图 3.12 Gram-Schmidt 正交化</center>
+> 如图 3.12 所示，考虑 $\mathbb{R}^{2}$ 的一个基 $(\boldsymbol{b}_{1}, \boldsymbol{b}_{2})$，其中
+> $$\boldsymbol{b}_{1} = \begin{bmatrix}2\\0\end{bmatrix}, \quad \boldsymbol{b}_{2} = \begin{bmatrix}1\\1\end{bmatrix}; \tag{3.69}$$
+> 使用 Gram-Schmidt 正交化方法，我们可按照下面的过程构造 $\mathbb{R}^{2}$ 的一个正交基：$$\begin{align}\boldsymbol{u}_{1} &= \boldsymbol{b}_{1} = \begin{bmatrix}2\\0\end{bmatrix},\tag{3.70}\\\boldsymbol{u}_{2} &= \boldsymbol{b_{2}} - \pi_{\text{span}\{ \boldsymbol{u}_{1} \}}(\boldsymbol{b}_{2}) \\ &\,\mathop{=\!=\!=}\limits^{(3.45)} \,\boldsymbol{b}_{2} - \frac{\boldsymbol{u}_{1}\boldsymbol{u}_{1}^{\top}}{\|\boldsymbol{u}_{1}\|^{2}}\cdot\boldsymbol{b}_{2} = \begin{bmatrix}1\\1\end{bmatrix} - \begin{bmatrix}1&0\\0&0\end{bmatrix}\begin{bmatrix}1\\1\end{bmatrix} = \begin{bmatrix}0\\1\end{bmatrix}. \tag{3.71}\end{align}$$
+> 上面的步骤对应图 3.12 中的 (b) 和 (c)。我们可以立即看出 $\boldsymbol{u}_{1}$ 和 $\boldsymbol{u}_{2}$ 是垂直的，也即 $\boldsymbol{u}_{1} ^\top \boldsymbol{u}_{2} = 0$。
+
 ### 3.8.4 向仿射子空间投影
+
+直到现在我们讨论的都是如何讲一个向量投影到低维的子空间 $U$ 上。本节将讨论如何解决投影至仿射子空间的问题。
+
+![](Pasted%20image%2020240817145017.png)
+<center>图 3.13 向仿射空间投影</center>
+
+考虑像图 3.13(a) 这样的问题：给定一个仿射空间 $L = \boldsymbol{x}_{0} + U$，其中 $\boldsymbol{b}_{1}, \boldsymbol{b_{2}}$ 是 $U$ 的一个基。为确定向量 $\boldsymbol{x}$ 到仿射空间 $L$ 的投影 $\pi_{L}(\boldsymbol{x})$，我们选择将其转换为我们已解决的投影至低维子空间的问题。我们对 $\boldsymbol{x}$ 和 $L$ 同时减去支持点 $\boldsymbol{x}_{0}$，这样一来 $L - \boldsymbol{x}_{0}$ 恰好就是子空间 $U$。这样我们可以使用前文中 3.8.2 节讨论的正交投影至子空间的方法得到 $\pi_{U}(\boldsymbol{x} - \boldsymbol{x}_{0})$（如图 3.13 (b) 所示），然后我们可以把 $\boldsymbol{x}_{0}$ 加回投影向量，将它重新放入 $L$ 中，这样我们就得到了 $\boldsymbol{x}$ 到 $L$ 的投影：
+$$
+\pi_{L}(\boldsymbol{x}) = \boldsymbol{x}_{0} + \pi_{U}(\boldsymbol{x} - \boldsymbol{x}_{0}), \tag{3.72}
+$$
+其中 $\pi_{U}(\cdot)$ 是至子空间 $U$ 的投影，也就是 $L$ 的方向空间（如图3.13所示）。
+
+从图可以看出，从 $\boldsymbol{x}$ 到 $L$ 的距离和 $\boldsymbol{x} - \boldsymbol{x}_{0}$ 到 $U$ 的距离相等，也就是
+$$
+\begin{align}
+d(\boldsymbol{x}, L) &= \|\boldsymbol{x} - \pi_{L}(\boldsymbol{x})\| = \|\boldsymbol{x} - [\boldsymbol{x}_{0} + \pi_{U}(\boldsymbol{x} - \boldsymbol{x}_{0})]\| \tag{3.73a}\\[0.2em]
+&= d(\boldsymbol{x} - \boldsymbol{x}_{0}, \pi_{U}(\boldsymbol{x} - \boldsymbol{x}_{0})) = d(\boldsymbol{x} - \boldsymbol{x}_{0}, U). \tag{3.73b}
+\end{align}
+$$
+在 12.1 节，我们将会用这个方法导出**分割超平面**这个概念。
 
 ## 3.9 旋转
 
