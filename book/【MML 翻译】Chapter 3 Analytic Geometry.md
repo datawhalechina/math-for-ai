@@ -782,12 +782,170 @@ $$
 
 ## 3.9 旋转
 
+回忆 3.4 节中讨论的内容，保长和保角是正交矩阵所表示的变换之特征。接下来我们将详细讨论那些描述旋转变换的正交矩阵。
+
+![350](Pasted%20image%2020240819153205.png)
+<center>图 3.14 某旋转变换让一个图形绕原点旋转，转角为正表示逆时针旋转。</center>
+
+一个 **旋转（rotation）** 是指一个将某个平面关于原点旋转角度 $\theta$ 的线性映射（具体而言，它是Euclid空间的**自同构(automorphism)**），也就是说旋转过程中不变的点原点。根据通常的约定，旋转角 $\theta > 0$ 表示逆时针旋转。如图 3.14 所示，其中的旋转矩阵如下：
+$$
+\boldsymbol{R} = \begin{bmatrix}
+-0.38 & -0.92\\
+0.92 & -0.38
+\end{bmatrix} \tag{3.74}
+$$
+旋转在机器人和计算机图形学中有重要的应用。如在机器人学中（图 3.15），我们需要知道如何旋转机器人的各关节，使其可以抓取或放置某个物件。
+
+![400](Pasted%20image%2020240819153335.png)
+<center>图 3.15 机械臂的各关节需要正确旋转才能正确地拿起或放置物件</center>
+<center>图片来源于 Deisenroth et al.. 2015</center>
+
 ### 3.9.1 $\mathbb{R}^{2}$中的旋转
+
+考虑 $\mathbb{R}^{2}$ 中定义了笛卡尔坐标的标准基 $\left\{ \boldsymbol{e}_{1} = \begin{bmatrix} 1\\0 \end{bmatrix}, \boldsymbol{e}_{2} = \begin{bmatrix} 0\\1 \end{bmatrix} \right\}$，我们想要像图 3.16 那样将其旋转某个角度 $\theta$。注意我们可以看出旋转后的两个向量依然是线性无关的，这说明它们还是 $\mathbb{R}^{2}$ 的一个基——这说明旋转其实是一个基变换。
+
+由于旋转操作 $\Phi$ 是线性映射，我们也可以将其表示为一个 **旋转矩阵（rotation matrix）** $\boldsymbol{R}(\theta)$。我们可以通过三角函数得到旋转后向量（旋转 $\Phi$ 的**像（image）**）在原坐标系下的坐标，也就是
+$$
+\Phi(\boldsymbol{e}_{1}) = \begin{bmatrix}
+\cos\theta\\ \sin\theta
+\end{bmatrix}, \quad
+\Phi(\boldsymbol{e}_{2}) = \begin{bmatrix}
+-\sin\theta\\ \cos\theta
+\end{bmatrix}. \tag{3.75}
+$$
+这样一来我们就得到了做上述基变换的旋转矩阵 $\boldsymbol{R}(\theta)$:
+$$
+\boldsymbol{R}(\theta) = \begin{bmatrix}
+\Phi(\boldsymbol{e}_{1}) & \Phi(\boldsymbol{e}_{2})
+\end{bmatrix} = \begin{bmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{bmatrix}. \tag{3.76}
+$$
+![450](Pasted%20image%2020240819154748.png)
+<center>图 3.16 将二维Euclid平面中的正交基旋转角度 θ</center>
 
 ### 3.9.2 $\mathbb{R}^{3}$中的旋转
 
+和 $\mathbb{R}^{2}$ 不同的是，在 $\mathbb{R}^{3}$ 中我们可以将其中的一个二维领面绕着一维的轴旋转。确定一个一般的旋转最简单的方法就是找到它是如何旋转标准基 $\boldsymbol{e}_{1}, \boldsymbol{e}_{2}, \boldsymbol{e}_{3}$ ，并使旋转后的像 $\boldsymbol{Re}_{1}, \boldsymbol{Re}_{2}, \boldsymbol{Re}_{3}$ 两两正交。这样我们可以将三个标准基经旋转后的像并起来得到最终的旋转矩阵 $\boldsymbol{R}$。
+
+为了使得所谓“旋转角”在超过二维空间中的旋转具有实际意义，我们需要定义在此情况下什么叫做“逆时针旋转“。依照常识，一个关于某轴的”逆时针“（或平面）旋转是指我们从轴的正方向末端朝着原点方向看到的旋转。如图在 $\mathbb{R}^{3}$ 中存在三个关于三个标准基向量的平面旋转：
+
+* 关于 $\boldsymbol{e}_{1}$ 方向的轴的旋转：$$\boldsymbol{R}_{1}(\theta) = \begin{bmatrix}\Phi(\boldsymbol{e}_{1}) & \Phi(\boldsymbol{e}_{2}) & \Phi(\boldsymbol{e}_{3})\end{bmatrix} = \begin{bmatrix}1 & 0 & 0\\0 & \cos\theta & -\sin\theta\\0 & \sin\theta & \cos\theta\end{bmatrix}. \tag{3.77}$$
+  其中 $\boldsymbol{e}_{1}$ 方向是不变的，$\boldsymbol{e}_{2}\boldsymbol{e}_{3}$ 平面的旋转是逆时针的。
+* 关于 $\boldsymbol{e}_{2}$ 方向的轴的旋转：$$\boldsymbol{R}_{2}(\theta) = \begin{bmatrix}\Phi(\boldsymbol{e}_{1}) & \Phi(\boldsymbol{e}_{2}) & \Phi(\boldsymbol{e}_{3})\end{bmatrix} = \begin{bmatrix}\cos\theta & 0 & \sin\theta\\0 & 1 & 0 \\-\sin\theta & 0 & \cos\theta\end{bmatrix}. \tag{3.78}$$
+  如果我们旋转 $\boldsymbol{e}_{1}\boldsymbol{e}_{3}$ 平面，我们需要从 $\boldsymbol{e}_{2}$ 轴的远端朝着原点看。（？）
+* 关于 $\boldsymbol{e}_{2}$ 方向的轴的旋转：$$\boldsymbol{R}_{3}(\theta) = \begin{bmatrix}\Phi(\boldsymbol{e}_{1}) & \Phi(\boldsymbol{e}_{2}) & \Phi(\boldsymbol{e}_{3})\end{bmatrix} = \begin{bmatrix}\cos\theta & -\sin\theta & 0\\sin\theta & \cos\theta & 0 \\0 & 0 & 1\end{bmatrix}. \tag{3.79}$$
+  图 3.17 显示了这种情形。
+
+![350](Pasted%20image%2020240819160152.png)
+<center>图 3.17 将三维空间中的一个向量（灰色）绕着 e3 轴旋转了 θ 角度（蓝色）</center>
+
 ### 3.9.3 $n$维空间中的旋转
+
+直觉上，从二维、三维旋转到 $n$ 维旋转的推广可被描述为固定 $n-2$ 个维度，将旋转限制在剩下的两个维度之上。和二维空间一样，我们可以旋转任意的平面（$\mathbb{R}^{n}$ 的二维子空间）。
+
+> **定义 3.11 （Givens 旋转）**
+> 设 $V$ 是 $n$ 维 Euclid 空间，其上的自同构 $\Phi : V \rightarrow V$ 若可表示为
+> $$\boldsymbol{R}_{i,j}(\theta) := \begin{bmatrix} \boldsymbol{I}_{i-1} & & & & \\ & {\color{red}\cos \theta} & & {\color{red}-\sin \theta}\\ && \boldsymbol{I}_{i-j-1}\\ & {\color{red}-\sin \theta} && {\color{red}-\cos \theta} \\ &&&&\boldsymbol{I}_{n-j} \end{bmatrix} \in \mathbb{R}^{n \times n}, \tag{3.80}$$
+> 其中 $1 \leqslant i < j \leqslant n$，$\theta \in \mathbb{R}$，空白处均为零，则 $\boldsymbol{R}_{i,j}(\theta)$ 叫做 Givens 旋转。简单来说，它就是单位矩阵 $\boldsymbol{I}_{n}$ 加上下面的条件：
+> $$r_{i,i} = \cos \theta,\quad r_{i,j} = -\sin \theta, \quad r_{j,i} = \sin \theta, \quad r_{j,j} = \cos \theta.\tag{3.81}$$
+> 若 $n=2$，我们就得到了二维的特殊情况，也即 $(3.76)$。
 
 ### 3.9.4 旋转算子的性质
 
+旋转算子有不少可由正交矩阵（定义 3.8）推导而来的有用性质：
+* 保距，即 $\|\boldsymbol{x} - \boldsymbol{y}\| = \|\boldsymbol{R}_{\theta}(\boldsymbol{x}) - \boldsymbol{R}_{\theta}(\boldsymbol{y})\|$，这是说旋转前后两点间距保持不变。
+* 保角，这是说 $\boldsymbol{R}_{\theta}(\boldsymbol{x})$ 与 $\boldsymbol{R}_{\theta}(\boldsymbol{y})$ 间的夹角和 $\boldsymbol{x}$ 与 $\boldsymbol{y}$ 间的夹角相同。
+* 三维或更高维度中的旋转一般不满足交换律。因此即使是相对于同一点的旋转，顺序也异常重要。只有二维旋转拥有这一良好的性质：对任意 $\phi, \theta \in [0, 2\pi)$，都有 $\boldsymbol{R}(\phi)\boldsymbol{R}(\theta) = \boldsymbol{R}(\theta)\boldsymbol{R}(\phi)$。只当它们都是绕原点旋转时，全体二维旋转关于乘法构成 Abel群。
+
+> 译者注：此“乘法”可理解为作为旋转作为矩阵的乘法，也可以理解为旋转作为映射的复合。
+
 ## 3.10 拓展阅读
+
+本章我们简要概述了解析几何的一些重要概念，将在本书后续章节中使用。对它们更广泛和深入的概述，我们推荐以下几本优秀的书籍： Axler (2015) 和 Boyd and Vandenberghe (2018)。
+
+内积的存在使我们能用 Gram-Schmidt 正交化方法确定特定向量空间或子空间的基，基向量两两正交。这些基在优化和求解线性方程组的数值算法中非常重要。例如，Krylov 子空间方法、共轭梯度法和广义最小残差方法（generalized minimal residual method，GMRES）它最小化彼此正交的残差误差（Stoer and Burlirsch, 2002）。
+
+在机器学习领域，内积在核方法（Sch&ouml、lkopf and Smola, 2002）中十分很重要。核方法利用了这样一个事实：许多线性算法可以仅通过内积计算来表达。然后，“核技巧”允许我们在（可能是无限维的）特征空间中隐式地计算这些内积，甚至不必明确知道这个特征空间。这使得许多用于机器学习的算法得以“非线性化”，例如用于降维的核PCA（kernel PCA, Schoumlkopf et al., 1997）。同属于核方法的范畴的高斯过程（gaussian process, Rasmussen and Williams, 2006），是概率回归（拟合曲线到数据点）的最新技术。我们将在第12章进一步探讨核的概念。
+
+投影在计算机图形学中经常使用，如用于生成阴影。在优化中，正交投影经常用于（迭代地）最小化残差误差。这也在机器学习中有应用，例如在线性回归中，我们要找到一个（线性）函数，该函数最小化残差误差，即数据到线性函数的正交投影的长度（Bishop, 2006）。我们将在第9章进一步研究这个问题。PCA（Pearson, 1901; Hotelling, 1933）也使用投影来对高维数据降维，它们将在第10章得到更详细地讨论。
+
+
+## 习题
+
+### 3.1
+Show that $\langle \cdot, \cdot \rangle$ defined for all $x = [x_1, x_2]^T \in \mathbb{R}^2$ and $y = [y_1, y_2]^T \in \mathbb{R}^2$ by
+$$ \langle x, y \rangle := x_1y_1 - (x_1y_2 + x_2y_1) + 2(x_2y_2) $$
+is an inner product.
+
+### 3.2
+Consider $\mathbb{R}^2$ with $\langle \cdot, \cdot \rangle$ defined for all $x$ and $y$ in $\mathbb{R}^2$ as
+$$ \langle x, y \rangle := x^T \begin{bmatrix} 2 & 0 \\ 1 & 2 \end{bmatrix} y $$
+Is $\langle \cdot, \cdot \rangle$ an inner product?
+
+### 3.3
+Compute the distance between
+$$ x = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, y = \begin{bmatrix} -1 \\ -1 \\ 0 \end{bmatrix} $$
+using
+a. $\langle x, y \rangle := x^Ty$
+b. $\langle x, y \rangle := x^T A y$, $A := \begin{bmatrix} 2 & 1 & 0 \\ 1 & 3 & -1 \\ 0 & -1 & 2 \end{bmatrix}$
+
+### 3.4
+Compute the angle between
+$$ x = \begin{bmatrix} 1 \\ 2 \end{bmatrix}, y = \begin{bmatrix} -1 \\ -1 \end{bmatrix} $$
+using
+a. $\langle x, y \rangle := x^Ty$
+b. $\langle x, y \rangle := x^T B y$, $B := \begin{bmatrix} 2 & 1 \\ 1 & 3 \end{bmatrix}$
+
+### 3.5
+Consider the Euclidean vector space $\mathbb{R}^5$ with the dot product. A subspace $U \subseteq \mathbb{R}^5$ and $x \in \mathbb{R}^5$ are given by
+$$ U = \text{span}\left[
+\begin{bmatrix}
+0 \\ -1 \\ 2 \\ 0 \\ 2
+\end{bmatrix},
+\begin{bmatrix}
+1 \\ -3 \\ 1 \\ -1 \\ 2
+\end{bmatrix},
+\begin{bmatrix}
+-3 \\ 4 \\ 1 \\ 2 \\ 1
+\end{bmatrix},
+\begin{bmatrix}
+-1 \\ -3 \\ 5 \\ 0 \\ 7
+\end{bmatrix}
+\right], x =
+\begin{bmatrix}
+-1 \\ -9 \\ -1 \\ 4 \\ 1
+\end{bmatrix}
+$$
+a. Determine the orthogonal projection $\pi_U(x)$ of $x$ onto $U$
+b. Determine the distance $d(x, U)$
+
+### 3.6
+Consider $\mathbb{R}^3$ with the inner product
+$$ \langle x, y \rangle := x^T \begin{bmatrix} 2 & 1 & 0 \\ 1 & 2 & -1 \\ 0 & -1 & 2 \end{bmatrix} y $$
+Furthermore, we define $e_1, e_2, e_3$ as the standard/canonical basis in $\mathbb{R}^3$.
+a. Determine the orthogonal projection $\pi_U(e_2)$ of $e_2$ onto $U = \text{span}[e_1, e_3]$
+Hint: Orthogonality is defined through the inner product.
+b. Compute the distance $d(e_2, U)$
+c. Draw the scenario: standard basis vectors and $\pi_U(e_2)$
+
+### 3.7
+Let $V$ be a vector space and $\pi$ an endomorphism of $V$.
+a. Prove that $\pi$ is a projection if and only if $\text{id}_V - \pi$ is a projection, where $\text{id}_V$ is the identity endomorphism on $V$.
+b. Assume now that $\pi$ is a projection. Calculate $\text{Im}(\text{id}_V - \pi)$ and $\text{ker}(\text{id}_V - \pi)$ as a function of $\text{Im}(\pi)$ and $\text{ker}(\pi)$.
+
+### 3.8
+Using the Gram-Schmidt method, turn the basis $B = (b_1, b_2)$ of a two-dimensional subspace $U \subseteq \mathbb{R}^3$ into an ONB $C = (c_1, c_2)$ of $U$, where
+$$ b_1 := \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}, b_2 := \begin{bmatrix} -1 \\ 2 \\ 2 \end{bmatrix} $$
+
+### 3.9
+Let $n \in \mathbb{N}$ and let $x_1, \ldots, x_n > 0$ be $n$ positive real numbers so that $x_1 + \ldots + x_n = 1$. Use the Cauchy-Schwarz inequality and show that
+a. $\sum_{i=1}^{n} x_i^2 \geq 1$
+b. $\sum_{i=1}^{n} \frac{1}{x_i} \geq n^2$
+Hint: Think about the dot product on $\mathbb{R}^n$. Then, choose specific vectors $x, y \in \mathbb{R}^n$ and apply the Cauchy-Schwarz inequality.
+
+### 3.10
+Rotate the vectors
+$$ x_1 := \begin{bmatrix} 2 \\ 3 \end{bmatrix}, x_2 := \begin{bmatrix} 0 \\ -1 \end{bmatrix} $$
+by 30°.
