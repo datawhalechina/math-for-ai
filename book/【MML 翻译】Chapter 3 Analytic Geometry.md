@@ -875,31 +875,28 @@ $$
 ## 习题
 
 ### 3.1
-Show that $\langle \cdot, \cdot \rangle$ defined for all $x = [x_1, x_2]^T \in \mathbb{R}^2$ and $y = [y_1, y_2]^T \in \mathbb{R}^2$ by
+证明对所有的 $x = [x_1, x_2]^T \in \mathbb{R}^2$ 和 $y = [y_1, y_2]^T \in \mathbb{R}^2$ ，如下定义的函数  $\langle \cdot, \cdot \rangle$  是一个内积。
 $$ \langle x, y \rangle := x_1y_1 - (x_1y_2 + x_2y_1) + 2(x_2y_2) $$
-is an inner product.
 
 ### 3.2
-Consider $\mathbb{R}^2$ with $\langle \cdot, \cdot \rangle$ defined for all $x$ and $y$ in $\mathbb{R}^2$ as
-$$ \langle x, y \rangle := x^T \begin{bmatrix} 2 & 0 \\ 1 & 2 \end{bmatrix} y $$
-Is $\langle \cdot, \cdot \rangle$ an inner product?
+考虑带有如下定义之函数 $\langle \cdot, \cdot \rangle$ 的 $\mathbb{R}^2$ ，此函数是一个内积吗？
+$$ \langle x, y \rangle := x^T \underbrace{\begin{bmatrix} 2 & 0 \\ 1 & 2 \end{bmatrix}}_{=:\boldsymbol{A}} y $$
 
 ### 3.3
-Compute the distance between
-$$ x = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, y = \begin{bmatrix} -1 \\ -1 \\ 0 \end{bmatrix} $$
-using
+用下列不同的内积定义计算 $x$ 和 $y$ 的距离：
+$$ x = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix},\quad y = \begin{bmatrix} -1 \\ -1 \\ 0 \end{bmatrix} $$
 a. $\langle x, y \rangle := x^Ty$
 b. $\langle x, y \rangle := x^T A y$, $A := \begin{bmatrix} 2 & 1 & 0 \\ 1 & 3 & -1 \\ 0 & -1 & 2 \end{bmatrix}$
 
+
 ### 3.4
-Compute the angle between
-$$ x = \begin{bmatrix} 1 \\ 2 \end{bmatrix}, y = \begin{bmatrix} -1 \\ -1 \end{bmatrix} $$
-using
+用下列不同的内积定义计算 $x$ 和 $y$ 的夹角：
+$$ x = \begin{bmatrix} 1 \\ 2 \end{bmatrix},\quad y = \begin{bmatrix} -1 \\ -1 \end{bmatrix} $$
 a. $\langle x, y \rangle := x^Ty$
 b. $\langle x, y \rangle := x^T B y$, $B := \begin{bmatrix} 2 & 1 \\ 1 & 3 \end{bmatrix}$
 
 ### 3.5
-Consider the Euclidean vector space $\mathbb{R}^5$ with the dot product. A subspace $U \subseteq \mathbb{R}^5$ and $x \in \mathbb{R}^5$ are given by
+考虑装配点积的 Euclid 空间 $\mathbb{R}^5$ 。一个子空间 $U \subseteq \mathbb{R}^5$ 和一个向量 $x \in \mathbb{R}^5$ 如下：
 $$ U = \text{span}\left[
 \begin{bmatrix}
 0 \\ -1 \\ 2 \\ 0 \\ 2
@@ -913,39 +910,41 @@ $$ U = \text{span}\left[
 \begin{bmatrix}
 -1 \\ -3 \\ 5 \\ 0 \\ 7
 \end{bmatrix}
-\right], x =
+\right], \quad x =
 \begin{bmatrix}
 -1 \\ -9 \\ -1 \\ 4 \\ 1
 \end{bmatrix}
 $$
-a. Determine the orthogonal projection $\pi_U(x)$ of $x$ onto $U$
-b. Determine the distance $d(x, U)$
+a. 计算 $x$ 到 $U$ 的正交投影 $\pi_U(x)$ 
+b. 计算 $x$ 到 $U$ 的距离 $d(x, U)$
 
 ### 3.6
-Consider $\mathbb{R}^3$ with the inner product
+考虑装配有如下内积的 $\mathbb{R}^3$ ：
 $$ \langle x, y \rangle := x^T \begin{bmatrix} 2 & 1 & 0 \\ 1 & 2 & -1 \\ 0 & -1 & 2 \end{bmatrix} y $$
-Furthermore, we define $e_1, e_2, e_3$ as the standard/canonical basis in $\mathbb{R}^3$.
-a. Determine the orthogonal projection $\pi_U(e_2)$ of $e_2$ onto $U = \text{span}[e_1, e_3]$
-Hint: Orthogonality is defined through the inner product.
-b. Compute the distance $d(e_2, U)$
-c. Draw the scenario: standard basis vectors and $\pi_U(e_2)$
+记 $e_1, e_2, e_3$ 为 $\mathbb{R}^{3}$ 中的标准基。
+
+a. 计算 $\boldsymbol{e}_{2}$ 至子空间 $U = \text{span}\{ \boldsymbol{e}_{1}, \boldsymbol{e}_{3} \}$ 的投影 $\pi_U(e_2)$ 
+b. 计算 $\boldsymbol{e}_{2}$ 到 $U$ 的距离 $d(\boldsymbol{e}_2, U)$
+c. 请绘制所有的标准正交基和 $d(\boldsymbol{e}_2, U)$
+
+> 提示：正交性是由内积决定的
 
 ### 3.7
-Let $V$ be a vector space and $\pi$ an endomorphism of $V$.
-a. Prove that $\pi$ is a projection if and only if $\text{id}_V - \pi$ is a projection, where $\text{id}_V$ is the identity endomorphism on $V$.
-b. Assume now that $\pi$ is a projection. Calculate $\text{Im}(\text{id}_V - \pi)$ and $\text{ker}(\text{id}_V - \pi)$ as a function of $\text{Im}(\pi)$ and $\text{ker}(\pi)$.
+令 $V$ 为一向量空间， $\pi$ 是其上的一个自同态。
+a. 证明：$\pi$ 是投影变换，当且仅当 $\text{id}_V - \pi$ 是一个投影变换，其中 $\text{id}_V$ 是 $V$ 上的单位同态。
+b. 现假设 $\pi$ 是投影变换，计算 $\text{Im}(\text{id}_V - \pi)$ 和 $\text{ker}(\text{id}_V - \pi)$ 作为 $\text{Im}(\pi)$ 和 $\text{ker}(\pi)$ 的函数。
 
 ### 3.8
-Using the Gram-Schmidt method, turn the basis $B = (b_1, b_2)$ of a two-dimensional subspace $U \subseteq \mathbb{R}^3$ into an ONB $C = (c_1, c_2)$ of $U$, where
-$$ b_1 := \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}, b_2 := \begin{bmatrix} -1 \\ 2 \\ 2 \end{bmatrix} $$
+使用 Gram-Schmidt 正交化方法，将某二维子空间 $U \subseteq \mathbb{R}^3$ 的基 $B = (b_1, b_2)$ 转换为 $U$ 中的标准正交基 $C = (c_1, c_2)$，其中
+$$ b_1 := \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix},\quad b_2 := \begin{bmatrix} -1 \\ 2 \\ 2 \end{bmatrix} $$
 
 ### 3.9
-Let $n \in \mathbb{N}$ and let $x_1, \ldots, x_n > 0$ be $n$ positive real numbers so that $x_1 + \ldots + x_n = 1$. Use the Cauchy-Schwarz inequality and show that
-a. $\sum_{i=1}^{n} x_i^2 \geq 1$
-b. $\sum_{i=1}^{n} \frac{1}{x_i} \geq n^2$
-Hint: Think about the dot product on $\mathbb{R}^n$. Then, choose specific vectors $x, y \in \mathbb{R}^n$ and apply the Cauchy-Schwarz inequality.
+令 $n \in \mathbb{N}$ 同时令 $x_1, \ldots, x_n > 0$ 为 $n$ 个正实数，且满足 $x_1 + \ldots + x_n = 1$. 使用 Cauchy-Schwartz 不等式证明：
+a. $\displaystyle \sum_{i=1}^{n} x_i^2 \geq 1$
+b. $\displaystyle \sum_{i=1}^{n} \frac{1}{x_i} \geq n^2$
+
+> 提示: 考虑 $\mathbb{R}^n$ 上的内积。然后选择恰当的 $x, y \in \mathbb{R}^n$。
 
 ### 3.10
-Rotate the vectors
-$$ x_1 := \begin{bmatrix} 2 \\ 3 \end{bmatrix}, x_2 := \begin{bmatrix} 0 \\ -1 \end{bmatrix} $$
-by 30°.
+将下列向量旋转 $30^{\circ}$。
+$$ x_1 := \begin{bmatrix} 2 \\ 3 \end{bmatrix},\quad x_2 := \begin{bmatrix} 0 \\ -1 \end{bmatrix} $$
