@@ -100,20 +100,27 @@ f(x) &= 2x+1, \tag{5.34}\\g(f) &= f^{4}, \tag{5.35}\end{align}$$然后计算 $f$
 
 ## 5.2 偏导数和梯度
 
-$$
-\frac{\partial f}{\partial x_i} = \lim_{h \to 0} \frac{f(x_1, \ldots, x_i + h, \ldots, x_n) - f(x)}{h} \tag{5.39}
-$$
+在 5.1 节中讨论了标量元 $x \in \mathbb{R}$ 的函数 $f$ 的微分之后，本节将考虑函数 $f$ 的自变量含有多个元的一般情形，即 $\boldsymbol{x} \in \mathbb{R}^{n}$；例如 $f(x_{1}, x_{2})$。相应地，函数的导数就推广到多元情形就变成了**梯度**。
 
-$$
-\begin{align}
-\frac{\partial f}{\partial x_1} &= 2(x + 2y^3), \quad \ldots \tag{5.41} \\
-\frac{\partial f}{\partial y} &= \frac{1}{2}(x + 2y^3)y^2 \tag{5.42}
-\end{align}
-$$
+我们可以通过保持其他变量不动，然后改变变元 $x$ 来获取函数的梯度：将对各变元的偏导数组合起来。
 
-$$
-\frac{\partial f}{\partial x_1} = 2x_1x_2 + x_3^2, \quad \frac{\partial f}{\partial x_2} = x_1^2 + 3x_1x_2^2 \tag{5.43-5.44}
-$$
+> **定义 5.5（偏导数）**
+> 给定 $n$ 元函数 $f: \mathbb{R}^{n} \rightarrow \mathbb{R}$，$\boldsymbol{x} \mapsto f(\boldsymbol{x}), \boldsymbol{x} \in \mathbb{R}^{n}$，它的各偏导数为$$\begin{align}\frac{ \partial f }{ \partial x_{1} } &= \lim_{ h \to 0 } \frac{f(x_{1}+h, x_{2}, \dots, x_{n}) - f(\boldsymbol{x})}{h}\\&\,\,\, \vdots\\\frac{ \partial f }{ \partial x_{n} } &= \lim_{ h \to 0 } \frac{f(x_{1}, \dots, x_{n-1}, x_{n}+h) - f(\boldsymbol{x})}{h}\end{align}\tag{5.39}$$ 然后将各偏导数组合为向量，就得到了梯度向量$$\nabla_{x}f = \text{grad} f = \frac{\mathrm{d}f}{\mathrm{d}\boldsymbol{x}} = \left[ \frac{ \partial f(\boldsymbol{x}) }{ \partial x_{1} }, \frac{ \partial f(\boldsymbol{x}) }{ \partial x_{2} }, \dots, \frac{ \partial f(\boldsymbol{x}) }{ \partial x_{n} } \right] \in \mathbb{R}^{1 \times n}, \tag{5.40}$$其中 $n$ 是变元数，$1$ 是 $f$ 像集（陪域）的维数。我们在此定义列向量 $\boldsymbol{x} = [x_{1}, \dots, x_{n}]^{\top} \in \mathbb{R}^{n}$。行向量 $(5.40)$ 称为 $f$ 的**梯度**或者**Jacobian 矩阵**，是 5.1 节中的导数的推广。
+
+> 注：此处的 Jacobian 矩阵是其特殊情况。在 5.3 节中我们将讨论向量值函数的 Jacobian 矩阵。
+
+> 译者注：可以看到，梯度向量是一个线性变换：$D: \mathbb{R}^{n} \rightarrow \mathbb{R}$。这样的行向量又被称为 **余向量（covector）**，其中的 余（co-）表示行和列的对偶关系。
+
+> **示例 5.6（使用链式法则计算偏导数）**
+> 给定函数 $f(x,y) = (x + 2y^{3})^{2}$，我们可以这样计算它的偏导数：$$\begin{align}\frac{ \partial f(x,y) }{ \partial x } &= 2(x+2y^{3}) \cdot \frac{ \partial  }{ \partial x } (x + 2y^{3}) = 2(x+2y^{3}), \tag{5.41} \\\frac{ \partial f(x,y) }{ \partial y } &= 2(x+2y^{3}) \cdot \frac{ \partial  }{ \partial y } (x + 2y^{3}) = 12(x+2y^{3})y^{2}. \tag{5.42}\end{align}$$上述过程中我们使用了链式法则 $(5.32)$。
+
+> 注（作为行向量的梯度）：文献中并不常像一般的向量表示那样将梯度写为列向量。这样做的原因有两个：首先，这样的定义方便拓展为向量值函数 $f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$ 的情形，这样梯度就变为矩阵；其次，我们可以方便地对其使用多变元的链式法则而不用注意梯度的维数。我们将在 5.3 节中进一步讨论以上两点。
+
+> **示例 5.7（梯度）**
+> 给定函数 $f(x,y) = x_{1}^{2}x_{2} + x_{1}x_{2}^{3} \in \mathbb{R}$，它的各偏导数（相对于 $x_{1}$ 和 $x_{2}$ 求偏导）为$$\begin{align}
+\frac{ \partial f(x_{1}, x_{2}) }{ \partial x_{1} } &= 2x_{1}x_{2} + x_{2}^{3} \tag{5.43}\\
+\frac{ \partial f(x_{1}, x_{2}) }{ \partial x_{2} } &= x_{1}^{2} + 3 x_{1}x_{2}^{2} \tag{5.44} 
+\end{align}$$于是我们可以得到梯度$$\frac{\mathrm{d}f}{\mathrm{d}\boldsymbol{x}} = \left[ \frac{ \partial f(x_{1},x_{2}) }{ \partial x_{1} } , \frac{ \partial f(x_{1}, x_{2}) }{ \partial x_{2} }  \right] = [2x_{1}x_{2} + x_{2}^{3}, x_{1}^{2} + 3x_{1}x_{2}^{2}] \in \mathbb{R}^{1 \times 2}. \tag{5.45}$$
 
 ### 5.2.1 偏导数的基本法则
 
