@@ -124,40 +124,62 @@ f(x) &= 2x+1, \tag{5.34}\\g(f) &= f^{4}, \tag{5.35}\end{align}$$然后计算 $f$
 
 ### 5.2.1 偏导数的基本法则
 
+当 $\boldsymbol{x} \in \mathbb{R}^{n}$ 时，即在多元函数的情况下的微分法则（如加法、乘法、链式法则）和我们在学校中学到的无异。但在对向量 $\boldsymbol{x} \in \mathbb{R}^{n}$ 求导时，我们需要额外注意，因为我们现在得到的梯度包括向量和矩阵，而矩阵乘法是非交换的。
+下面是一般的加法、乘法、和链式法则：
+
 $$
 \begin{align}
-\left( \frac{\partial f}{\partial x} g(x) + f(x) \frac{\partial g}{\partial x} \right)' &= \frac{\partial}{\partial x} (fg) = \frac{\partial f}{\partial x} g(x) + f(x) \frac{\partial g}{\partial x} \tag{5.46} \\
-\left( \frac{\partial f}{\partial x} + g(x) \right)' &= \frac{\partial}{\partial x} (f(x) + g(x)) = \frac{\partial f}{\partial x} + \frac{\partial g}{\partial x} \tag{5.47}
+\text{Product rule:}~&~\frac{ \partial  }{ \partial \boldsymbol{x} } \big[ f(\boldsymbol{x})g(\boldsymbol{x}) \big] = \frac{ \partial f }{ \partial \boldsymbol{x} }g(\boldsymbol{x}) + f(\boldsymbol{x})\frac{ \partial g }{ \partial \boldsymbol{x} } \tag{5.46}\\
+\text{Sum rule:}~&~\frac{ \partial  }{ \partial \boldsymbol{ x }  } \big[ f(\boldsymbol{x}) + g(\boldsymbol{x})\big] = \frac{ \partial f }{ \partial \boldsymbol{ x }  } \frac{ \partial g }{ \partial \boldsymbol{ x }  } \tag{5.47}\\
+\text{Chain rule:}~&~\frac{ \partial  }{ \partial \boldsymbol{ x }  } (g \circ f)(x) = \frac{ \partial  }{ \partial \boldsymbol{ x }  } g\big[ f(\boldsymbol{ x } ) \big] = \frac{ \partial g }{ \partial f } \frac{ \partial f }{ \partial \boldsymbol{ x }  } \tag{5.48} 
 \end{align}
 $$
 
-$$
-\frac{\partial}{\partial x} (g \circ f)(x) = \frac{\partial g}{\partial f} \frac{\partial f}{\partial x} \tag{5.48}
-$$
+我们仔细观察链式法则 $(5.48)$，可以通过它看到相应矩阵乘法的规律，即相邻相乘矩阵的相邻维度需要相等（见 2.2.1 节）。从左往右看，可以发现 $\partial f$ 先出现在第一项的“分母”，然后出现在第二项“分子”，按照通常乘法的定义可以理解，$\partial f$ 对应的维数对应则可以消去，剩下的就是 $\displaystyle \frac{ \partial g }{ \partial \boldsymbol{ x } }$。
+
+> 注意，$\displaystyle \frac{ \partial f }{ \partial \boldsymbol{ x } }$ 并不是严格意义上的分数，上述说法只是为了增进理解
 
 ### 5.2.2 链式法则（chain rule）
 
+考虑变元为 $x_{1}, x_{2}$ 函数 $f: \mathbb{R}^{2} \rightarrow \mathbb{R}$，而 $x_{1}(t)$ 和 $x_{2}(t)$ 又是变元 $t$ 的函数。为了计算 $f$ 对 $t$ 的梯度，需要用到链式法则 $(5.48)$：
+
 $$
-\frac{df}{dt} = \frac{\partial f}{\partial x_1} \frac{dx_1}{dt} + \frac{\partial f}{\partial x_2} \frac{dx_2}{dt} \tag{5.49}
+\frac{\mathrm{d}f}{\mathrm{d}t} = \begin{bmatrix}
+\displaystyle \frac{ \partial f }{ \partial x_{1} } & \displaystyle \frac{ \partial f }{ \partial x_{2} }  
+\end{bmatrix} \begin{bmatrix}
+\displaystyle \frac{ \partial x_{1}(t) }{ \partial t }\\
+\displaystyle \frac{ \partial x_{2}(t) }{ \partial t }\\
+\end{bmatrix} = \frac{ \partial f }{ \partial x_{1} } \frac{ \partial x_{1} }{ \partial t }  + \frac{ \partial f }{ \partial x_{2} } \frac{ \partial x_{2} }{ \partial t },\tag{5.49} 
 $$
+其中 $\mathrm{d}$ 表示梯度，而 $\partial$ 表示偏导数。
+
+> **示例 5.8**
+> 考虑函数 $f(x_{1}, x_{2}) = x_{1}^{2} + 2x_{2}$，其中 $x_{1} = \sin t$，$x_{2} = \cos t$，则 $$\begin{align}\frac{\mathrm{d}f}{\mathrm{d}t} &= \frac{ \partial f }{ \partial x_{1} } \frac{ \partial x_{1} }{ \partial t } + \frac{ \partial f }{ \partial x_{2} } \frac{ \partial x_{2} }{ \partial t } \tag{5.50a}\\&= 2\sin t \frac{ \partial \sin t }{ \partial t } + 2 \frac{ \partial \cos t }{ \partial t } \tag{5.50b}\\&= 2\sin t \cos t - 2\sin t = 2\sin t(\cos t-1)\tag{5.50c}\end{align}$$就是 $f$ 关于 $t$ 的梯度。
+
+如果 $f(x_{1}, x_{2})$ 是 $x_{1}$ 和 $x_{2}$ 的函数，而 $x_{1}(s, t)$ 和 $x_{2}(s,t)$ 又分别为 $s$ 和 $t$ 的函数，那么根据链式法则会得到下面的结果：
 
 $$
 \begin{align}
-\frac{df}{dt} &= 2 \sin t \frac{d}{dt} (\sin t) + 2 \frac{d}{dt} (\cos t) \tag{5.50a} \\
-&= 2 \sin t \cos t - 2 \sin t = 2 \sin t(\cos t - 1) \tag{5.50c}
-\end{align}
+\frac{ \partial f }{ \partial {\color{orange} s }  } &= \frac{ \partial f }{ \partial {\color{blue} x_{1} }  } \frac{ \partial {\color{blue} x_{1} }  }{ \partial {\color{orange} s }  }  + \frac{ \partial f }{ \partial {\color{blue} x_{2} }  } \frac{ \partial {\color{blue} x_{2} }  }{ \partial {\color{orange} s }  } \tag{5.51}\\
+\frac{ \partial f }{ \partial {\color{orange} t }  } &= \frac{ \partial f }{ \partial {\color{blue} x_{1} }  } \frac{ \partial {\color{blue} x_{1} }  }{ \partial {\color{orange} t }  }  + \frac{ \partial f }{ \partial {\color{blue} x_{2} }  } \frac{ \partial {\color{blue} x_{2} }  }{ \partial {\color{orange} t }  } \tag{5.52}
+\end{align} 
 $$
+而函数的梯度为
+$$
+\frac{\mathrm{d}f}{\mathrm{d}(s,t)} = \frac{ \partial f }{ \partial \boldsymbol{ x }  } \frac{ \partial \boldsymbol{ x }  }{ \partial (s,t) } = \underbrace{ \begin{bmatrix}
+\displaystyle \frac{ \partial f }{\color{blue} \partial x_{1} } &
+\displaystyle \frac{ \partial f }{\color{orange} \partial x_{2} } 
+\end{bmatrix} }_{ \displaystyle =\frac{ \partial f }{ \partial \boldsymbol{ x }  }  } \underbrace{ \begin{bmatrix}
+\displaystyle {\color{blue} \frac{ \partial x_{1} }{ \partial s }  } & 
+\displaystyle {\color{blue} \frac{ \partial x_{1} }{ \partial t }  } \\
+\displaystyle {\color{orange} \frac{ \partial x_{2} }{ \partial s }  } & 
+\displaystyle {\color{orange} \frac{ \partial x_{2} }{ \partial t }  } \\
+\end{bmatrix} }_{ \displaystyle =\frac{ \partial \boldsymbol{x} }{ \partial (s,t) }  }.\tag{5.53}
+$$
+以上的写法 $(5.53)$ 当且仅当梯度被写为行向量时才是正确的，否则我们需要对结果进行转置，以保证矩阵的维度对应。在梯度为向量或矩阵时这样看来似乎比较显然，但当之后讨论中涉及的梯度变成 **张量（tensor）** 时对其进行转置就不那么容易了。
 
-$$
-\begin{align}
-\frac{\partial f}{\partial s} &= \frac{\partial f}{\partial x_1} \frac{\partial x_1}{\partial s} + \frac{\partial f}{\partial x_2} \frac{\partial x_2}{\partial s} \tag{5.51} \\
-\frac{\partial f}{\partial t} &= \frac{\partial f}{\partial x_1} \frac{\partial x_1}{\partial t} + \frac{\partial f}{\partial x_2} \frac{\partial x_2}{\partial t} \tag{5.52}
-\end{align}
-$$
-
-$$
-\frac{df}{ds, t} = \frac{\partial f}{\partial x} \begin{bmatrix} \frac{\partial x_1}{\partial s} & \frac{\partial x_1}{\partial t} \\ \frac{\partial x_2}{\partial s} & \frac{\partial x_2}{\partial t} \end{bmatrix} \tag{5.53}
-$$
+> **验证梯度是否正确**
+> 将差商去极限而得到梯度的方法在计算机程序中的数值算法处被加以利用。当我们计算函数梯度时，我们可以通过数值的微小改变计算差商，然后校验梯度的正确性：取一个较小的值（例如 $h=10^{-4}$）然后计算有限差商和梯度的解析计算结果，如果误差足够小则说明梯度的解析结果大概率是正确的。误差足够小是指 $\displaystyle \sqrt{ \frac{\sum_{i} (dh_{i} - df_{i})^{2}}{\sum_{i} (dh_{i} + df_{i})^{2}} } < 10^{-6}$，其中 $dh_{i}$ 是指 $f$ 关于 $x_{i}$ 得到的有限差商的估计结果，$df_{i}$ 是指 $f$ 关于 $x_{i}$ 的解析梯度的计算结果。
 
 ## 5.3 向量函数的梯度
 
