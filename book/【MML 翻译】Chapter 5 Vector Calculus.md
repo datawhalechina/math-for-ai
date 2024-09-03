@@ -240,8 +240,142 @@ x_{1}\\\vdots\\x_{n}
 $$
 
 $$
-\boldsymbol{f}(\boldsymbol{x}) = \boldsymbol{Ax}, \quad \boldsymbol{f}(\boldsymbol{x}) \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in 
+\begin{vmatrix}
+\text{det}\left(\begin{bmatrix}
+1 & 0\\0 & 1
+\end{bmatrix}\right)
+\end{vmatrix} = 1. \tag{5.60}
 $$
+
+$$
+\begin{vmatrix}
+\text{det}\left( \begin{bmatrix}
+-2 & 1\\1 & 1
+\end{bmatrix} \right) 
+\end{vmatrix} = |-3| = 3,
+\tag{5.61}
+$$
+
+$$
+\boldsymbol{J} = \begin{bmatrix}
+-2 & 1\\ 1 & 1
+\end{bmatrix}, \tag{5.62}
+$$
+
+$$
+\begin{align}
+y_{1} &= -2x_{1} + x_{2} \tag{5.63}\\
+y_{2} &= x_{1} + x_{2} \tag{5.64}
+\end{align}
+$$
+
+$$
+\frac{ \partial y_{1} }{ \partial x_{1} }  = -2, \quad \frac{ \partial y_{1} }{ \partial x_{2} } = 1, \quad \frac{ \partial y_{2} }{ \partial x_{1} } =1, \quad \frac{ \partial y_{2} }{ \partial x_{2} } = 1\tag{5.65}
+$$
+
+$$
+\boldsymbol{J} = \begin{bmatrix}
+\displaystyle \frac{ \partial y_{1} }{ \partial x_{1} } & \displaystyle \frac{ \partial y_{1} }{ \partial x_{2} } \\
+\displaystyle \frac{ \partial y_{2} }{ \partial x_{1} } & \displaystyle \frac{ \partial y_{2} }{ \partial x_{2} }
+\end{bmatrix} = 
+\begin{bmatrix}
+-2 & 1 \\ 1 & 1
+\end{bmatrix}.
+\tag{5.66}
+$$
+
+
+$$
+\boldsymbol{f}(\boldsymbol{x}) = \boldsymbol{Ax}, \quad \boldsymbol{f}(\boldsymbol{x}) \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{N}.
+$$
+
+$$
+f_{i}(\boldsymbol{x}) = \sum\limits_{j=1}^{N} A_{i,j}x_{j} \implies \frac{ \partial f_{i} }{ \partial x_{j} } = A_{i,j} \tag{5.67}
+$$
+
+$$
+\frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{x} }  = \begin{bmatrix}
+\displaystyle \frac{ \partial f_{1} }{ \partial x_{1} } & \cdots & 
+\displaystyle \frac{ \partial f_{1} }{ \partial x_{N} } \\
+\vdots & \ddots & \vdots\\
+\displaystyle \frac{ \partial f_{M} }{ \partial x_{1} } & \cdots &
+\displaystyle \frac{ \partial f_{M} }{ \partial x_{N } } 
+\end{bmatrix} = 
+\begin{bmatrix}
+A_{1,1} & \cdots & A_{1,N}\\
+\vdots & \ddots & \vdots\\
+A_{M,1} & \cdots & A_{M,N}
+\end{bmatrix} = \boldsymbol{A} \in \mathbb{R}^{M \times N}.
+\tag{5.68}
+$$
+
+$$
+\begin{align}
+f &: \mathbb{R}^{2} \rightarrow \mathbb{R} \tag{5.69}\\
+g &: \mathbb{R} \rightarrow \mathbb{R}^{2} \tag{5.70}\\
+f(\boldsymbol{x}) &= \exp (x_{1}, x_{2}^{2}), \tag{5.71}\\
+\boldsymbol{x} &= \begin{bmatrix}
+x_{1} \\ x_{2}
+\end{bmatrix} = g(t) = \begin{bmatrix}
+t\cos t\\t\sin t
+\end{bmatrix} \tag{5.72}
+\end{align}
+$$
+
+$$
+\displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } \in \mathbb{R}^{1 \times 2}, \quad \displaystyle \frac{ \partial g }{ \partial t } \in \mathbb{R}^{2 \times 1}. \tag{5.73}
+$$
+
+$$
+\begin{align}
+\displaystyle \frac{ \mathrm{d}h }{ \mathrm{d}t } &= {\color{blue} \displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{x} }{ \partial t }  } = {\color{blue} \begin{bmatrix}
+\displaystyle \frac{ \partial f }{ \partial x_{1} } & \displaystyle \frac{ \partial f }{ \partial x_{2} } 
+\end{bmatrix} } {\color{orange} \begin{bmatrix}
+\displaystyle \frac{ \partial x_{1} }{ \partial t } \\ \displaystyle \frac{ \partial x_{2} }{ \partial t }
+\end{bmatrix} }   \tag{5.74a}\\
+&= 
+{\color{blue} \begin{bmatrix} \exp(x_{1}x_{2}^{2})x_{2}^{2} & 2\exp(x_{1}x_{2}^{2})x_{1}x_{2}  
+\end{bmatrix}}
+{\color{orange} 
+\begin{bmatrix}
+\cos t - t\sin t\\sin t + t\cos t
+\end{bmatrix}} \tag{5.74b}\\
+&= \exp(x_{1}x_{2}^{2}) \big[ x_{2}^{2}(\cos t - t\sin t) + 2x_{1}x_{2}(\sin t + t\cos t) \big] , \tag{5.74c}
+\end{align}
+$$
+
+$$
+\boldsymbol{y} = \boldsymbol{\Phi \theta}, \tag{5.75}
+$$
+$$
+\begin{align}
+L(\boldsymbol{e}) &:= \|\boldsymbol{e}\|^{2}, \tag{5.76}\\
+\boldsymbol{e}(\boldsymbol{\theta}) &:= \boldsymbol{y} - \boldsymbol{\Phi \theta}. \tag{5.77} 
+\end{align}
+$$
+$$
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } \in \mathbb{R}^{L \times D}. \tag{5.78}
+$$
+$$
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} }  } , \tag{5.79}
+$$
+$$
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } [1,d] = \sum\limits_{n=1}^{N} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} } [n] \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } [n,d]. \tag{5.80}
+$$
+$$
+{\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  = 2\boldsymbol{e}^{\top} } \in \mathbb{R}^{1 \times N}. \tag{5.81}
+$$
+$$
+{\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } = -\boldsymbol{\Phi} } \in \mathbb{R}^{N \times D} , \tag{5.82}
+$$
+
+$$
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{orange} - } {\color{blue} 2\boldsymbol{e}^{\top} }{\color{orange} \boldsymbol{\Phi} } {~}\mathop{=\!=\!=}\limits^{(5.77)}{~} {\color{orange} - } {\color{blue} \underbrace{ 2(\boldsymbol{y}^{\top} - \boldsymbol{\theta}^{\top}\boldsymbol{\Phi}^{\top}) }_{ 1 \times N } }~{\color{orange} \underbrace{ \boldsymbol{\Phi} }_{ N \times D } } \in \mathbb{R}^{1 \times D}. \tag{5.83}
+$$
+$$
+L_{2}(\boldsymbol{\theta}) := \|\boldsymbol{y} - \boldsymbol{\Phi \theta}\|^{2} = (\boldsymbol{y} - \boldsymbol{\Phi \theta})^{\top}(\boldsymbol{y} - \boldsymbol{\Phi \theta}). \tag{5.84}
+$$
+
 
 ## 5.4 矩阵的梯度
 
@@ -263,4 +397,18 @@ $$
 & \quad \quad \text{for symmetric }\boldsymbol{W}
 \end{align}
 $$
+
+## 5.6 反向传播与自动微分
+
+### 5.6.1 深度神经网络中的梯度
+
+### 5.6.2 自动微分
+
+## 5.7 高阶导数
+
+## 5.8 线性近似和多元 Taylor 级数
+
+## 5.9 拓展阅读
+
+## 练习
 
