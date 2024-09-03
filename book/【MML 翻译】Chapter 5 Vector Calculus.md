@@ -181,8 +181,67 @@ $$
 > **验证梯度是否正确**
 > 将差商去极限而得到梯度的方法在计算机程序中的数值算法处被加以利用。当我们计算函数梯度时，我们可以通过数值的微小改变计算差商，然后校验梯度的正确性：取一个较小的值（例如 $h=10^{-4}$）然后计算有限差商和梯度的解析计算结果，如果误差足够小则说明梯度的解析结果大概率是正确的。误差足够小是指 $\displaystyle \sqrt{ \frac{\sum_{i} (dh_{i} - df_{i})^{2}}{\sum_{i} (dh_{i} + df_{i})^{2}} } < 10^{-6}$，其中 $dh_{i}$ 是指 $f$ 关于 $x_{i}$ 得到的有限差商的估计结果，$df_{i}$ 是指 $f$ 关于 $x_{i}$ 的解析梯度的计算结果。
 
-## 5.3 向量函数的梯度
+## 5.3 向量值函数的梯度
 
+一直以来我们讨论的都是实值函数 $f : \mathbb{R}^{n} \rightarrow \mathbb{R}$ 的偏导数和梯度，接下来我们将将此概念扩展至向量值函数（向量场）$\boldsymbol{f}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$ 的情形，其中 $n \geqslant 1, m \geqslant 1$。
+
+给定向量值函数 $\boldsymbol{f}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$ 和向量 $\boldsymbol{x} = [x_{1}, \dots, x_{n}]^{\top}\in \mathbb{R}^{n}$，则该函数的函数值可以写为
+$$
+\boldsymbol{f}(\boldsymbol{x}) = \begin{bmatrix}
+f_{1}(\boldsymbol{x})\\
+\vdots\\
+f_{m}(\boldsymbol{x})\\
+\end{bmatrix} \in \mathbb{R}^{m}.\tag{5.54}
+$$
+这样写可以让我们将向量值函数 $\boldsymbol{f}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$ 看成一个全部由实值函数 $f_{i}: \mathbb{R}^{n} \rightarrow \mathbb{R}$  构成的向量 $[f_{1}, \dots, f_{m}]^{\top}$，而对于每一个 $f_{i}$ 我们可以不加修改的直接应用 5.2 节中的所有微分法则。这样一来，向量值函数对变元 $x_{i} \in \mathbb{R}, i=1, \dots, n$ 的偏导数由下式给出
+$$
+\frac{ \partial \boldsymbol{f} }{ \partial x_{i} } = \begin{bmatrix}
+\displaystyle \frac{ \partial f_{1} }{ \partial x_{i} } \\
+\vdots\\
+\displaystyle \frac{ \partial f_{m} }{ \partial x_{i} } 
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\displaystyle \lim_{ h \to 0 } \frac{f_{1}(x_{1}, \dots, x_{i-1}, x_{i}+h, x_{i+1}, x_{n}) - f_{1}(\boldsymbol{x})}{h}\\
+\vdots\\
+\displaystyle \lim_{ h \to 0 } \frac{f_{m}(x_{1}, \dots, x_{i-1}, x_{i}+h, x_{i+1}, x_{n}) - f_{m}(\boldsymbol{x})}{h}\\
+\end{bmatrix} \in \mathbb{R}^{m}
+$$
+
+
+$$
+\begin{align}
+\frac{\mathrm{d}\boldsymbol{f}}{\mathrm{d}\boldsymbol{x}} &= 
+\begin{bmatrix}
+{\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}(x) }{ \partial x_{1} }}  & \cdots & \color{orange} \displaystyle \frac{ \partial \boldsymbol{f}(x) }{ \partial x_{n} } 
+\end{bmatrix} \tag{5.56a}\\[0.2em]
+&= \begin{bmatrix}
+\color{blue} \displaystyle \frac{ \partial f_{1}(\boldsymbol{x}) }{ \partial x_{1} } &\cdots &  \color{orange} \displaystyle \frac{ \partial f_{1}(\boldsymbol{x}) }{ \partial x_{n} } \\
+\color{blue} \vdots & \ddots & \color{orange} \vdots\\
+\color{blue} \displaystyle \frac{ \partial f_{m}(\boldsymbol{x}) }{ \partial x_{1} } & \cdots & \color{orange}  \displaystyle \frac{ \partial f_{m}(\boldsymbol{x}) }{ \partial x_{n} } \\
+\end{bmatrix} \in \mathbb{R}^{m \times n} \tag{5.56b}
+\end{align}
+$$
+
+$$
+\begin{align}
+\boldsymbol{J} &= \nabla_{x} \boldsymbol{f} = \frac{\mathrm{d}\boldsymbol{f}(\boldsymbol{x})}{\mathrm{d}\boldsymbol{x}} = \begin{bmatrix}
+\displaystyle \frac{ \partial \boldsymbol{f} }{ \partial x_{1} } & \cdots & \displaystyle \frac{ \partial \boldsymbol{f} }{ \partial x_{n} } \tag{5.57}\\
+\end{bmatrix}\\
+&= \begin{bmatrix}
+ \displaystyle \frac{ \partial f_{1}(\boldsymbol{x}) }{ \partial x_{1} } &\cdots &  \displaystyle \frac{ \partial f_{1}(\boldsymbol{x}) }{ \partial x_{n} } \\
+\vdots & \ddots &  \vdots\\
+\displaystyle \frac{ \partial f_{m}(\boldsymbol{x}) }{ \partial x_{1} } & \cdots & \displaystyle \frac{ \partial f_{m}(\boldsymbol{x}) }{ \partial x_{n} } \\
+\end{bmatrix}, \tag{5.58}\\[0.2em]
+&\quad \boldsymbol{x} = \begin{bmatrix}
+x_{1}\\\vdots\\x_{n}
+\end{bmatrix}, \quad J(i,j) = \frac{ \partial f_{i} }{ \partial x_{j} }. \tag{5.59} 
+\end{align}
+$$
+
+$$
+\boldsymbol{f}(\boldsymbol{x}) = \boldsymbol{Ax}, \quad \boldsymbol{f}(\boldsymbol{x}) \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in 
+$$
 
 ## 5.4 矩阵的梯度
 
