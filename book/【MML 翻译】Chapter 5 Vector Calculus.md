@@ -379,6 +379,71 @@ $$
 
 ## 5.4 矩阵的梯度
 
+$$
+\boldsymbol{f} = \boldsymbol{A}\boldsymbol{x}, \quad \boldsymbol{f} \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{M \times N}, \quad \boldsymbol{x} \in \mathbb{R}^{N} \tag{5.85}
+$$
+
+$$
+\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} } \in \mathbb{R}^{M \times (M \times N)}. \tag{5.86}
+$$
+
+$$
+\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} } = \begin{bmatrix}
+\displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } \\ \vdots  \\ \displaystyle \frac{ \partial f_{M} }{ \partial \boldsymbol{A} } 
+\end{bmatrix}, \quad \displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } \in \mathbb{R}^{1 \times (M \times N)}. \tag{5.87}
+$$
+
+$$
+f_{i} = \sum\limits_{j=1}^{N} A_{i,j}x_{j}, \quad  i= 1, \dots, M, \tag{5.88}
+$$
+
+$$
+\displaystyle \frac{ \partial f_{i} }{ \partial A_{j,q} } = x_{q}. \tag{5.89}
+$$
+
+$$
+\displaystyle \frac{ \partial f_{i} }{ \partial A_{i,:}} = \boldsymbol{x}^{\top} \in \mathbb{R}^{1 \times 1 \times N}, \tag{5.90}
+$$
+
+$$
+\displaystyle \frac{ \partial f_{i} }{ \partial A_{k\neq i, :} } = \boldsymbol{0}^{\top} \in \mathbb{R}^{1 \times 1 \times N}, \tag{5.91}
+$$
+
+$$
+\displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } = \begin{bmatrix}
+\boldsymbol{0}^{\top} \\ \vdots \\ \boldsymbol{0}^{\top} \\ \boldsymbol{x}^{\top} \\ \boldsymbol{0}^{\top} \\ \vdots \\
+\boldsymbol{0}^{\top}
+\end{bmatrix} \in \mathbb{R}^{1 \times (M \times N)}. \tag{5.92}
+$$
+
+$$
+\boldsymbol{f}(\boldsymbol{R}) = \boldsymbol{R}^{\top}\boldsymbol{R} =: \boldsymbol{K} \in \mathbb{R}^{N \times N}, \tag{5.93}
+$$
+
+$$
+\displaystyle \frac{ \mathrm{d}\boldsymbol{K} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{(N \times N) \times (M \times N)}, \tag{5.94} 
+$$
+
+$$
+\displaystyle \frac{ \mathrm{d}K_{p,q} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{1 \times M \times N} \tag{5.95}
+$$
+
+$$
+K_{p,q} = \boldsymbol{r}_{p}^{\top}\boldsymbol{r}_{q} =
+\sum\limits_{m=1}^{M} R_{m,p}R_{m,q}. \tag{5.96}$$
+
+$$
+\displaystyle \frac{ \partial K_{p,q} }{ \partial R_{i,j} } = \sum\limits_{m=1}^{M} \displaystyle \frac{ \partial   }{ \partial R_{i,j} } R_{m,p}R_{m,q} = \partial_{p,q,i,j},\tag{5.97}
+$$
+
+$$
+\partial_{p,q,i,j} = \begin{cases}
+R_{i,q}, & \text{if } j=p,~ p \neq q\\
+R_{i,p}, & \text{if } j=q,~ p \neq q\\
+2 R_{i,q}, & \text{if } j=p,~ p = q\\
+0, & \text{otherwise}
+\end{cases}~. \tag{5.98} 
+$$
 
 ## 5.5 常用梯度恒等式
 
@@ -400,7 +465,24 @@ $$
 
 ## 5.6 反向传播与自动微分
 
+$$
+f(x) = \sqrt{ x^{2} + \exp(x^{2}) } + \cos \Big[ x^{2} + \exp(x^{2}) \Big]. \tag{5.109}
+$$
+
+$$
+\begin{align}
+\displaystyle \frac{ \mathrm{d}f }{ \mathrm{d}x } &= \frac{2x+2x\exp\{x^{2}\}}{2\sqrt{ x^{2} + \exp\{x^{2}\} }} - \sin \Big( x^{2} + \exp\{ x^{2} \} \Big) \Big( 2x + 2x \exp\{ x^{2} \} \Big) \\
+&= 2x \left[ \frac{1}{2\sqrt{ x^{2} + \exp\{ x^{2} \} }} - \sin \Big( x^{2} + \exp\{ x^{2} \} \Big) \right] \Big(1 + \exp\{ x^{2} \}\Big). 
+\end{align}
+
+$$$$
+\tag{5.110}
+$$
 ### 5.6.1 深度神经网络中的梯度
+
+$$
+\boldsymbol{y} = (f_{K} \circ f_{K-1} \circ \cdots \circ f_{1})(\boldsymbol{x}) = f_{K}\Big\{ f_{K-1}\big[\cdots (f_{1}(\boldsymbol{x})\cdots )\big] \Big\} , \tag{5.111}
+$$
 
 ### 5.6.2 自动微分
 
