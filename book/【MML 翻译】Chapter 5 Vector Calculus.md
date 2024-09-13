@@ -486,6 +486,95 @@ $$
 
 ### 5.6.2 自动微分
 
+$$
+\begin{align}
+\boldsymbol{f}_{0} &:= \boldsymbol{x} \tag{5.112}\\
+\boldsymbol{f}_{i} &:= \sigma_{i} \Big( \boldsymbol{A}_{i-1}\boldsymbol{f}_{i-1} + \boldsymbol{b}_{i-1} \Big), \quad  i=1, \dots, K, \tag{5.113} 
+\end{align}
+$$
+$$
+L(\boldsymbol{\theta}) = \Big\| \boldsymbol{y} - \boldsymbol{f}_{K}\big( \boldsymbol{\theta, x} \big)  \Big\|^{2} \tag{5.114}
+$$
+
+$$
+\begin{align}
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta}_{K-1} } &= \displaystyle \frac{ \partial L }{ \partial \boldsymbol{f}_{K} } {\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}_{K} }{ \partial \boldsymbol{\theta}_{K-1} } } \tag{5.115}\\
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta}_{K-2} }  &= \displaystyle \frac{ \partial L }{ \partial \boldsymbol{f}_{K} } \boxed{ {\color{orange} \displaystyle \frac{ \partial \boldsymbol{f}_{K} }{ \partial \boldsymbol{f}_{K-1} }  } {\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}_{K-1} }{ \partial \boldsymbol{\theta}_{K-2} }  }}\tag{5.116}\\  
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta}_{K-3} } &= \displaystyle \frac{ \partial L }{ \partial \boldsymbol{f}_{K} } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{f}_{K} }{ \partial \boldsymbol{f}_{K-1} }  } \boxed{ {\color{orange} \displaystyle \frac{ \partial \boldsymbol{f}_{K-1} }{ \partial \boldsymbol{f}_{K-2} }  } {\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}_{K-2} }{ \partial \boldsymbol{\theta}_{K-3} }  } } \tag{5.117}\\
+\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta}_{i} }  &= \displaystyle \frac{ \partial L }{ \partial \boldsymbol{f}_{K} } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{f}_{K} }{ \partial \boldsymbol{f}_{K-1} } \cdots } \boxed{ {\color{orange} \displaystyle \frac{ \partial \boldsymbol{f}_{i+2} }{ \partial \boldsymbol{f}_{i+1} }  } {\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}_{i+1} }{ \partial \boldsymbol{\theta}_{i} }  }  } \tag{5.118}
+\end{align}
+$$
+
+$$
+\displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}x }  = \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}b } \displaystyle \frac{ \mathrm{d}b }{ \mathrm{d}a } \displaystyle \frac{ \mathrm{d}a }{ \mathrm{d}x } . \tag{5.119}
+$$
+
+$$
+\begin{align}
+\displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}x } &= \left( \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}b } \displaystyle \frac{ \mathrm{d}b }{ \mathrm{d}a }  \right) \displaystyle \frac{ \mathrm{d}a }{ \mathrm{d}x } , \tag{5.120}\\
+\displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}x } &= \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}b } \left( \displaystyle \frac{ \mathrm{d}b }{ \mathrm{d}a } \displaystyle \frac{ \mathrm{d}a }{ \mathrm{d}x }  \right). \tag{5.121}
+\end{align}
+$$
+
+$$
+f(x) = \sqrt{ x^{2} + \exp\{ x^{2} \} } + \cos \Big( x^{2} + \exp\{ x^{2} \} \Big) \tag{5.122}
+$$
+
+$$
+\begin{align}
+a &= x^{2}, \tag{5.123}\\
+b &= \exp\{ a \}, \tag{5.124}\\
+c &= a + b, \tag{5.125}\\
+d &= \sqrt{ c }, \tag{5.126}\\
+e &= \cos(c), \tag{5.127}\\
+f &= d + e. \tag{5.128}\\
+\end{align}
+$$
+
+$$
+\begin{align}
+\displaystyle \frac{ \partial a }{ \partial x } &= 2x \tag{5.129}\\
+\displaystyle \frac{ \partial b }{ \partial a } &= \exp\{ a \}\tag{5.130}\\
+\displaystyle \frac{ \partial c }{ \partial a } &= 1 = \displaystyle \frac{ \partial c }{ \partial b } \tag{5.131}\\
+\displaystyle \frac{ \partial d }{ \partial c } &= \frac{1}{2\sqrt{ c }}\tag{5.132}\\
+\displaystyle \frac{ \partial e }{ \partial c } &= -\sin(c)\tag{5.133}\\
+\displaystyle \frac{ \partial f }{ \partial d } &= 1 = \displaystyle \frac{ \partial f }{ \partial e }. \tag{5.134}
+\end{align}
+$$
+
+$$
+\begin{align}
+\displaystyle \frac{ \partial f }{ \partial c } &= \displaystyle \frac{ \partial f }{ \partial d } \displaystyle \frac{ \partial d }{ \partial c }  + \displaystyle \frac{ \partial f }{ \partial e } \displaystyle \frac{ \partial e }{ \partial c } \tag{5.135}\\
+\displaystyle \frac{ \partial f }{ \partial b } &= \displaystyle \frac{ \partial f }{ \partial c } \displaystyle \frac{ \partial c }{ \partial b } \tag{5.136}\\
+\displaystyle \frac{ \partial f }{ \partial a } &= \displaystyle \frac{ \partial f }{ \partial b } \displaystyle \frac{ \partial b }{ \partial a } + \displaystyle \frac{ \partial f }{ \partial c } \displaystyle \frac{ \partial c }{ \partial a } \tag{5.137}\\
+\displaystyle \frac{ \partial f }{ \partial x } &= \displaystyle \frac{ \partial f }{ \partial a } \displaystyle \frac{ \partial a }{ \partial x }. \tag{5.138}\\
+\end{align}
+$$
+
+$$
+\begin{align}
+\displaystyle \frac{ \partial f }{ \partial c } &= 1 \cdot \frac{1}{2\sqrt{ c }} + 1 \cdot \big[ -\sin(c) \big] \tag{5.139}\\
+\displaystyle \frac{ \partial f }{ \partial b } &= \displaystyle \frac{ \partial f }{ \partial c } \cdot 1\tag{5.140}\\
+\displaystyle \frac{ \partial f }{ \partial a } &= \displaystyle \frac{ \partial f }{ \partial b } \exp\{ a \} + \displaystyle \frac{ \partial f }{ \partial c } \cdot 1 \tag{5.141}\\
+\displaystyle \frac{ \partial f }{ \partial x } &= \displaystyle \frac{ \partial f }{ \partial a }  \cdot 2x. \tag{5.142}
+\end{align}
+$$
+
+$$
+\text{For }i = d+1, \dots, D:\quad x_{i} = g_{i}\Big[x_{\text{Pa}(x_{i})}\Big], \tag{5.143}
+$$
+
+$$
+\displaystyle \frac{ \partial f }{ \partial x_{D} } =1. \tag{5.144}
+$$
+
+$$
+\displaystyle \frac{ \partial f }{ \partial x_{i} } = \sum\limits_{x_{j}: x_{i} \in \text{Pa}(x_{j})} \displaystyle \frac{ \partial f }{ \partial x_{j} } \displaystyle \frac{ \partial x_{j} }{ \partial x_{i} } = \sum\limits_{x_{j}: x_{i} \in \text{Pa}(x_{j})} \displaystyle \frac{ \partial f }{ \partial x_{j} } \displaystyle \frac{ \partial g_{j} }{ \partial x_{i} } ,\tag{5.145}  
+$$
+
+
+
+
 ## 5.7 高阶导数
 
 ## 5.8 线性近似和多元 Taylor 级数
