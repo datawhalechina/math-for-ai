@@ -268,16 +268,19 @@ $$
 
 上面提到的 Jacobian 行列式和变量替换在 6.7 节中对随机变量和分布进行变换时会涉及，它们在机器学习和深度学习中的 **重参数技巧（Reparametrization Trick）** 中十分重要，也被称为 **无穷摄动分析（Infinite Perturbation Analysis）**。
 
+【以下为机器翻译结果，需要进行后期修正】
 
+在本章中，我们遇到了函数的导数。图5.6总结了这些衍生物的尺寸。如果f： R→R，梯度只是一个标量（左上角的条目）。对于f： RD→R，梯度是一个1×D行向量（右上角的条目）。对于f： R→RE，梯度是一个E×1列向量，而对于f： RD→RE，梯度是一个E×D矩阵。
 
+给定
 $$
 \boldsymbol{f}(\boldsymbol{x}) = \boldsymbol{Ax}, \quad \boldsymbol{f}(\boldsymbol{x}) \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{N}.
 $$
-
+为了计算梯度df/dx，我们首先确定df/dx的维数：由于f： RN→RM，它遵循df/dx∈RM×N。其次，为了计算梯度，我们确定了f相对于每个xj的偏导数
 $$
 f_{i}(\boldsymbol{x}) = \sum\limits_{j=1}^{N} A_{i,j}x_{j} \implies \frac{ \partial f_{i} }{ \partial x_{j} } = A_{i,j} \tag{5.67}
 $$
-
+我们收集了雅可比矩阵中的偏导数，并得到了梯度
 $$
 \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{x} }  = \begin{bmatrix}
 \displaystyle \frac{ \partial f_{1} }{ \partial x_{1} } & \cdots & 
@@ -294,6 +297,8 @@ A_{M,1} & \cdots & A_{M,N}
 \tag{5.68}
 $$
 
+
+考虑函数h： R→R，h (t) =（f◦g）(t)与
 $$
 \begin{align}
 f &: \mathbb{R}^{2} \rightarrow \mathbb{R} \tag{5.69}\\
@@ -306,11 +311,11 @@ t\cos t\\t\sin t
 \end{bmatrix} \tag{5.72}
 \end{align}
 $$
-
+并计算了h相对于t的梯度。因为f： R2→R和g： R→R2，我们注意到
 $$
 \displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } \in \mathbb{R}^{1 \times 2}, \quad \displaystyle \frac{ \partial g }{ \partial t } \in \mathbb{R}^{2 \times 1}. \tag{5.73}
 $$
-
+通过应用链式规则来计算所需的梯度：
 $$
 \begin{align}
 \displaystyle \frac{ \mathrm{d}h }{ \mathrm{d}t } &= {\color{blue} \displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{x} }{ \partial t }  } = {\color{blue} \begin{bmatrix}
@@ -328,46 +333,56 @@ $$
 &= \exp(x_{1}x_{2}^{2}) \big[ x_{2}^{2}(\cos t - t\sin t) + 2x_{1}x_{2}(\sin t + t\cos t) \big] , \tag{5.74c}
 \end{align}
 $$
+其中，1=成本和2=成本；参见（5.72）。
 
+例子5.11（一个线性模型中最小二乘损失的梯度）让我们考虑一下线性模型
 $$
 \boldsymbol{y} = \boldsymbol{\Phi \theta}, \tag{5.75}
 $$
+例子5.11（一个线性模型中最小二乘损失的梯度）让我们考虑一下线性模型
 $$
 \begin{align}
 L(\boldsymbol{e}) &:= \|\boldsymbol{e}\|^{2}, \tag{5.76}\\
 \boldsymbol{e}(\boldsymbol{\theta}) &:= \boldsymbol{y} - \boldsymbol{\Phi \theta}. \tag{5.77} 
 \end{align}
 $$
+我们寻找∂L∂θ，并且我们将为此目的使用链规则。L被称为最小二乘损失函数。在我们开始计算之前，我们确定梯度的维数为
 $$
 \displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } \in \mathbb{R}^{L \times D}. \tag{5.78}
 $$
+链式规则允许我们计算梯度为
 $$
 \displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} }  } , \tag{5.79}
 $$
+其中第d个元素是由
 $$
 \displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } [1,d] = \sum\limits_{n=1}^{N} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} } [n] \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } [n,d]. \tag{5.80}
 $$
+我们知道kek2=e>e（见第3.2节），并确定
 $$
 {\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  = 2\boldsymbol{e}^{\top} } \in \mathbb{R}^{1 \times N}. \tag{5.81}
 $$
+此外，我们得到
 $$
 {\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } = -\boldsymbol{\Phi} } \in \mathbb{R}^{N \times D} , \tag{5.82}
 $$
-
+这样我们想要的导数就是
 $$
 \displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{orange} - } {\color{blue} 2\boldsymbol{e}^{\top} }{\color{orange} \boldsymbol{\Phi} } {~}\mathop{=\!=\!=}\limits^{(5.77)}{~} {\color{orange} - } {\color{blue} \underbrace{ 2(\boldsymbol{y}^{\top} - \boldsymbol{\theta}^{\top}\boldsymbol{\Phi}^{\top}) }_{ 1 \times N } }~{\color{orange} \underbrace{ \boldsymbol{\Phi} }_{ N \times D } } \in \mathbb{R}^{1 \times D}. \tag{5.83}
 $$
+备注。如果不使用链式规则，我们就可以通过立即查看该函数来得到相同的结果
 $$
 L_{2}(\boldsymbol{\theta}) := \|\boldsymbol{y} - \boldsymbol{\Phi \theta}\|^{2} = (\boldsymbol{y} - \boldsymbol{\Phi \theta})^{\top}(\boldsymbol{y} - \boldsymbol{\Phi \theta}). \tag{5.84}
 $$
-
+这种方法对于像l2这样的简单函数仍然实用，但对于深度函数组合就不现实了。
 
 ## 5.4 矩阵的梯度
 
+我们将遇到以下情况，即我们需要取矩阵对向量（或其他矩阵）的梯度，从而产生一个多维张量。我们可以把这个张量看作是一个多维数组收集部分导数。例如，如果我们计算一个×矩阵a对×矩阵×的梯度，结果雅可比矩阵将是（×）×（××），即一个四维张量J，其条目为Jijkl =∂Aij/∂Bkl。
 $$
 \boldsymbol{f} = \boldsymbol{A}\boldsymbol{x}, \quad \boldsymbol{f} \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{M \times N}, \quad \boldsymbol{x} \in \mathbb{R}^{N} \tag{5.85}
 $$
-
+由于矩阵表示线性映射，我们可以利用m×n矩阵的空间×n与mn向量的空间×n之间存在向量空间同构（线性、可逆映射）这一事实。因此，我们可以将我们的矩阵重新塑造为长度分别为mn和pq的向量。使用这些mn向量的梯度得到一个大小为mn×pq的雅可比矩阵。图5.7可视化了这两种方法。实际情况下，通常希望重塑矩阵成一个向量和继续使用这个雅可比矩阵：链规则（5.48）归结为简单的矩阵乘法，而在雅可比张量的情况下，我们需要更加关注我们需要总结什么维数。
 $$
 \displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} } \in \mathbb{R}^{M \times (M \times N)}. \tag{5.86}
 $$
@@ -393,7 +408,7 @@ $$
 $$
 \displaystyle \frac{ \partial f_{i} }{ \partial A_{k\neq i, :} } = \boldsymbol{0}^{\top} \in \mathbb{R}^{1 \times 1 \times N}, \tag{5.91}
 $$
-
+我们必须注意正确的维度。由于fi映射到R上，每一行a的大小是1×N，我们得到一个1×1×的N大小张量作为fi对一行a的偏导数。我们堆叠偏导数（5.91），得到期望的梯度（5.87）
 $$
 \displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } = \begin{bmatrix}
 \boldsymbol{0}^{\top} \\ \vdots \\ \boldsymbol{0}^{\top} \\ \boldsymbol{x}^{\top} \\ \boldsymbol{0}^{\top} \\ \vdots \\
@@ -404,7 +419,7 @@ $$
 $$
 \boldsymbol{f}(\boldsymbol{R}) = \boldsymbol{R}^{\top}\boldsymbol{R} =: \boldsymbol{K} \in \mathbb{R}^{N \times N}, \tag{5.93}
 $$
-
+其中我们寻找梯度dK/dR。为了解决这个难题，让我们先写下我们已经知道的东西：梯度有维度
 $$
 \displaystyle \frac{ \mathrm{d}\boldsymbol{K} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{(N \times N) \times (M \times N)}, \tag{5.94} 
 $$
@@ -412,7 +427,7 @@ $$
 $$
 \displaystyle \frac{ \mathrm{d}K_{p,q} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{1 \times M \times N} \tag{5.95}
 $$
-
+对于p，q = 1，……，N，其中Kpq是K = f (R)的第一个（p，q）条目。用ri表示R的第h列，K的每条由R的两列的点积表示，即
 $$
 K_{p,q} = \boldsymbol{r}_{p}^{\top}\boldsymbol{r}_{q} =
 \sum\limits_{m=1}^{M} R_{m,p}R_{m,q}. \tag{5.96}$$
@@ -420,7 +435,7 @@ K_{p,q} = \boldsymbol{r}_{p}^{\top}\boldsymbol{r}_{q} =
 $$
 \displaystyle \frac{ \partial K_{p,q} }{ \partial R_{i,j} } = \sum\limits_{m=1}^{M} \displaystyle \frac{ \partial   }{ \partial R_{i,j} } R_{m,p}R_{m,q} = \partial_{p,q,i,j},\tag{5.97}
 $$
-
+从（5.94）中，我们知道期望得到的梯度具有维数（N×N）×（M×N），这个张量的每一个项都由中的∂pqij给出，其中p，q，j = 1，…，N和i = 1，……，M。
 $$
 \partial_{p,q,i,j} = \begin{cases}
 R_{i,q}, & \text{if } j=p,~ p \neq q\\
@@ -431,7 +446,7 @@ R_{i,p}, & \text{if } j=q,~ p \neq q\\
 $$
 
 ## 5.5 常用梯度恒等式
-
+下面，我们列出了一些在机器学习环境中经常需要的有用的梯度（Petersen和Pedersen，2012）。在这里，我们使用tr（·）作为跟踪（见定义4.4），det（·）作为行列式（见第4.1节），而f (X)−1作为f (X)的倒数，假设它存在。
 $$
 \begin{align}
 \frac{ \partial }{ \partial \boldsymbol{X} } \boldsymbol{f}(\boldsymbol{X})^{\top} &= \left( \frac{ \partial \boldsymbol{f}(\boldsymbol{X}) }{ \partial \boldsymbol{X} }  \right)^{\top}, \tag{5.99}\\[0.2em]
@@ -447,40 +462,45 @@ $$
 & \quad \quad \text{for symmetric }\boldsymbol{W}
 \end{align}
 $$
+备注。在这本书中，我们只讨论了矩阵的轨迹和转置。然而，我们已经看到，导数可以是高维的十个￾源，在这种情况下，通常的轨迹和转座没有定义。在这些情况下，D×D×E×F张量的轨迹将是一个E××维矩阵。这是张量收缩的一种特殊情况。类似地，当我们“转置”一个张量时，我们的意思是交换前二维。具体来说，在（5.99）到（5.102）中，当我们使用多元函数f（·）计算矩阵的导数并计算与矩阵的导数（并如5.4节所讨论的）时，我们选择不对它们进行向量化计算。♦
 
 ## 5.6 反向传播与自动微分
-
+在许多机器学习应用中，我们通过执行梯度下降（第7.1节）找到了很好的模型参数，这依赖于我们可以计算一个学习目标关于模型参数的梯度。对于一个给定的目标函数，我们可以利用微积分和应用链规则得到关于模型参数的梯度；见第5.2.2节。当我们观察第5.3节的平方损失梯度时，我们已经尝试了线性回归模型的参数。考虑函数
 $$
 f(x) = \sqrt{ x^{2} + \exp(x^{2}) } + \cos \Big[ x^{2} + \exp(x^{2}) \Big]. \tag{5.109}
 $$
-
+通过应用链式规则，并注意到微分是线性的，我们计算了梯度
 $$
 \begin{align}
 \displaystyle \frac{ \mathrm{d}f }{ \mathrm{d}x } &= \frac{2x+2x\exp\{x^{2}\}}{2\sqrt{ x^{2} + \exp\{x^{2}\} }} - \sin \Big( x^{2} + \exp\{ x^{2} \} \Big) \Big( 2x + 2x \exp\{ x^{2} \} \Big) \\
 &= 2x \left[ \frac{1}{2\sqrt{ x^{2} + \exp\{ x^{2} \} }} - \sin \Big( x^{2} + \exp\{ x^{2} \} \Big) \right] \Big(1 + \exp\{ x^{2} \}\Big). 
 \end{align}
-
-$$$$
+$$
+$$
 \tag{5.110}
 $$
-### 5.6.1 深度神经网络中的梯度
 
+以这种显式的方式写出梯度通常是不切实际的，因为它经常导致导数的一个非常冗长的表达式。在实践中，这意味着，如果我们不小心，梯度的实现可能比计算函数要昂贵得多，这增加了不必要的开销。对于训练深度神经网络模型，反向传播算法（Kelley，1960；布赖森，1961；德雷福斯，1962；鲁梅尔哈特等人，1986）是一种计算误差函数与模型参数相关的梯度的有效方法。
+
+### 5.6.1 深度神经网络中的梯度
+链规则被用于极端的一个领域是深度学习，其中函数值y被计算为一个多级函数组成
 $$
 \boldsymbol{y} = (f_{K} \circ f_{K-1} \circ \cdots \circ f_{1})(\boldsymbol{x}) = f_{K}\Big\{ f_{K-1}\big[\cdots (f_{1}(\boldsymbol{x})\cdots )\big] \Big\} , \tag{5.111}
 $$
+其中，x是输入（例如，图像），y是观测值（例如，类标签），每个函数fi，i = 1，……，K，都有自己的参数。
 
-### 5.6.2 自动微分
-
+在多层神经网络中，我们在第1层中有函数fi（xi−1）=σ（Ai−1xi−1+bi−1）。这里xi−1是层i−1的输出和σ一个激活函数，如逻辑s型1+1e−x，tanh或整正线性单元（ReLU）。为了训练这些模型，我们需要一个损失函数L相对于所有模型参数Aj的梯度，bj对于j = 1，……这也需要我们计算L相对于每一层输入的梯度。例如，如果我们有输入x和观测值y和一个网络结构，则它被定义为
 $$
 \begin{align}
 \boldsymbol{f}_{0} &:= \boldsymbol{x} \tag{5.112}\\
 \boldsymbol{f}_{i} &:= \sigma_{i} \Big( \boldsymbol{A}_{i-1}\boldsymbol{f}_{i-1} + \boldsymbol{b}_{i-1} \Big), \quad  i=1, \dots, K, \tag{5.113} 
 \end{align}
 $$
+参见图5.8的可视化，我们可能有兴趣找到Aj，bj为j = 0，……，K−1，这样的平方损失
 $$
 L(\boldsymbol{\theta}) = \Big\| \boldsymbol{y} - \boldsymbol{f}_{K}\big( \boldsymbol{\theta, x} \big)  \Big\|^{2} \tag{5.114}
 $$
-
+被最小化，其中θ = {A0，b0，……，AK−1，bK−1}。为了得到参数相对于参数集θ的梯度，我们需要L对每一层j=的参数θj = {Aj，bj}的偏导数0，…，K−1。链式规则允许我们确定偏导数为
 $$
 \begin{align}
 \displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta}_{K-1} } &= \displaystyle \frac{ \partial L }{ \partial \boldsymbol{f}_{K} } {\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}_{K} }{ \partial \boldsymbol{\theta}_{K-1} } } \tag{5.115}\\
@@ -489,22 +509,26 @@ $$
 \displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta}_{i} }  &= \displaystyle \frac{ \partial L }{ \partial \boldsymbol{f}_{K} } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{f}_{K} }{ \partial \boldsymbol{f}_{K-1} } \cdots } \boxed{ {\color{orange} \displaystyle \frac{ \partial \boldsymbol{f}_{i+2} }{ \partial \boldsymbol{f}_{i+1} }  } {\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}_{i+1} }{ \partial \boldsymbol{\theta}_{i} }  }  } \tag{5.118}
 \end{align}
 $$
-
+橙色的项是一个层的输出相对于其输入的偏导数，而蓝色的项是一个层的输出相对于其参数的偏导数。假设，我们已经计算出了偏导数∂L/∂θi+1，那么大部分的计算都可以被重用来计算∂L/∂θi。我们所提供的附加条款需要计算的是用方框表示。图5.9显示了梯度通过网络向后传递。
+### 5.6.2 自动微分
+结果表明，反向传播是数值分析中一般采用的自动微分技术的一种特殊情况。我们可以把自动差分看作是一组技术，通过处理中间变量和应用链规则，用数值（与符号化相反）来评估一个函数的精确（直到机器精度）梯度。自动微分应用一系列初等算术运算，如加法、乘法和初等函数，如sin、cos、exp、log。通过将链式规则应用于这些操作，可以自动计算出相当复杂的函数的梯度。自动微分适用于一般的计算机程序，并具有正向和反向模式。Baydin等人（2018）对机器学习中的自动分化进行了很好的概述。图5.10显示了一个简单的图，通过一些中间变量a，b表示从输入x到输出y的数据流。如果我们要计算导数dy/dx，我们将应用链规则并得到
 $$
 \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}x }  = \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}b } \displaystyle \frac{ \mathrm{d}b }{ \mathrm{d}a } \displaystyle \frac{ \mathrm{d}a }{ \mathrm{d}x } . \tag{5.119}
 $$
-
+直观地说，正模和反模在多重的顺序上不同-在一般情况下，我们使用雅可比矩阵，它可以是向量、矩阵或张量。阳离子。由于矩阵乘法的结合性，我们可以从中进行选择
 $$
 \begin{align}
 \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}x } &= \left( \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}b } \displaystyle \frac{ \mathrm{d}b }{ \mathrm{d}a }  \right) \displaystyle \frac{ \mathrm{d}a }{ \mathrm{d}x } , \tag{5.120}\\
 \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}x } &= \displaystyle \frac{ \mathrm{d}y }{ \mathrm{d}b } \left( \displaystyle \frac{ \mathrm{d}b }{ \mathrm{d}a } \displaystyle \frac{ \mathrm{d}a }{ \mathrm{d}x }  \right). \tag{5.121}
 \end{align}
 $$
+方程（5.120）将是反向模式，因为梯度通过图向后传播，即反向传播到数据流。公式（5.121）是正向模式，其中梯度与数据从左到右流动。
 
+下面，我们将重点关注反向模式的自动微分，即反向传播。在神经网络中，输入的维数通常比标签的维数高得多，反向模式在计算上比正向模式低得多。让我们从一个有益的例子开始
 $$
 f(x) = \sqrt{ x^{2} + \exp\{ x^{2} \} } + \cos \Big( x^{2} + \exp\{ x^{2} \} \Big) \tag{5.122}
 $$
-
+从（5.109）开始。如果我们要在计算机上实现一个函数f，我们将能够通过使用中间变量来节省一些计算：
 $$
 \begin{align}
 a &= x^{2}, \tag{5.123}\\
@@ -515,7 +539,7 @@ e &= \cos(c), \tag{5.127}\\
 f &= d + e. \tag{5.128}\\
 \end{align}
 $$
-
+这是在应用链规则时发生的相同的思维过程。请注意，前面一组方程所需要的操作比（5.109）中定义的函数f (x)的直接实现要少。图5.11中对应的计算图显示了获得函数值f所需的数据流和计算量。包含中间变量的方程组可以被认为是一个计算图，这是一种广泛应用于神经网络软件库实现中的表示方法。通过回顾初等函数的导数的定义，我们可以直接计算中间变量与其相应输入的导数。我们获得以下信息：
 $$
 \begin{align}
 \displaystyle \frac{ \partial a }{ \partial x } &= 2x \tag{5.129}\\
@@ -526,7 +550,7 @@ $$
 \displaystyle \frac{ \partial f }{ \partial d } &= 1 = \displaystyle \frac{ \partial f }{ \partial e }. \tag{5.134}
 \end{align}
 $$
-
+通过查看图5.11中的计算图，我们可以通过从输出中向后工作来计算∂f/∂x并得到
 $$
 \begin{align}
 \displaystyle \frac{ \partial f }{ \partial c } &= \displaystyle \frac{ \partial f }{ \partial d } \displaystyle \frac{ \partial d }{ \partial c }  + \displaystyle \frac{ \partial f }{ \partial e } \displaystyle \frac{ \partial e }{ \partial c } \tag{5.135}\\
@@ -535,7 +559,7 @@ $$
 \displaystyle \frac{ \partial f }{ \partial x } &= \displaystyle \frac{ \partial f }{ \partial a } \displaystyle \frac{ \partial a }{ \partial x }. \tag{5.138}\\
 \end{align}
 $$
-
+注意，我们隐式地应用了链规则来获得∂f/∂x。用初等函数导数的结果，得到
 $$
 \begin{align}
 \displaystyle \frac{ \partial f }{ \partial c } &= 1 \cdot \frac{1}{2\sqrt{ c }} + 1 \cdot \big[ -\sin(c) \big] \tag{5.139}\\
@@ -544,35 +568,35 @@ $$
 \displaystyle \frac{ \partial f }{ \partial x } &= \displaystyle \frac{ \partial f }{ \partial a }  \cdot 2x. \tag{5.142}
 \end{align}
 $$
+通过将上面的每个导数作为一个变量，我们观察到计算导数所需的计算与函数本身的计算的复杂性相似。这是非常违反直觉的，因为导数∂f∂x（5.110）的数学表达式比（5.109）中的函数f (x)的数学表达式要复杂得多。
 
+自动区分是实施例5.14的形式化。设x1，……，xd是函数的输入变量，xd+1，……，xd−1是中间变量，xD是输出变量。则计算图可以表示为：
 $$
 \text{For }i = d+1, \dots, D:\quad x_{i} = g_{i}\Big[x_{\text{Pa}(x_{i})}\Big], \tag{5.143}
 $$
-
+其中，gi（·）是基本函数，xPa（xi）是图中变量xi的父节点。给定一个以这种方式定义的函数，我们可以使用链式规则来逐步计算该函数的导数。回想一下，根据定义，f = xD，因此
 $$
 \displaystyle \frac{ \partial f }{ \partial x_{D} } =1. \tag{5.144}
 $$
-
+对于其他变量xi，我们应用链式规则
 $$
 \displaystyle \frac{ \partial f }{ \partial x_{i} } = \sum\limits_{x_{j}: x_{i} \in \text{Pa}(x_{j})} \displaystyle \frac{ \partial f }{ \partial x_{j} } \displaystyle \frac{ \partial x_{j} }{ \partial x_{i} } = \sum\limits_{x_{j}: x_{i} \in \text{Pa}(x_{j})} \displaystyle \frac{ \partial f }{ \partial x_{j} } \displaystyle \frac{ \partial g_{j} }{ \partial x_{i} } ,\tag{5.145}  
 $$
-
+其中，Pa（xj）是计算图中xj的父节点的集合。方程（5.143）是一个函数的正向传播，而（5.145）是该梯度通过计算图的反向传播。对于神经网络训练，我们反向传播关于标签的预测误差。当我们有一个可以表示为计算图的函数时，其中初等函数是可微的。事实上，这个函数甚至可能不是一个数学函数，而是一个计算机程序。然而，并不是所有的计算机程序都可以自动微分，例如，如果我们不能找到微分的初等函数。编程结构，如循环和if语句，也需要更多的小心。
 
 ## 5.7 高阶导数
 
 到目前为止，我们讨论了梯度，即一阶导数。有时，我们对更高阶的导数感兴趣，例如，当我们想要使用 Newton 法进行优化时，这需要二阶导数（Nocedal and Wright, 2006）。在5.1.1节中，我们讨论了使用多项式近似函数的 Taylor 级数。在多变量情况下，我们可以做完全相同的事情。在接下来的内容中，我们将详细讨论这一点。但让我们先从一些符号开始。
 
-考虑一个函数 $f:R^{2}\to R$ 有两个变量 $x,y$。我们使用以下符号表示高阶偏导数（和梯度）：
+考虑一个函数 $f:\mathbb{R}^{2}\to \mathbb{R}$ 有两个变量 $x,y$。我们使用以下符号表示高阶偏导数（和梯度）：
 
 $\frac{\partial^{2}f}{\partial x^{2}}$ 是 $f$ 关于 $x$ 的二阶偏导数。 $\frac{\partial^{n}f}{\partial x^{n}}$ 是 $f$ 关于 $x$ 的 $n$ 阶偏导数。 $\frac{\partial^{2}f}{\partial y\partial x}=\frac{\partial}{\partial y}(\frac{\partial f}{\partial x})$ 是先对 $x$ 求偏导，然后对 $y$ 求偏导得到的偏导数。 $\frac{\partial^{2}f}{\partial x\partial y}$ 是先对 $y$ 求偏导，然后对 $x$ 求偏导得到的偏导数。
 
  Hessian 矩阵是所有二阶偏导数的集合。
 
-如果 $f(x,y)$ 是二次（连续）可微函数，那么 $\frac{\partial^{2}f}{\partial x\partial y}=\frac{\partial^{2}f}{\partial y\partial x}$，即求导顺序无关，并且相应的 Hessian 矩阵 $H=\left[\begin{array}{cc}\frac{\partial^{2}f}{\partial x^{2}}&\frac{\partial^{2}f}{\partial x\partial y}\\frac{\partial^{2}f}{\partial x\partial y}&\frac{\partial^{2}f}{\partial y^{2}}\end{array}\right]$ 是对称的。 Hessian 矩阵表示为 $\nabla_{x,y}^{2}f(x,y)$。一般来说，对于 $x\in R^{n}$ 和 $f:R^{n}\to R$， Hessian 矩阵是一个 $n\times n$ 矩阵。 Hessian 矩阵衡量了函数在 $(x,y)$ 附近的局部曲率。注意（向量场的 Hessian 矩阵）：如果 $f:R^{n}\to R^{m}$ 是一个向量场， Hessian 矩阵是一个 $(m\times n\times n)$ 张量。
+如果 $f(x,y)$ 是二次（连续）可微函数，那么 $\frac{\partial^{2}f}{\partial x\partial y}=\frac{\partial^{2}f}{\partial y\partial x}$，即求导顺序无关，并且相应的 Hessian 矩阵 $H=\left[\begin{array}{cc}\frac{\partial^{2}f}{\partial x^{2}}&\frac{\partial^{2}f}{\partial x\partial y}\\frac{\partial^{2}f}{\partial x\partial y}&\frac{\partial^{2}f}{\partial y^{2}}\end{array}\right]$ 是对称的。 Hessian 矩阵表示为 $\nabla_{x,y}^{2}f(x,y)$。一般来说，对于 $x\in \mathbb{R}^{n}$ 和 $f:\mathbb{R}^{n}\to \mathbb{R}$， Hessian 矩阵是一个 $n\times n$ 矩阵。 Hessian 矩阵衡量了函数在 $(x,y)$ 附近的局部曲率。注意（向量场的 Hessian 矩阵）：如果 $f:\mathbb{R}^{n}\to \mathbb{R}^{m}$ 是一个向量场， Hessian 矩阵是一个 $(m\times n\times n)$ 张量。
 
 ## 5.8 线性近似和多元 Taylor 级数
-
-# 5.8 Linearization and Multivariate Taylor Series
 
 函数 $f$ 的梯度 $\nabla f$ 通常用于 $f$ 在 $x_{0}$ 附近的局部线性近似：
 
@@ -580,7 +604,7 @@ $$f(x)\approx f(x_{0})+(\nabla_{x}f)(x_{0})(x - x_{0})$$
 
 这里 $(\nabla_{x}f)(x_{0})$ 是 $f$ 关于 $x$ 的梯度，在 $x_{0}$ 处求值。图5.12说明了这种线性近似。原函数被一条直线近似，这种近似在局部是准确的，但随着我们远离 $x_{0}$ 而变差。方程(5.148)是 $f$ 在 $x_{0}$ 处多元 Taylor 级数展开的特例，其中我们只考虑前两项。
 
-我们考虑一个在 $x_{0}$ 处光滑的函数 $f:R^{D}\to R$，$x\mapsto f(x)$，$x\in R^{D}$。当我们定义差向量 $\delta :=x - x_{0}$ 时，$f$ 在 $(x_{0})$ 处的多元 Taylor 级数定义为
+我们考虑一个在 $x_{0}$ 处光滑的函数 $f:\mathbb{R}^{D}\to \mathbb{R}$，$x\mapsto f(x)$，$x\in \mathbb{R}^{D}$。当我们定义差向量 $\delta :=x - x_{0}$ 时，$f$ 在 $(x_{0})$ 处的多元 Taylor 级数定义为
 
 $$f(x)=\sum_{k = 0}^{\infty}\frac{D_{x}^{k}f(x_{0})}{k!}\delta^{k}$$
 
@@ -590,14 +614,14 @@ $f$ 在 $x_{0}$ 处的 $n$ 阶 Taylor 多项式包含(5.151)中级数的前 $n +
 
 $$T_{n}(x)=\sum_{k = 0}^{n}\frac{D_{x}^{k}f(x_{0})}{k!}\delta^{k}$$
 
-在(5.151)和(5.152)中，我们使用了略显草率的 $\delta^{k}$ 记号，这对于向量 $x\in R^{D}$，$D>1$，和 $k>1$ 是未定义的。注意，$D_{x}^{k}f$ 和 $\delta^{k}$ 都是 $k$ 阶张量，即 $k$ 维数组。$k$ 阶张量 $\delta^{k}\in R^{\overbrace{D\times D\times\cdots\times D}^{k times}}$ 是通过向量 $\delta\in R^{D}$ 的 $k$ 重外积得到的，用 $\otimes$ 表示。例如，$\delta^{2}:=\delta\otimes\delta=\delta\delta^{\top}$，$\delta^{2}[i,j]=\delta[i]\delta[j]$ $\delta^{3}:=\delta\otimes\delta\otimes\delta$，$\delta^{3}[i,j,k]=\delta[i]\delta[j]\delta[k]$
+在(5.151)和(5.152)中，我们使用了略显草率的 $\delta^{k}$ 记号，这对于向量 $x\in \mathbb{R}^{D}$，$D>1$，和 $k>1$ 是未定义的。注意，$D_{x}^{k}f$ 和 $\delta^{k}$ 都是 $k$ 阶张量，即 $k$ 维数组。$k$ 阶张量 $\delta^{k}\in \mathbb{R}^{\overbrace{D\times D\times\cdots\times D}^{k times}}$ 是通过向量 $\delta\in \mathbb{R}^{D}$ 的 $k$ 重外积得到的，用 $\otimes$ 表示。例如，$\delta^{2}:=\delta\otimes\delta=\delta\delta^{\top}$，$\delta^{2}[i,j]=\delta[i]\delta[j]$ $\delta^{3}:=\delta\otimes\delta\otimes\delta$，$\delta^{3}[i,j,k]=\delta[i]\delta[j]\delta[k]$
 
 我们写出 Taylor 级数展开的前几项 $D_{x}^{k}f(x_{0})\delta^{k}$，其中 $k = 0,\cdots,3$ 且 $\delta :=x - x_{0}$：
 
-$k = 0: D_{x}^{0}f(x_{0})\delta^{0}=f(x_{0})\in R$
-$k = 1: D_{x}^{1}f(x_{0})\delta^{1}=\underbrace{\nabla_{x}f(x_{0})}{1\times D}\underbrace{\delta}{D\times 1}=\sum_{i = 1}^{D}\nabla_{x}f(x_{0})[i]\delta[i]\in R$
-$k = 2: D_{x}^{2}f(x_{0})\delta^{2}=tr(\underbrace{H(x_{0})}{D\times D}\underbrace{\delta}{D\times 1}\underbrace{\delta^{\top}}{1\times D})=\delta^{\top}H(x{0})\delta=\sum_{i = 1}^{D}\sum_{j = 1}^{D}H[i,j]\delta[i]\delta[j]\in R$
-$k = 3: D_{x}^{3}f(x_{0})\delta^{3}=\sum_{i = 1}^{D}\sum_{j = 1}^{D}\sum_{k = 1}^{D}D_{x}^{3}f(x_{0})[i,j,k]\delta[i]\delta[j]\delta[k]\in R$ 这里，$H(x_{0})$ 是 $f$ 在 $x_{0}$ 处求值的 Hessian 矩阵
+$k = 0: D_{x}^{0}f(x_{0})\delta^{0}=f(x_{0})\in \mathbb{R}$
+$k = 1: D_{x}^{1}f(x_{0})\delta^{1}=\underbrace{\nabla_{x}f(x_{0})}{1\times D}\underbrace{\delta}{D\times 1}=\sum_{i = 1}^{D}\nabla_{x}f(x_{0})[i]\delta[i]\in \mathbb{R}$
+$k = 2: D_{x}^{2}f(x_{0})\delta^{2}=tr(\underbrace{H(x_{0})}{D\times D}\underbrace{\delta}{D\times 1}\underbrace{\delta^{\top}}{1\times D})=\delta^{\top}H(x{0})\delta=\sum_{i = 1}^{D}\sum_{j = 1}^{D}H[i,j]\delta[i]\delta[j]\in \mathbb{R}$
+$k = 3: D_{x}^{3}f(x_{0})\delta^{3}=\sum_{i = 1}^{D}\sum_{j = 1}^{D}\sum_{k = 1}^{D}D_{x}^{3}f(x_{0})[i,j,k]\delta[i]\delta[j]\delta[k]\in \mathbb{R}$ 这里，$H(x_{0})$ 是 $f$ 在 $x_{0}$ 处求值的 Hessian 矩阵
 例5.15（两个变量函数的 Taylor 级数展开） 考虑函数 $f(x,y)=x^{2}+2xy + y^{3}$。我们要在 $(x_{0},y_{0})=(1,2)$ 处计算 $f$ 的 Taylor 级数展开。
 
 在开始之前，让我们讨论一下我们的预期：(5.161)中的函数是一个3次多项式。我们正在寻找 Taylor 级数展开，它本身是多项式的线性组合。因此，我们不期望 Taylor 级数展开包含四阶或更高阶的项来表示一个三阶多项式。这意味着，确定(5.151)的前四项应该足以精确地表示(5.161)的另一种形式。
@@ -606,14 +630,14 @@ $k = 3: D_{x}^{3}f(x_{0})\delta^{3}=\sum_{i = 1}^{D}\sum_{j = 1}^{D}\sum_{k = 1}
 
 $f(1,2)=13$
 $\frac{\partial f}{\partial x}=2x + 2y\Rightarrow\frac{\partial f}{\partial x}(1,2)=6$
-$\frac{\partial f}{\partial y}=2x + 3y^{2}\Rightarrow\frac{\partial f}{\partial y}(1,2)=14$ 因此，我们得到 $D_{x,y}^{1}f(1,2)=\nabla_{x,y}f(1,2)=\left[\begin{array}{ll}6&14\end{array}\right]\in R^{1\times 2}$ 使得 $\frac{D_{x,y}^{1}f(1,2)}{1!}\delta=\left[\begin{array}{ll}6&14\end{array}\right]\left[\begin{array}{l}x - 1\y - 2\end{array}\right]=6(x - 1)+14(y - 2)$
+$\frac{\partial f}{\partial y}=2x + 3y^{2}\Rightarrow\frac{\partial f}{\partial y}(1,2)=14$ 因此，我们得到 $D_{x,y}^{1}f(1,2)=\nabla_{x,y}f(1,2)=\left[\begin{array}{ll}6&14\end{array}\right]\in \mathbb{R}^{1\times 2}$ 使得 $\frac{D_{x,y}^{1}f(1,2)}{1!}\delta=\left[\begin{array}{ll}6&14\end{array}\right]\left[\begin{array}{l}x - 1\y - 2\end{array}\right]=6(x - 1)+14(y - 2)$
 二阶偏导数是：
 
-当我们收集二阶偏导数时，我们得到 Hessian 矩阵 $H=\left[\begin{array}{ll}\frac{\partial^{2}f}{\partial x^{2}}&\frac{\partial^{2}f}{\partial x\partial y}\\frac{\partial^{2}f}{\partial y\partial x}&\frac{\partial^{2}f}{\partial y^{2}}\end{array}\right]=\left[\begin{array}{rr}2&2\2&6y\end{array}\right]$，因此 $H(1,2)=\left[\begin{array}{cc}2&2\2&12\end{array}\right]\in R^{2\times2}$
+当我们收集二阶偏导数时，我们得到 Hessian 矩阵 $H=\left[\begin{array}{ll}\frac{\partial^{2}f}{\partial x^{2}}&\frac{\partial^{2}f}{\partial x\partial y}\\frac{\partial^{2}f}{\partial y\partial x}&\frac{\partial^{2}f}{\partial y^{2}}\end{array}\right]=\left[\begin{array}{rr}2&2\2&6y\end{array}\right]$，因此 $H(1,2)=\left[\begin{array}{cc}2&2\2&12\end{array}\right]\in \mathbb{R}^{2\times2}$
 
 因此， Taylor 级数展开的下一项由以下给出： $\frac{D_{x,y}^{2}f(1,2)}{2!}\delta^{2}=\frac{1}{2}\delta^{\top}H(1,2)\delta=\frac{1}{2}\left[\begin{array}{ll}x - 1&y - 2\end{array}\right]\left[\begin{array}{cc}2&2\2&12\end{array}\right]\left[\begin{array}{l}x - 1\y - 2\end{array}\right]=(x - 1)^{2}+2(x - 1)(y - 2)+6(y - 2)^{2}$
 
-三阶导数获得为 $D_{x,y}^{3}f=\left[\begin{array}{ll}\frac{\partial H}{\partial x}&\frac{\partial H}{\partial y}\end{array}\right]\in R^{2\times2\times2}$
+三阶导数获得为 $D_{x,y}^{3}f=\left[\begin{array}{ll}\frac{\partial H}{\partial x}&\frac{\partial H}{\partial y}\end{array}\right]\in \mathbb{R}^{2\times2\times2}$
 
 $D_{x,y}^{3}f[:,:,1]=\frac{\partial H}{\partial x}=\left[\begin{array}{cc}\frac{\partial^{3}f}{\partial x^{3}}&\frac{\partial^{3}f}{\partial x^{2}y}\\frac{\partial^{3}f}{\partial x\partial y\partial x}&\frac{\partial^{3}f}{\partial x\partial y^{2}}\end{array}\right]$
 
@@ -643,20 +667,20 @@ $$ \begin{align*} f(x)&=f(1,2)+D_{x,y}^{1}f(1,2)\delta+\frac{D_{x,y}^{2}f(1,2)}{
 
 5.1 计算$f(x)=\log(x^{4})\sin(x^{3})$的导数$f'(x)$。
 5.2 计算 Logistic 函数$f(x)=\frac{1}{1 + \exp(-x)}$的导数$f'(x)$。
-5.3计算函数$f(x)=\exp(-\frac{1}{2\sigma^{2}}(x - \mu)^{2})$的导数$f'(x)$，其中$\mu,\sigma\in R$是常数。
+5.3计算函数$f(x)=\exp(-\frac{1}{2\sigma^{2}}(x - \mu)^{2})$的导数$f'(x)$，其中$\mu,\sigma\in \mathbb{R}$是常数。
 5.4计算$f(x)=\sin(x)+\cos(x)$在$x_{0}=0$处的 Taylor 多项式$T_{n}$，$n = 0,\cdots,5$。
 5.5考虑以下函数：
-$f_{1}(x)=\sin(x_{1})\cos(x_{2})$，$x\in R^{2}$
-$f_{2}(x,y)=x^{\top}y$，$x,y\in R^{n}$
-$f_{3}(x)=x x^{\top}$，$x\in R^{n}$
+$f_{1}(x)=\sin(x_{1})\cos(x_{2})$，$x\in \mathbb{R}^{2}$
+$f_{2}(x,y)=x^{\top}y$，$x,y\in \mathbb{R}^{n}$
+$f_{3}(x)=x x^{\top}$，$x\in \mathbb{R}^{n}$
     - （a）$\frac{\partial f_{i}}{\partial x}$的维度是什么？
     - （b）计算 Jacobi 矩阵。
-5.6对$f$关于$t$求导，对$g$关于$x$求导，其中$f(t)=\sin(\log(t^{\top}t))$，$t\in R^{D}$，$g(X)=tr(AXB)$，$A\in R^{D\times E}$，$X\in R^{E\times F}$，$B\in R^{F\times D}$，其中$tr(.)$表示迹。
+5.6对$f$关于$t$求导，对$g$关于$x$求导，其中$f(t)=\sin(\log(t^{\top}t))$，$t\in \mathbb{R}^{D}$，$g(X)=tr(AXB)$，$A\in \mathbb{R}^{D\times E}$，$X\in \mathbb{R}^{E\times F}$，$B\in \mathbb{R}^{F\times D}$，其中$tr(.)$表示迹。
 5.7使用链式法则计算以下函数的导数$df/dx$。提供每个单个偏导数的维度。详细描述你的步骤。
-    - （a）$f(z)=\log(1 + z)$，$z = x^{\top}x$，$x\in R^{D}$
-    - （b）$f(z)=\sin(z)$，$z = Ax + b$，$A\in R^{E\times D}$，$x\in R^{D}$，$b\in R^{E}$，其中$\sin(.)$应用于$z$的每个元素。
+    - （a）$f(z)=\log(1 + z)$，$z = x^{\top}x$，$x\in \mathbb{R}^{D}$
+    - （b）$f(z)=\sin(z)$，$z = Ax + b$，$A\in \mathbb{R}^{E\times D}$，$x\in \mathbb{R}^{D}$，$b\in \mathbb{R}^{E}$，其中$\sin(.)$应用于$z$的每个元素。
 5.8计算以下函数的导数$df/dx$。详细描述你的步骤。
-    - （a）使用链式法则。提供每个单个偏导数的维度。不需要显式计算偏导数的乘积。$f(z)=\exp(-\frac{1}{2}z)$，$z = g(y)=y^{\top}S^{-1}y$，$y = h(x)=x - \mu$，其中$x,\mu\in R^{D}$，$S\in R^{D\times D}$。
-    - （b）$f(x)=tr(xx^{\top}+\sigma^{2}I)$，$x\in R^{D}$。这里$tr(A)$是$A$的迹，即对角元素$A_{ii}$的和。提示：显式写出外积。
-    - （c）使用链式法则。提供每个单个偏导数的维度。不需要显式计算偏导数的乘积。$f = \tanh(z)\in R^{M}$，$z = Ax + b$，$x\in R^{N}$，$A\in R^{M\times N}$，$b\in R^{M}$。这里，$\tanh$应用于$z$的每个组件。
-5.9我们定义$g(z,\nu):=\log p(x,z)-\log q(z,\nu)$，$z := t(\epsilon,\nu)$，对于可微函数$p,q,t$以及$x\in R^{D}$，$z\in R^{E}$，$\nu\in R^{F}$，$\epsilon\in R^{G}$。使用链式法则计算梯度$\frac{d}{d\nu}g(z,\nu)$。
+    - （a）使用链式法则。提供每个单个偏导数的维度。不需要显式计算偏导数的乘积。$f(z)=\exp(-\frac{1}{2}z)$，$z = g(y)=y^{\top}S^{-1}y$，$y = h(x)=x - \mu$，其中$x,\mu\in \mathbb{R}^{D}$，$S\in \mathbb{R}^{D\times D}$。
+    - （b）$f(x)=tr(xx^{\top}+\sigma^{2}I)$，$x\in \mathbb{R}^{D}$。这里$tr(A)$是$A$的迹，即对角元素$A_{ii}$的和。提示：显式写出外积。
+    - （c）使用链式法则。提供每个单个偏导数的维度。不需要显式计算偏导数的乘积。$f = \tanh(z)\in \mathbb{R}^{M}$，$z = Ax + b$，$x\in \mathbb{R}^{N}$，$A\in \mathbb{R}^{M\times N}$，$b\in \mathbb{R}^{M}$。这里，$\tanh$应用于$z$的每个组件。
+5.9我们定义$g(z,\nu):=\log p(x,z)-\log q(z,\nu)$，$z := t(\epsilon,\nu)$，对于可微函数$p,q,t$以及$x\in \mathbb{R}^{D}$，$z\in \mathbb{R}^{E}$，$\nu\in \mathbb{R}^{F}$，$\epsilon\in \mathbb{R}^{G}$。使用链式法则计算梯度$\frac{d}{d\nu}g(z,\nu)$。
