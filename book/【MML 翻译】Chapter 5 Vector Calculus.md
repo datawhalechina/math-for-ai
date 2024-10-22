@@ -2,7 +2,7 @@
 许多机器学习算法都在优化一个目标函数，即相对于一组模型参数进行优化，这些参数控制着模型解释数据的好坏。如何寻找好的参数可被表述为一个优化问题（见 8.2 节和 8.3 节）。优化的例子包括：
 1. 线性回归（见第9章），我们研究曲线拟合问题，并优化线性权重参数以最大化可能性；
 2. 神经网络自编码器用于降维和数据压缩，其中参数是每层的权重和偏差，我们通过反复应用链式法则来最小化重建误差；
-3. 高斯混合模型（见第11章）用于建模数据分布，我们优化每个混合组件的位置和形状参数，以最大化模型的可能性。
+3.  Gauss 混合模型（见第11章）用于建模数据分布，我们优化每个混合组件的位置和形状参数，以最大化模型的可能性。
 图5.1展示了我们通常使用利用梯度信息（第7.1节）的优化算法来解决这些问题。图5.2概述了本章概念之间以及它们与书中其他章节的联系。
 
 本证的核心概念是函数。一个函数 $f$ 是一个数学对象，它将两个数学对象进行联系。本书中涉及的数学对象即为模型输入 $\boldsymbol{x} \in \mathbb{R}^{D}$ 以及拟合目标（函数值）$f(\boldsymbol{x})$，若无额外说明，默认拟合目标都是实数。这里 $\mathbb{R}^{D}$ 称为 $f$ 的**定义域（domain）**，而相对应的函数值 $f(\boldsymbol{x})$ 所在的集合被称为 $f$ 的**像集（image）或陪域（codomain）**。
@@ -558,13 +558,105 @@ $$
 $$
 
 
-
-
 ## 5.7 高阶导数
+
+到目前为止，我们讨论了梯度，即一阶导数。有时，我们对更高阶的导数感兴趣，例如，当我们想要使用 Newton 法进行优化时，这需要二阶导数（Nocedal and Wright, 2006）。在5.1.1节中，我们讨论了使用多项式近似函数的 Taylor 级数。在多变量情况下，我们可以做完全相同的事情。在接下来的内容中，我们将详细讨论这一点。但让我们先从一些符号开始。
+
+考虑一个函数 $f:R^{2}\to R$ 有两个变量 $x,y$。我们使用以下符号表示高阶偏导数（和梯度）：
+
+$\frac{\partial^{2}f}{\partial x^{2}}$ 是 $f$ 关于 $x$ 的二阶偏导数。 $\frac{\partial^{n}f}{\partial x^{n}}$ 是 $f$ 关于 $x$ 的 $n$ 阶偏导数。 $\frac{\partial^{2}f}{\partial y\partial x}=\frac{\partial}{\partial y}(\frac{\partial f}{\partial x})$ 是先对 $x$ 求偏导，然后对 $y$ 求偏导得到的偏导数。 $\frac{\partial^{2}f}{\partial x\partial y}$ 是先对 $y$ 求偏导，然后对 $x$ 求偏导得到的偏导数。
+
+ Hessian 矩阵是所有二阶偏导数的集合。
+
+如果 $f(x,y)$ 是二次（连续）可微函数，那么 $\frac{\partial^{2}f}{\partial x\partial y}=\frac{\partial^{2}f}{\partial y\partial x}$，即求导顺序无关，并且相应的 Hessian 矩阵 $H=\left[\begin{array}{cc}\frac{\partial^{2}f}{\partial x^{2}}&\frac{\partial^{2}f}{\partial x\partial y}\\frac{\partial^{2}f}{\partial x\partial y}&\frac{\partial^{2}f}{\partial y^{2}}\end{array}\right]$ 是对称的。 Hessian 矩阵表示为 $\nabla_{x,y}^{2}f(x,y)$。一般来说，对于 $x\in R^{n}$ 和 $f:R^{n}\to R$， Hessian 矩阵是一个 $n\times n$ 矩阵。 Hessian 矩阵衡量了函数在 $(x,y)$ 附近的局部曲率。注意（向量场的 Hessian 矩阵）：如果 $f:R^{n}\to R^{m}$ 是一个向量场， Hessian 矩阵是一个 $(m\times n\times n)$ 张量。
 
 ## 5.8 线性近似和多元 Taylor 级数
 
+# 5.8 Linearization and Multivariate Taylor Series
+
+函数 $f$ 的梯度 $\nabla f$ 通常用于 $f$ 在 $x_{0}$ 附近的局部线性近似：
+
+$$f(x)\approx f(x_{0})+(\nabla_{x}f)(x_{0})(x - x_{0})$$
+
+这里 $(\nabla_{x}f)(x_{0})$ 是 $f$ 关于 $x$ 的梯度，在 $x_{0}$ 处求值。图5.12说明了这种线性近似。原函数被一条直线近似，这种近似在局部是准确的，但随着我们远离 $x_{0}$ 而变差。方程(5.148)是 $f$ 在 $x_{0}$ 处多元 Taylor 级数展开的特例，其中我们只考虑前两项。
+
+我们考虑一个在 $x_{0}$ 处光滑的函数 $f:R^{D}\to R$，$x\mapsto f(x)$，$x\in R^{D}$。当我们定义差向量 $\delta :=x - x_{0}$ 时，$f$ 在 $(x_{0})$ 处的多元 Taylor 级数定义为
+
+$$f(x)=\sum_{k = 0}^{\infty}\frac{D_{x}^{k}f(x_{0})}{k!}\delta^{k}$$
+
+其中 $D_{x}^{k}f(x_{0})$ 是 $f$ 关于 $x$ 的第 $k$ 阶（全）导数，在 $x_{0}$ 处求值。
+
+$f$ 在 $x_{0}$ 处的 $n$ 阶 Taylor 多项式包含(5.151)中级数的前 $n + 1$ 项，定义为
+
+$$T_{n}(x)=\sum_{k = 0}^{n}\frac{D_{x}^{k}f(x_{0})}{k!}\delta^{k}$$
+
+在(5.151)和(5.152)中，我们使用了略显草率的 $\delta^{k}$ 记号，这对于向量 $x\in R^{D}$，$D>1$，和 $k>1$ 是未定义的。注意，$D_{x}^{k}f$ 和 $\delta^{k}$ 都是 $k$ 阶张量，即 $k$ 维数组。$k$ 阶张量 $\delta^{k}\in R^{\overbrace{D\times D\times\cdots\times D}^{k times}}$ 是通过向量 $\delta\in R^{D}$ 的 $k$ 重外积得到的，用 $\otimes$ 表示。例如，$\delta^{2}:=\delta\otimes\delta=\delta\delta^{\top}$，$\delta^{2}[i,j]=\delta[i]\delta[j]$ $\delta^{3}:=\delta\otimes\delta\otimes\delta$，$\delta^{3}[i,j,k]=\delta[i]\delta[j]\delta[k]$
+
+我们写出 Taylor 级数展开的前几项 $D_{x}^{k}f(x_{0})\delta^{k}$，其中 $k = 0,\cdots,3$ 且 $\delta :=x - x_{0}$：
+
+$k = 0: D_{x}^{0}f(x_{0})\delta^{0}=f(x_{0})\in R$
+$k = 1: D_{x}^{1}f(x_{0})\delta^{1}=\underbrace{\nabla_{x}f(x_{0})}{1\times D}\underbrace{\delta}{D\times 1}=\sum_{i = 1}^{D}\nabla_{x}f(x_{0})[i]\delta[i]\in R$
+$k = 2: D_{x}^{2}f(x_{0})\delta^{2}=tr(\underbrace{H(x_{0})}{D\times D}\underbrace{\delta}{D\times 1}\underbrace{\delta^{\top}}{1\times D})=\delta^{\top}H(x{0})\delta=\sum_{i = 1}^{D}\sum_{j = 1}^{D}H[i,j]\delta[i]\delta[j]\in R$
+$k = 3: D_{x}^{3}f(x_{0})\delta^{3}=\sum_{i = 1}^{D}\sum_{j = 1}^{D}\sum_{k = 1}^{D}D_{x}^{3}f(x_{0})[i,j,k]\delta[i]\delta[j]\delta[k]\in R$ 这里，$H(x_{0})$ 是 $f$ 在 $x_{0}$ 处求值的 Hessian 矩阵
+例5.15（两个变量函数的 Taylor 级数展开） 考虑函数 $f(x,y)=x^{2}+2xy + y^{3}$。我们要在 $(x_{0},y_{0})=(1,2)$ 处计算 $f$ 的 Taylor 级数展开。
+
+在开始之前，让我们讨论一下我们的预期：(5.161)中的函数是一个3次多项式。我们正在寻找 Taylor 级数展开，它本身是多项式的线性组合。因此，我们不期望 Taylor 级数展开包含四阶或更高阶的项来表示一个三阶多项式。这意味着，确定(5.151)的前四项应该足以精确地表示(5.161)的另一种形式。
+
+为了确定 Taylor 级数展开，我们从常数项和一阶导数开始：
+
+$f(1,2)=13$
+$\frac{\partial f}{\partial x}=2x + 2y\Rightarrow\frac{\partial f}{\partial x}(1,2)=6$
+$\frac{\partial f}{\partial y}=2x + 3y^{2}\Rightarrow\frac{\partial f}{\partial y}(1,2)=14$ 因此，我们得到 $D_{x,y}^{1}f(1,2)=\nabla_{x,y}f(1,2)=\left[\begin{array}{ll}6&14\end{array}\right]\in R^{1\times 2}$ 使得 $\frac{D_{x,y}^{1}f(1,2)}{1!}\delta=\left[\begin{array}{ll}6&14\end{array}\right]\left[\begin{array}{l}x - 1\y - 2\end{array}\right]=6(x - 1)+14(y - 2)$
+二阶偏导数是：
+
+当我们收集二阶偏导数时，我们得到 Hessian 矩阵 $H=\left[\begin{array}{ll}\frac{\partial^{2}f}{\partial x^{2}}&\frac{\partial^{2}f}{\partial x\partial y}\\frac{\partial^{2}f}{\partial y\partial x}&\frac{\partial^{2}f}{\partial y^{2}}\end{array}\right]=\left[\begin{array}{rr}2&2\2&6y\end{array}\right]$，因此 $H(1,2)=\left[\begin{array}{cc}2&2\2&12\end{array}\right]\in R^{2\times2}$
+
+因此， Taylor 级数展开的下一项由以下给出： $\frac{D_{x,y}^{2}f(1,2)}{2!}\delta^{2}=\frac{1}{2}\delta^{\top}H(1,2)\delta=\frac{1}{2}\left[\begin{array}{ll}x - 1&y - 2\end{array}\right]\left[\begin{array}{cc}2&2\2&12\end{array}\right]\left[\begin{array}{l}x - 1\y - 2\end{array}\right]=(x - 1)^{2}+2(x - 1)(y - 2)+6(y - 2)^{2}$
+
+三阶导数获得为 $D_{x,y}^{3}f=\left[\begin{array}{ll}\frac{\partial H}{\partial x}&\frac{\partial H}{\partial y}\end{array}\right]\in R^{2\times2\times2}$
+
+$D_{x,y}^{3}f[:,:,1]=\frac{\partial H}{\partial x}=\left[\begin{array}{cc}\frac{\partial^{3}f}{\partial x^{3}}&\frac{\partial^{3}f}{\partial x^{2}y}\\frac{\partial^{3}f}{\partial x\partial y\partial x}&\frac{\partial^{3}f}{\partial x\partial y^{2}}\end{array}\right]$
+
+$D_{x,y}^{3}f[:,:,2]=\frac{\partial H}{\partial y}=\left[\begin{array}{cc}\frac{\partial^{3}f}{\partial y\partial x^{2}}&\frac{\partial^{3}f}{\partial y\partial x\partial y}\\frac{\partial^{3}f}{\partial y^{2}\partial x}&\frac{\partial^{3}f}{\partial y^{3}}\end{array}\right]$
+
+由于 Hessian 矩阵(5.171)中的大多数二阶偏导数是常数，唯一非零的三阶偏导数是 $\frac{\partial^{3}f}{\partial y^{3}}=6\Rightarrow\frac{\partial^{3}f}{\partial y^{3}}(1,2)=6$
+
+更高阶导数和3阶混合导数（例如，$\frac{\partial f^{3}}{\partial x^{2}\partial y}$）消失，因此 $D_{x,y}^{3}f[:,:,1]=\left[\begin{array}{ll}0&0\0&0\end{array}\right]$, $D_{x,y}^{3}f[:,:,2]=\left[\begin{array}{ll}0&0\0&6\end{array}\right]$
+
+且 $\frac{D_{x,y}^{3}f(1,2)}{3!}\delta^{3}=(y - 2)^{3}$
+
+这收集了 Taylor 级数的所有三次项。
+
+总的来说，$f$ 在 $(x_{0},y_{0})=(1,2)$ 处的（精确） Taylor 级数展开是
+
+$$ \begin{align*} f(x)&=f(1,2)+D_{x,y}^{1}f(1,2)\delta+\frac{D_{x,y}^{2}f(1,2)}{2!}\delta^{2}+\frac{D_{x,y}^{3}f(1,2)}{3!}\delta^{3}\ &=f(1,2)+\frac{\partial f(1,2)}{\partial x}(x - 1)+\frac{\partial f(1,2)}{\partial y}(y - 2)\ &+\frac{1}{2!}\left(\frac{\partial^{2}f(1,2)}{\partial x^{2}}(x - 1)^{2}+\frac{\partial^{2}f(1,2)}{\partial y^{2}}(y - 2)^{2}+2\frac{\partial^{2}f(1,2)}{\partial x\partial y}(x - 1)(y - 2)\right)+\frac{1}{6}\frac{\partial^{3}f(1,2)}{\partial y^{3}}(y - 2)^{3}\ &=13+6(x - 1)+14(y - 2)\ &+(x - 1)^{2}+6(y - 2)^{2}+2(x - 1)(y - 2)+(y - 2)^{3} \end{align*} $$
+
+在这种情况下，我们得到了(5.161)中多项式的精确 Taylor 级数展开，即(5.180c)中的多项式与(5.161)中的原始多项式完全相同。在这个特定的例子中，这个结果并不令人惊讶，因为原始函数是一个三阶多项式，我们通过常数项、一阶、二阶和三阶多项式的线性组合在(5.180c)中表达了它。
+
 ## 5.9 拓展阅读
+
+关于矩阵微分的更多细节，以及对所需线性代数的简短回顾，可以在Magnus和Neudecker（2007）中找到。自动微分有着悠久的历史，我们参考Griewank和Walther（2003）、Griewank和Walther（2008）、Elliott（2009）以及其中的参考文献。
+
+在机器学习（以及其他学科）中，我们经常需要计算期望，即我们需要求解形如$E_{x}[f(x)] = \int f(x)p(x)dx$的积分。即使$p(x)$是一个方便的形式（例如 Gauss 分布），这个积分通常也不能解析求解。$f$的 Taylor 级数展开是找到近似解的一种方法：假设$p(x)=N(\mu,\sum)$是 Gauss 分布，那么在$\mu$附近的一阶 Taylor 级数展开将非线性函数$f$局部线性化。对于线性函数，如果$p(x)$是 Gauss 分布，我们可以精确计算均值（和协方差）（见6.5节）。扩展 Kalman 滤波器（Maybeck，1979）在非线性动态系统（也称为“状态空间模型”）的在线状态估计中大量利用了这一性质。其他确定性的方法来近似（5.181）中的积分包括无迹变换（Julier和Uhlmann，1997），它不需要任何梯度，或者 Laplace 近似（MacKay，2003；Bishop，2006；Murphy，2002），它使用二阶 Taylor 级数展开（需要Hessian）在其模式周围对$p(x)$进行局部 Gauss 近似。
 
 ## 练习
 
+5.1 计算$f(x)=\log(x^{4})\sin(x^{3})$的导数$f'(x)$。
+5.2 计算 Logistic 函数$f(x)=\frac{1}{1 + \exp(-x)}$的导数$f'(x)$。
+5.3计算函数$f(x)=\exp(-\frac{1}{2\sigma^{2}}(x - \mu)^{2})$的导数$f'(x)$，其中$\mu,\sigma\in R$是常数。
+5.4计算$f(x)=\sin(x)+\cos(x)$在$x_{0}=0$处的 Taylor 多项式$T_{n}$，$n = 0,\cdots,5$。
+5.5考虑以下函数：
+$f_{1}(x)=\sin(x_{1})\cos(x_{2})$，$x\in R^{2}$
+$f_{2}(x,y)=x^{\top}y$，$x,y\in R^{n}$
+$f_{3}(x)=x x^{\top}$，$x\in R^{n}$
+    - （a）$\frac{\partial f_{i}}{\partial x}$的维度是什么？
+    - （b）计算 Jacobi 矩阵。
+5.6对$f$关于$t$求导，对$g$关于$x$求导，其中$f(t)=\sin(\log(t^{\top}t))$，$t\in R^{D}$，$g(X)=tr(AXB)$，$A\in R^{D\times E}$，$X\in R^{E\times F}$，$B\in R^{F\times D}$，其中$tr(.)$表示迹。
+5.7使用链式法则计算以下函数的导数$df/dx$。提供每个单个偏导数的维度。详细描述你的步骤。
+    - （a）$f(z)=\log(1 + z)$，$z = x^{\top}x$，$x\in R^{D}$
+    - （b）$f(z)=\sin(z)$，$z = Ax + b$，$A\in R^{E\times D}$，$x\in R^{D}$，$b\in R^{E}$，其中$\sin(.)$应用于$z$的每个元素。
+5.8计算以下函数的导数$df/dx$。详细描述你的步骤。
+    - （a）使用链式法则。提供每个单个偏导数的维度。不需要显式计算偏导数的乘积。$f(z)=\exp(-\frac{1}{2}z)$，$z = g(y)=y^{\top}S^{-1}y$，$y = h(x)=x - \mu$，其中$x,\mu\in R^{D}$，$S\in R^{D\times D}$。
+    - （b）$f(x)=tr(xx^{\top}+\sigma^{2}I)$，$x\in R^{D}$。这里$tr(A)$是$A$的迹，即对角元素$A_{ii}$的和。提示：显式写出外积。
+    - （c）使用链式法则。提供每个单个偏导数的维度。不需要显式计算偏导数的乘积。$f = \tanh(z)\in R^{M}$，$z = Ax + b$，$x\in R^{N}$，$A\in R^{M\times N}$，$b\in R^{M}$。这里，$\tanh$应用于$z$的每个组件。
+5.9我们定义$g(z,\nu):=\log p(x,z)-\log q(z,\nu)$，$z := t(\epsilon,\nu)$，对于可微函数$p,q,t$以及$x\in R^{D}$，$z\in R^{E}$，$\nu\in R^{F}$，$\epsilon\in R^{G}$。使用链式法则计算梯度$\frac{d}{d\nu}g(z,\nu)$。
