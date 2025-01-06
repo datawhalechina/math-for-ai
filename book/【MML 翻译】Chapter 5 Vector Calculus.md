@@ -268,38 +268,19 @@ $$
 
 上面提到的 Jacobian 行列式和变量替换在 6.7 节中对随机变量和分布进行变换时会涉及，它们在机器学习和深度学习中的 **重参数技巧（Reparametrization Trick）** 中十分重要，也被称为 **无穷摄动分析（Infinite Perturbation Analysis）**。
 
-【以下为机器翻译结果，需要进行后期修正】
 
-在本章中，我们遇到了函数的导数。图5.6总结了这些衍生物的尺寸。如果f： R→R，梯度只是一个标量（左上角的条目）。对于f： RD→R，梯度是一个1×D行向量（右上角的条目）。对于f： R→RE，梯度是一个E×1列向量，而对于f： RD→RE，梯度是一个E×D矩阵。
+![](Pasted%20image%2020250106153605.png)
+<center>图5.6 （偏）导数的维度和形状</center>
 
-给定
-$$
-\boldsymbol{f}(\boldsymbol{x}) = \boldsymbol{Ax}, \quad \boldsymbol{f}(\boldsymbol{x}) \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{N}.
-$$
-为了计算梯度df/dx，我们首先确定df/dx的维数：由于f： RN→RM，它遵循df/dx∈RM×N。其次，为了计算梯度，我们确定了f相对于每个xj的偏导数
-$$
-f_{i}(\boldsymbol{x}) = \sum\limits_{j=1}^{N} A_{i,j}x_{j} \implies \frac{ \partial f_{i} }{ \partial x_{j} } = A_{i,j} \tag{5.67}
-$$
-我们收集了雅可比矩阵中的偏导数，并得到了梯度
-$$
-\frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{x} }  = \begin{bmatrix}
-\displaystyle \frac{ \partial f_{1} }{ \partial x_{1} } & \cdots & 
-\displaystyle \frac{ \partial f_{1} }{ \partial x_{N} } \\
-\vdots & \ddots & \vdots\\
-\displaystyle \frac{ \partial f_{M} }{ \partial x_{1} } & \cdots &
-\displaystyle \frac{ \partial f_{M} }{ \partial x_{N } } 
-\end{bmatrix} = 
-\begin{bmatrix}
-A_{1,1} & \cdots & A_{1,N}\\
-\vdots & \ddots & \vdots\\
-A_{M,1} & \cdots & A_{M,N}
-\end{bmatrix} = \boldsymbol{A} \in \mathbb{R}^{M \times N}.
-\tag{5.68}
-$$
+在本章讨论了函数的导数，图5.6给出它们的形状。如果$f: \mathbb{R} \rightarrow \mathbb{R}$，其梯度只是一个标量（左上角）。如果$f: \mathbb{R}^{D} \rightarrow \mathbb{R}$，它的梯度是一个形状为 $1 \times D$ 的行向量（右上角）。如果$\boldsymbol{f}: \mathbb{R} \rightarrow \mathbb{R}^{E}$，它的梯度是一个形状为 $E×1$ 的列向量，而如果 $\boldsymbol{f}: \mathbb{R}^{D} \rightarrow \mathbb{R}^{E}$，梯度则是一个形状为 $E×D$ 的矩阵。
 
+> **示例 5.9（向量值函数的梯度）**
+> 给定$$\boldsymbol{f}(\boldsymbol{x}) = \boldsymbol{Ax}, \quad \boldsymbol{f}(\boldsymbol{x}) \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{N}.$$
+> 为了计算梯度$\displaystyle \displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{x} }$，我们首先确定$\displaystyle \displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{x} }$的维数：由于$\boldsymbol{f}: \mathbb{R}^{N} \rightarrow \mathbb{R}^{M}$，所以有 $\displaystyle \displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{x} } \in \mathbb{R}^{M \times N}$。为了计算梯度，我们接下来计算 $\boldsymbol{f}$ 相对于每个变元 $x_j$ 的偏导数$$f_{i}(\boldsymbol{x}) = \sum\limits_{j=1}^{N} A_{i,j}x_{j} \implies \frac{ \partial f_{i} }{ \partial x_{j} } = A_{i,j} \tag{5.67}$$
+> 知道了这些偏导数，我们就得到了梯度$$\frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{x} }  = \begin{bmatrix}\displaystyle \frac{ \partial f_{1} }{ \partial x_{1} } & \cdots & \displaystyle \frac{ \partial f_{1} }{ \partial x_{N} } \\\vdots & \ddots & \vdots\\\displaystyle \frac{ \partial f_{M} }{ \partial x_{1} } & \cdots &\displaystyle \frac{ \partial f_{M} }{ \partial x_{N } } \end{bmatrix} = \begin{bmatrix}A_{1,1} & \cdots & A_{1,N}\\\vdots & \ddots & \vdots\\A_{M,1} & \cdots & A_{M,N}\end{bmatrix} = \boldsymbol{A} \in \mathbb{R}^{M \times N}.\tag{5.68}$$
 
-考虑函数h： R→R，h (t) =（f◦g）(t)与
-$$
+> **示例 5.10（链式法则）**
+> 考虑函数 $h: \mathbb{R} \rightarrow \mathbb{R}$，$h(t) = (f \circ g)(t)$，其中$$
 \begin{align}
 f &: \mathbb{R}^{2} \rightarrow \mathbb{R} \tag{5.69}\\
 g &: \mathbb{R} \rightarrow \mathbb{R}^{2} \tag{5.70}\\
@@ -310,143 +291,36 @@ x_{1} \\ x_{2}
 t\cos t\\t\sin t
 \end{bmatrix} \tag{5.72}
 \end{align}
-$$
-并计算了h相对于t的梯度。因为f： R2→R和g： R→R2，我们注意到
-$$
-\displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } \in \mathbb{R}^{1 \times 2}, \quad \displaystyle \frac{ \partial g }{ \partial t } \in \mathbb{R}^{2 \times 1}. \tag{5.73}
-$$
-通过应用链式规则来计算所需的梯度：
-$$
-\begin{align}
-\displaystyle \frac{ \mathrm{d}h }{ \mathrm{d}t } &= {\color{blue} \displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{x} }{ \partial t }  } = {\color{blue} \begin{bmatrix}
-\displaystyle \frac{ \partial f }{ \partial x_{1} } & \displaystyle \frac{ \partial f }{ \partial x_{2} } 
-\end{bmatrix} } {\color{orange} \begin{bmatrix}
-\displaystyle \frac{ \partial x_{1} }{ \partial t } \\ \displaystyle \frac{ \partial x_{2} }{ \partial t }
-\end{bmatrix} }   \tag{5.74a}\\
-&= 
-{\color{blue} \begin{bmatrix} \exp(x_{1}x_{2}^{2})x_{2}^{2} & 2\exp(x_{1}x_{2}^{2})x_{1}x_{2}  
-\end{bmatrix}}
-{\color{orange} 
-\begin{bmatrix}
-\cos t - t\sin t\\sin t + t\cos t
-\end{bmatrix}} \tag{5.74b}\\
-&= \exp(x_{1}x_{2}^{2}) \big[ x_{2}^{2}(\cos t - t\sin t) + 2x_{1}x_{2}(\sin t + t\cos t) \big] , \tag{5.74c}
-\end{align}
-$$
-其中，1=成本和2=成本；参见（5.72）。
+$$计算 $h$ 关于 $t$ 的梯度。
+> 因为 $f:\mathbb{R}^{2}→\mathbb{R}$ 和 $g:\mathbb{R}\rightarrow \mathbb{R}^{2}$，于是我们有$$\displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } \in \mathbb{R}^{1 \times 2}, \quad \displaystyle \frac{ \partial g }{ \partial t } \in \mathbb{R}^{2 \times 1}. \tag{5.73}$$
+> 复合函数的梯度可通过链式法则求得：$$\begin{align}\displaystyle \frac{ \mathrm{d}h }{ \mathrm{d}t } &= {\color{blue} \displaystyle \frac{ \partial f }{ \partial \boldsymbol{x} } } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{x} }{ \partial t }  } = {\color{blue} \begin{bmatrix}\displaystyle \frac{ \partial f }{ \partial x_{1} } & \displaystyle \frac{ \partial f }{ \partial x_{2} } \end{bmatrix} } {\color{orange} \begin{bmatrix}\displaystyle \frac{ \partial x_{1} }{ \partial t } \\ \displaystyle \frac{ \partial x_{2} }{ \partial t }\end{bmatrix} }   \tag{5.74a}\\&= {\color{blue} \begin{bmatrix} \exp(x_{1}x_{2}^{2})x_{2}^{2} & 2\exp(x_{1}x_{2}^{2})x_{1}x_{2} \end{bmatrix}}{\color{orange} \begin{bmatrix}\cos t - t\sin t\\sin t + t\cos t\end{bmatrix}} \tag{5.74b}\\&= \exp(x_{1}x_{2}^{2}) \big[ x_{2}^{2}(\cos t - t\sin t) + 2x_{1}x_{2}(\sin t + t\cos t) \big] , \tag{5.74c}\end{align}$$
+> 其中，$x_{1} = t\cos t$，$x_{2} = t\sin t$；见（5.72）。
 
-例子5.11（一个线性模型中最小二乘损失的梯度）让我们考虑一下线性模型
-$$
-\boldsymbol{y} = \boldsymbol{\Phi \theta}, \tag{5.75}
-$$
-例子5.11（一个线性模型中最小二乘损失的梯度）让我们考虑一下线性模型
-$$
-\begin{align}
-L(\boldsymbol{e}) &:= \|\boldsymbol{e}\|^{2}, \tag{5.76}\\
-\boldsymbol{e}(\boldsymbol{\theta}) &:= \boldsymbol{y} - \boldsymbol{\Phi \theta}. \tag{5.77} 
-\end{align}
-$$
-我们寻找∂L∂θ，并且我们将为此目的使用链规则。L被称为最小二乘损失函数。在我们开始计算之前，我们确定梯度的维数为
-$$
-\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } \in \mathbb{R}^{L \times D}. \tag{5.78}
-$$
-链式规则允许我们计算梯度为
-$$
-\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} }  } , \tag{5.79}
-$$
-其中第d个元素是由
-$$
-\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } [1,d] = \sum\limits_{n=1}^{N} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} } [n] \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } [n,d]. \tag{5.80}
-$$
-我们知道kek2=e>e（见第3.2节），并确定
-$$
-{\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  = 2\boldsymbol{e}^{\top} } \in \mathbb{R}^{1 \times N}. \tag{5.81}
-$$
-此外，我们得到
-$$
-{\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } = -\boldsymbol{\Phi} } \in \mathbb{R}^{N \times D} , \tag{5.82}
-$$
-这样我们想要的导数就是
-$$
-\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{orange} - } {\color{blue} 2\boldsymbol{e}^{\top} }{\color{orange} \boldsymbol{\Phi} } {~}\mathop{=\!=\!=}\limits^{(5.77)}{~} {\color{orange} - } {\color{blue} \underbrace{ 2(\boldsymbol{y}^{\top} - \boldsymbol{\theta}^{\top}\boldsymbol{\Phi}^{\top}) }_{ 1 \times N } }~{\color{orange} \underbrace{ \boldsymbol{\Phi} }_{ N \times D } } \in \mathbb{R}^{1 \times D}. \tag{5.83}
-$$
-备注。如果不使用链式规则，我们就可以通过立即查看该函数来得到相同的结果
-$$
-L_{2}(\boldsymbol{\theta}) := \|\boldsymbol{y} - \boldsymbol{\Phi \theta}\|^{2} = (\boldsymbol{y} - \boldsymbol{\Phi \theta})^{\top}(\boldsymbol{y} - \boldsymbol{\Phi \theta}). \tag{5.84}
-$$
-这种方法对于像l2这样的简单函数仍然实用，但对于深度函数组合就不现实了。
+
+
+> **示例 5.11（线性模型中最小二乘损失之梯度）**
+> 考虑下面的线性模型$$\boldsymbol{y} = \boldsymbol{\Phi \theta },\tag{5.75}$$其中 $\boldsymbol{\theta} \in \mathbb{R}^{D}$ 是参数向量，$\boldsymbol{\Phi}\in \mathbb{R}^{N \times D}$ 是输入特征，$\boldsymbol{y} \in \mathbb{R}^{N}$ 是对应的观测值。为方便叙述，我们定义$$\begin{align}L(\boldsymbol{e}) &:= \|\boldsymbol{e}\|^{2}, \tag{5.76}\\\boldsymbol{e}(\boldsymbol{\theta}) &:= \boldsymbol{y} - \boldsymbol{\Phi \theta}. \tag{5.77}\end{align}$$我们使用链式法则计算偏导数 $\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} }$，其中$L$称为*最小二乘损失函数 (Least-squares loss function)*。开始计算之前，我们首先确定梯度的维数： $$\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } \in \mathbb{R}^{L \times D}. \tag{5.78}$$然后使用链式法则：$$\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  } {\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} }  } , \tag{5.79}$$其中等式左边向量从左往右的第 $d$ 个元素是由$$\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } [1,d] = \sum\limits_{n=1}^{N} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} } [n] \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } [n,d] \tag{5.80}$$给出的。我们知道 $\|\boldsymbol{e}\|^{2} = \boldsymbol{e}^{\top}\boldsymbol{e}$（见 3.2 节）因此有$${\color{blue} \displaystyle \frac{ \partial L }{ \partial \boldsymbol{e} }  = 2\boldsymbol{e}^{\top} } \in \mathbb{R}^{1 \times N}. \tag{5.81}$$进一步，我们有$${\color{orange} \displaystyle \frac{ \partial \boldsymbol{e} }{ \partial \boldsymbol{\theta} } = -\boldsymbol{\Phi} } \in \mathbb{R}^{N \times D} , \tag{5.82}$$结合起来即为所求：$$\displaystyle \frac{ \partial L }{ \partial \boldsymbol{\theta} } = {\color{orange} - } {\color{blue} 2\boldsymbol{e}^{\top} }{\color{orange} \boldsymbol{\Phi} } {~}\mathop{=\!=\!=}\limits^{(5.77)}{~} {\color{orange} - } {\color{blue} \underbrace{ 2(\boldsymbol{y}^{\top} - \boldsymbol{\theta}^{\top}\boldsymbol{\Phi}^{\top}) }_{ 1 \times N } }~{\color{orange} \underbrace{ \boldsymbol{\Phi} }_{ N \times D } } \in \mathbb{R}^{1 \times D}. \tag{5.83}$$
+> 注：如果不使用链式法则，我们就可以通过展开下面的函数进行求导以得到相同的结果$$L_{2}(\boldsymbol{\theta}) := \|\boldsymbol{y} - \boldsymbol{\Phi \theta}\|^{2} = (\boldsymbol{y} - \boldsymbol{\Phi \theta})^{\top}(\boldsymbol{y} - \boldsymbol{\Phi \theta}). \tag{5.84}$$然而这种方法虽然可用于这样的简单函数，但当我们面对深度复合的复杂函数时这样做就不现实了。
 
 ## 5.4 矩阵的梯度
 
-我们将遇到以下情况，即我们需要取矩阵对向量（或其他矩阵）的梯度，从而产生一个多维张量。我们可以把这个张量看作是一个多维数组收集部分导数。例如，如果我们计算一个×矩阵a对×矩阵×的梯度，结果雅可比矩阵将是（×）×（××），即一个四维张量J，其条目为Jijkl =∂Aij/∂Bkl。
-$$
-\boldsymbol{f} = \boldsymbol{A}\boldsymbol{x}, \quad \boldsymbol{f} \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{M \times N}, \quad \boldsymbol{x} \in \mathbb{R}^{N} \tag{5.85}
-$$
-由于矩阵表示线性映射，我们可以利用m×n矩阵的空间×n与mn向量的空间×n之间存在向量空间同构（线性、可逆映射）这一事实。因此，我们可以将我们的矩阵重新塑造为长度分别为mn和pq的向量。使用这些mn向量的梯度得到一个大小为mn×pq的雅可比矩阵。图5.7可视化了这两种方法。实际情况下，通常希望重塑矩阵成一个向量和继续使用这个雅可比矩阵：链规则（5.48）归结为简单的矩阵乘法，而在雅可比张量的情况下，我们需要更加关注我们需要总结什么维数。
-$$
-\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} } \in \mathbb{R}^{M \times (M \times N)}. \tag{5.86}
-$$
+接下来我们将会看见需要求矩阵对向量（或其他矩阵）的梯度的情形。它们的结果是一个多维度的*张量（tensor）*，我们可以将其看做装有偏导数的多维数组。例如，如果我们计算一个 $m \times n$ 形状的矩阵 $\boldsymbol{A}$ 对 $p \times q$ 形状的矩阵 $\boldsymbol{B}$ 的梯度，结果雅可比矩阵的形状将是 $(m \times n) \times (p \times q)$，即一个四维张量 $\boldsymbol{J}$，它的每个分量可以写为 $\boldsymbol{J}_{i,j,k,l} = \displaystyle \frac{ \partial \boldsymbol{A}_{i,j} }{ \partial \boldsymbol{B}_{k, l} }$。
 
-$$
-\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} } = \begin{bmatrix}
-\displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } \\ \vdots  \\ \displaystyle \frac{ \partial f_{M} }{ \partial \boldsymbol{A} } 
-\end{bmatrix}, \quad \displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } \in \mathbb{R}^{1 \times (M \times N)}. \tag{5.87}
-$$
+由于矩阵代表着线性变换。我们可以用这样的事实构造形状为 $m \times n$ 矩阵空间 $\mathbb{R}^{m \times n}$ 到 $mn$ 长度的向量空间 $\mathbb{R}^{mn}$ 的向量空间同构（可逆的线性映射）。这样一来我们就可以调整矩阵 $\boldsymbol{A}$ 和 $\boldsymbol{B}$ 的形状，使其分别变成长度为 $mn$ 和长度为 $pq$ 的向量。因此对这样的向量求梯度就得到形状为 $mn \times pq$ 的Jacobi矩阵。图 5.7 画出了上面两种方法的示意图。实际操作中，将矩阵压扁成向量然后继续处理Jacobi矩阵的方法较受欢迎，因为这样一来链式法则（5.48）就变成简单的矩阵乘法；而如果处理的是Jacobi张量，我们就得对于二者相乘时求和的维度倍加小心。
 
-$$
-f_{i} = \sum\limits_{j=1}^{N} A_{i,j}x_{j}, \quad  i= 1, \dots, M, \tag{5.88}
-$$
+![](Pasted%20image%2020250106171552.png)
 
-$$
-\displaystyle \frac{ \partial f_{i} }{ \partial A_{j,q} } = x_{q}. \tag{5.89}
-$$
+> **示例 5.12（向量对矩阵的梯度）**
+> 考虑下面的例子：$$\boldsymbol{f} = \boldsymbol{A}\boldsymbol{x}, \quad \boldsymbol{f} \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{M \times N}, \quad \boldsymbol{x} \in \mathbb{R}^{N},\tag{5.85}$$求梯度 $\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} }$。
+> 首先确定梯度的维数：$$\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} } \in \mathbb{R}^{M \times (M \times N)}. \tag{5.86}$$按照定义，梯度里面装着一族偏导的结果：$$\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} } = \begin{bmatrix}\displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } \\ \vdots  \\ \displaystyle \frac{ \partial f_{M} }{ \partial \boldsymbol{A} } \end{bmatrix}, \quad \displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } \in \mathbb{R}^{1 \times (M \times N)}. \tag{5.87}$$接下来我们求每一项的值。我们首先根据矩阵乘法分别展开每个结果分量 $f_{i}$：$$f_{i} = \sum\limits_{j=1}^{N} A_{i,j}x_{j}, \quad  i= 1, \dots, M, \tag{5.88}$$然后得到 $f_{i}$ 对矩阵中每一份量的偏导数$$\displaystyle \frac{ \partial f_{i} }{ \partial A_{j,q} } = x_{q}. \tag{5.89}$$将它们一行一行的组合起来，并注意一下结果的形状，我们就得到了 $f_{i}$ 对矩阵 $\boldsymbol{A}$ 中各行的偏导：$$\begin{align}\displaystyle \frac{ \partial f_{i} }{ \partial A_{i,:}} &= \boldsymbol{x}^{\top} \in \mathbb{R}^{1 \times 1 \times N}, \tag{5.90}\\\displaystyle \frac{ \partial f_{i} }{ \partial A_{k\neq i, :} } &= \boldsymbol{0}^{\top} \in \mathbb{R}^{1 \times 1 \times N}, \tag{5.91}\end{align}$$由于 $f_{i}$ 是实值函数，矩阵 $\boldsymbol{A}$ 的每一行形状为 $1×N$，我们得到的 $f_{i}$ 关于矩阵每一行的偏导数张量的形状就是 $1×1×N$。最后我们将（5.91）堆叠起来，就得到所求的梯度（5.87）中的每一项：$$\displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } = \begin{bmatrix}\boldsymbol{0}^{\top} \\ \vdots \\ \boldsymbol{0}^{\top} \\ \boldsymbol{x}^{\top} \\ \boldsymbol{0}^{\top} \\ \vdots \\\boldsymbol{0}^{\top}\end{bmatrix} \in \mathbb{R}^{1 \times (M \times N)}. \tag{5.92}$$
 
-$$
-\displaystyle \frac{ \partial f_{i} }{ \partial A_{i,:}} = \boldsymbol{x}^{\top} \in \mathbb{R}^{1 \times 1 \times N}, \tag{5.90}
-$$
+> **示例 5.13（矩阵对矩阵的梯度）**
+> 给定矩阵 $\boldsymbol{R} \in \mathbb{R}^{M \times N}$，和矩阵值函数 $\boldsymbol{f}: \mathbb{R}^{M \times N} \rightarrow \mathbb{R}^{N \times N}$:$$\boldsymbol{f}(\boldsymbol{R}) = \boldsymbol{R}^{\top}\boldsymbol{R} =: \boldsymbol{K} \in \mathbb{R}^{N \times N}, \tag{5.93}$$求梯度 $\displaystyle \frac{ \mathrm{d}\boldsymbol{K} }{ \mathrm{d}\boldsymbol{R} }$。
+> 这个问题有些困难。我们先写下已知信息：梯度的维数$$\displaystyle \frac{ \mathrm{d}\boldsymbol{K} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{(N \times N) \times (M \times N)}, \tag{5.94} $$毫无疑问这是个张量。我们进一步写出 $\boldsymbol{K}$ 中每个元素对矩阵 $\boldsymbol{R}$ 的梯度维数：$$\displaystyle \frac{ \mathrm{d}K_{p,q} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{1 \times M \times N}, p,q = 1, \dots, N \tag{5.95}$$其中 $\boldsymbol{K}_{p,q}$ 是 $\boldsymbol{K} = \boldsymbol{f} (\boldsymbol{R})$ 中处于第 $p$ 行，第 $q$ 列的元素。用 $\boldsymbol{r}_{i}$ 表示 $\boldsymbol{R}$ 的第 $i$ 列，则 $\boldsymbol{K}$ 中的每个元素可以写成 $\boldsymbol{R}$ 中两列的点积，即$$K_{p,q} = \boldsymbol{r}_{p}^{\top}\boldsymbol{r}_{q} =\sum\limits_{m=1}^{M} R_{m,p}R_{m,q}. \tag{5.96}$$接着我们计算偏导数$$\displaystyle \frac{ \partial K_{p,q} }{ \partial R_{i,j} } = \sum\limits_{m=1}^{M} \displaystyle \frac{ \partial   }{ \partial R_{i,j} } R_{m,p}R_{m,q} = \partial_{p,q,i,j},\tag{5.97}$$其中$$\partial_{p,q,i,j} = \begin{cases}R_{i, q}, & j = p, p \neq q\\R_{i, p}, & j = q, p \neq q\\2R_{i,q}, & j=p, p=q\\0, & \text{其他情形}\end{cases}\quad .\tag{5.98}$$从（9.94）我们知道目标梯度的形状是 $(N \times N) \times (M \times N)$，它的每个分量的值由（5.98）给出，其中 $p,q,j = 1, \dots, N$，$i = 1, \dots, M$。
 
-$$
-\displaystyle \frac{ \partial f_{i} }{ \partial A_{k\neq i, :} } = \boldsymbol{0}^{\top} \in \mathbb{R}^{1 \times 1 \times N}, \tag{5.91}
-$$
-我们必须注意正确的维度。由于fi映射到R上，每一行a的大小是1×N，我们得到一个1×1×的N大小张量作为fi对一行a的偏导数。我们堆叠偏导数（5.91），得到期望的梯度（5.87）
-$$
-\displaystyle \frac{ \partial f_{i} }{ \partial \boldsymbol{A} } = \begin{bmatrix}
-\boldsymbol{0}^{\top} \\ \vdots \\ \boldsymbol{0}^{\top} \\ \boldsymbol{x}^{\top} \\ \boldsymbol{0}^{\top} \\ \vdots \\
-\boldsymbol{0}^{\top}
-\end{bmatrix} \in \mathbb{R}^{1 \times (M \times N)}. \tag{5.92}
-$$
-
-$$
-\boldsymbol{f}(\boldsymbol{R}) = \boldsymbol{R}^{\top}\boldsymbol{R} =: \boldsymbol{K} \in \mathbb{R}^{N \times N}, \tag{5.93}
-$$
-其中我们寻找梯度dK/dR。为了解决这个难题，让我们先写下我们已经知道的东西：梯度有维度
-$$
-\displaystyle \frac{ \mathrm{d}\boldsymbol{K} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{(N \times N) \times (M \times N)}, \tag{5.94} 
-$$
-
-$$
-\displaystyle \frac{ \mathrm{d}K_{p,q} }{ \mathrm{d}\boldsymbol{R} } \in \mathbb{R}^{1 \times M \times N} \tag{5.95}
-$$
-对于p，q = 1，……，N，其中Kpq是K = f (R)的第一个（p，q）条目。用ri表示R的第h列，K的每条由R的两列的点积表示，即
-$$
-K_{p,q} = \boldsymbol{r}_{p}^{\top}\boldsymbol{r}_{q} =
-\sum\limits_{m=1}^{M} R_{m,p}R_{m,q}. \tag{5.96}$$
-
-$$
-\displaystyle \frac{ \partial K_{p,q} }{ \partial R_{i,j} } = \sum\limits_{m=1}^{M} \displaystyle \frac{ \partial   }{ \partial R_{i,j} } R_{m,p}R_{m,q} = \partial_{p,q,i,j},\tag{5.97}
-$$
-从（5.94）中，我们知道期望得到的梯度具有维数（N×N）×（M×N），这个张量的每一个项都由中的∂pqij给出，其中p，q，j = 1，…，N和i = 1，……，M。
-$$
-\partial_{p,q,i,j} = \begin{cases}
-R_{i,q}, & \text{if } j=p,~ p \neq q\\
-R_{i,p}, & \text{if } j=q,~ p \neq q\\
-2 R_{i,q}, & \text{if } j=p,~ p = q\\
-0, & \text{otherwise}
-\end{cases}~. \tag{5.98} 
-$$
 
 ## 5.5 常用梯度恒等式
-下面，我们列出了一些在机器学习环境中经常需要的有用的梯度（Petersen和Pedersen，2012）。在这里，我们使用tr（·）作为跟踪（见定义4.4），det（·）作为行列式（见第4.1节），而f (X)−1作为f (X)的倒数，假设它存在。
+下面，我们列出了一些在机器学习环境中常用的梯度恒等式（Petersen and Pedersen，2012）。其中 $\text{tr}(\cdot)$ 代表矩阵的迹（见定义4.4），$\text{det}(\cdot)$ 表示矩阵的行列式（见 4.1 节），$\boldsymbol{f}(\boldsymbol{X})^{-1}$ 表示 $\boldsymbol{f}(\boldsymbol{X})$ 的逆（假设其存在）。
 $$
 \begin{align}
 \frac{ \partial }{ \partial \boldsymbol{X} } \boldsymbol{f}(\boldsymbol{X})^{\top} &= \left( \frac{ \partial \boldsymbol{f}(\boldsymbol{X}) }{ \partial \boldsymbol{X} }  \right)^{\top}, \tag{5.99}\\[0.2em]
@@ -462,7 +336,9 @@ $$
 & \quad \quad \text{for symmetric }\boldsymbol{W}
 \end{align}
 $$
-备注。在这本书中，我们只讨论了矩阵的轨迹和转置。然而，我们已经看到，导数可以是高维的十个源，在这种情况下，通常的轨迹和转座没有定义。在这些情况下，D×D×E×F张量的轨迹将是一个E××维矩阵。这是张量收缩的一种特殊情况。类似地，当我们“转置”一个张量时，我们的意思是交换前二维。具体来说，在（5.99）到（5.102）中，当我们使用多元函数f（·）计算矩阵的导数并计算与矩阵的导数（并如5.4节所讨论的）时，我们选择不对它们进行向量化计算。♦
+注：本书中我们仅讨论矩阵的迹和转置。然而，我们已看到求导的结果可能是高维张量，通常的迹和转置在其范畴中没有定义。在这些情况下，形状为 $D×D×E×F$ 的张量的迹将是一个 $E×F$ 形状的矩阵。这是 *张量缩并（tensor contraction）* 的一种特殊情况。类似地，当我们“转置”一个张量时，我们说的是交换前两个维度。具体而言，在（5.99）到（5.102）中，当我们计算多元函数 $\boldsymbol{f}(\cdot)$ 对矩阵的导数时，我们需要张量相关的计算，而像在 5.4 节中那样将其拉直成向量。
+
+【以下为机器翻译结果，需要进行后期修正】
 
 ## 5.6 反向传播与自动微分
 在许多机器学习应用中，我们通过执行梯度下降（第7.1节）找到了很好的模型参数，这依赖于我们可以计算一个学习目标关于模型参数的梯度。对于一个给定的目标函数，我们可以利用微积分和应用链规则得到关于模型参数的梯度；见第5.2.2节。当我们观察第5.3节的平方损失梯度时，我们已经尝试了线性回归模型的参数。考虑函数
@@ -476,10 +352,10 @@ $$
 &= 2x \left[ \frac{1}{2\sqrt{ x^{2} + \exp\{ x^{2} \} }} - \sin \Big( x^{2} + \exp\{ x^{2} \} \Big) \right] \Big(1 + \exp\{ x^{2} \}\Big). 
 \end{align}
 $$
+
 $$
 \tag{5.110}
 $$
-
 以这种显式的方式写出梯度通常是不切实际的，因为它经常导致导数的一个非常冗长的表达式。在实践中，这意味着，如果我们不小心，梯度的实现可能比计算函数要昂贵得多，这增加了不必要的开销。对于训练深度神经网络模型，反向传播算法（Kelley，1960；布赖森，1961；德雷福斯，1962；鲁梅尔哈特等人，1986）是一种计算误差函数与模型参数相关的梯度的有效方法。
 
 ### 5.6.1 深度神经网络中的梯度
