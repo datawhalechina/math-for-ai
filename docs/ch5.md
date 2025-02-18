@@ -234,7 +234,7 @@ $$
 
 Jacobian 矩阵将在 6.7 节中概率分布的变量变换方法中起作用，而其中的缩放大小取决于其**行列式（determinant）**。
 
-![300](Pasted%20image%2020240915233233.png)
+![300](attachments/Pasted%20image%2020240915233233.png)
 <center>图 5.5</center>
 
 在 4.1 节中，我们已使用行列式计算平行四边形的面积：如果给定正方形的两边所对应的两个向量$\boldsymbol{b}_{1} = [1, 0]^{\top}$ 和 $\boldsymbol{b}_{2} = [0, 1]^{\top}$，那么它们构成的正方形的面积是
@@ -372,7 +372,7 @@ $$
 $$
 其中，$\boldsymbol{x}$ 是输入（如图像），$\boldsymbol{y}$ 是观测值（如类标签），每个函数 $f_{i}, i = 1, \dots, K$，有各自的参数。
 
-![800](Pasted%20image%2020250131211557.png)
+![800](attachments/Pasted%20image%2020250131211557.png)
 <center>图 5.8 多层神经网络的前向传播</center>
 
 在一般的多层神经网络中，第 $i$ 层中有函数  $f_{i}(\boldsymbol{x}_{i-1}) = \sigma(\boldsymbol{A}_{i-1}\boldsymbol{x}_{i-1} + \boldsymbol{b}_{i-1})$ 。其中 $x_{i-1}$ 是 $i=1$ 层的输出和一个激活函数 $\sigma$，例如 sigmoid 函数 $\displaystyle \frac{1}{1-e^{-x}}$，$\tanh$ 或修正线性单元（rectified linear unit, ReLU）。为了训练这样的模型，我们需要一个损失函数 $L$，对其值求关于所有模型参数 $\boldsymbol{A}_j, \boldsymbol{b}_{j}, j=1, \dots, K$ 的梯度。这同时要求我们求其对模型中各层的输入的梯度。例如，如果我们有输入x和观测值y和一个网络结构，则它被定义为

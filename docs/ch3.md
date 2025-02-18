@@ -22,7 +22,7 @@ Figure 3.1 gives an overview of how concepts in this chapter are related and how
 
 #TODO 图片汉化
 
-![500](Pasted%20image%2020240302105358.png)
+![500](attachments/Pasted%20image%2020240302105358.png)
 
 <center>Figure 3.1 A mind map of the concepts introduced in this chapter, <br>
 along with when they are used in other parts of the book.</center>
@@ -36,7 +36,7 @@ When we think of geometric vectors, i.e., directed line segments that start at t
 In the following, we will discuss the notion of the length of vectors using the concept of a norm.
 下面我们将使用范数的概念讨论向量的长度。
 
-![500](Pasted%20image%2020240302110312.png)
+![500](attachments/Pasted%20image%2020240302110312.png)
 
 > **定义 3.1**（范数）一个*范数*是向量空间$V$上的一个函数：
 > $$ \begin{align} \| \cdot \|: V &\rightarrow \mathbb{R} \tag{3.1}\\ x &\mapsto \| x \|, \tag{3.2}\end{align} $$
@@ -48,7 +48,7 @@ In the following, we will discuss the notion of the length of vectors using the 
 In geometric terms, the triangle inequality states that for any triangle, the sum of the lengths of any two sides must be greater than or equal to the length of the remaining side; see Figure 3.2 for an illustration.
 如图 3.2 所示，在几何中，三角不等式是说任意三角形的两边之和一定大于等于第三边。
 
-![150](Screenshot%202024-03-02%20at%2011.10.09.png)
+![150](attachments/Screenshot%202024-03-02%20at%2011.10.09.png)
 
 <center>Figure 3.2 Triangle inequality.</center>
 <center>图 3.2：三角不等式的几何表示</center>
@@ -59,21 +59,21 @@ Definition 3.1 is in terms of a general vector space V (Section 2.4), but in thi
 Recall that for a vector x ∈ Rn we denote the elements of the vector using a subscript, that is, xi is the ith element of the vector x.
 最后别忘了，我们使用下标$i$表示$\mathbb{R}^{n}$中的向量$x$的第$i$个分量。
 
-![500](Pasted%20image%2020240302111756.png)
+![500](attachments/Pasted%20image%2020240302111756.png)
 
 > **示例 3.1**（曼哈顿范数）
 > $\mathbb{R}^{n}$上的*曼哈顿范数*（又叫$\mathscr{l}_{1}$范数）的定义如下：
 > $$\|x\|_{1} := \sum\limits_{i=1}^{n} | x_{i} |, \tag{3.3}$$
 > 其中$| \cdot |$是绝对值函数。 图 3.3 的左侧显示了平面$\mathbb{R}^{2}$上所有满足$\| x\| =  1$的点集。
 
-![500](Pasted%20image%2020240302112542.png)
+![500](attachments/Pasted%20image%2020240302112542.png)
 
 > **示例 3.2** （欧几里得范数）
 > 向量$x \in \mathbb{R}^{n}$的*欧几里得范数*（又叫$\mathscr{l}_{2}$范数）定义如下：
 > $$ \|x\|_{2} := \sqrt{ \sum\limits_{i=1}^{n} x_{i}^{2} } = \sqrt{ x^{\top}x }, \tag{3.4}$$
 > 它计算向量$x$从原点出发到终点的欧几里得距离（译者注：也就是我们通常意义下的距离）。图 3.3 的右侧显示了$\mathbb{R}^{2}$平面上所有满足$\|x\|_{2} = 1$的点集。
 
-![600](Pasted%20image%2020240302111733.png)
+![600](attachments/Pasted%20image%2020240302111733.png)
 
 <center>Figure 3.3 For different norms, the red lines indicate the set of vectors with norm 1.<br> Left: Manhattan norm; Right: Euclidean distance.</center>
 <center>图 3.3：平面上满足向量在不同范数的度量下值为1的情况：左侧为曼哈顿范数，右侧为欧几里得范数</center>
@@ -116,7 +116,7 @@ $$
 Here, (3.6) asserts that Ω is linear in the first argument, and (3.7) asserts that Ω is linear in the second argument (see also (2.87)).
 在式中，（式 3.6）表示函数对第一个变量线性；（式 3.7）表示函数对第二个变量线性（见式 2.87）。
 
-![500](Pasted%20image%2020240302120456.png)
+![500](attachments/Pasted%20image%2020240302120456.png)
 
 > **定义 3.2**
 > 设$V$为向量空间，双线性映射$\Omega:  V \times V \rightarrow \mathbb{R}$将两个$V$中的向量映射到一个实数，则
@@ -125,7 +125,7 @@ Here, (3.6) asserts that Ω is linear in the first argument, and (3.7) asserts 
 > $$\forall x \in V \textbackslash \{ 0 \}: \Omega(x, x) > 0, ~~ ~~ \Omega(0, 0) = 0, \tag{3.8}$$
 > 则称$\Omega$为*正定*的。
 
-![500](Pasted%20image%2020240302120513.png)
+![500](attachments/Pasted%20image%2020240302120513.png)
 
 > **定义 3.3**
 > 设$V$为向量空间，双线性映射$\Omega:  V \times V \rightarrow \mathbb{R}$将两个$V$中的向量映射到一个实数，则
@@ -135,7 +135,7 @@ Here, (3.6) asserts that Ω is linear in the first argument, and (3.7) asserts 
 We will refer to these spaces as inner product spaces in this book.
 本书中我们称这些空间为内积空间。
 
-![500](Pasted%20image%2020240302120624.png)
+![500](attachments/Pasted%20image%2020240302120624.png)
 
 > **示例 3.3**（不是点积的内积）
 > 考虑$V = \mathbb{R}^{2}$，定义下面的内积：
@@ -182,12 +182,12 @@ $$
 \forall x \in V - \{ 0 \}: x^{\top}Ax > 0. \tag{3.11}
 $$
 
-![500](Pasted%20image%2020240302125526.png)
+![500](attachments/Pasted%20image%2020240302125526.png)
 
 > **定义 3.4**（对称正定矩阵）
 > 一个$n$级对称矩阵$A \in \mathbb{R}^{n \times n}$若满足（式 3.11），则叫做*对称正定矩阵*（或仅称为正定矩阵）。如果只满足将（式 3.11）中的不等号改成$\geqslant$的条件，则称为*对称半正定矩阵*
 
-![500](Pasted%20image%2020240302125539.png)
+![500](attachments/Pasted%20image%2020240302125539.png)
 
 > **示例 3.4**（对称正定矩阵）
 > 考虑下面两个矩阵
@@ -207,7 +207,7 @@ $$
 
 其中$x, y \in V$。
 
-![500](Pasted%20image%2020240302131154.png)
+![500](attachments/Pasted%20image%2020240302131154.png)
 
 > **定理 3.5**
 > 考虑一个有限维实向量空间$V$及它的一个基（有序）$B$，双线性函数$\left\langle \cdot, \cdot \right\rangle: V \times V \rightarrow R$是其上的一个内积<u>当且仅当</u>有一个对称正定矩阵$A \in \mathbb{R}^{n \times n}$，与之对应，即
@@ -252,7 +252,7 @@ $$
 |\!\left\langle{x, y}\right\rangle | \leqslant \|x\| \cdot\|y\|. \tag{3.17}
 $$
 
-![500](Pasted%20image%2020240302134439.png)
+![500](attachments/Pasted%20image%2020240302134439.png)
 
 > **示例 3.5**（使用内积计算向量长度）
 > 在几何中，我们常关心向量的长度。现在我们可以使用内积和柯西不等式计算它们。例如取$x = [1, 1]^{\top}\in \mathbb{R}^{2}$，并令其上的内积为点积，则可以得到其长度
@@ -262,9 +262,9 @@ $$
 > 如果我们根据这个内积的定义进行计算范数，当$x_{1}$和$x_{2}$同号时，结果会小于内积内积诱导出的范数的值，反之则会大于它。我们可以使用$x = [1, 1]^{\top}$进行实验，并发现它“看上去”比使用点积诱导出的范数的度量下要短：
 > $$\left\langle x, x \right\rangle = x_{1}^{2} - x_{1}x_{2} + x_{2}^{2} = 1 - 1 + 1 = 1 \implies \|x\| = \sqrt{ 1 } = 1. \tag{3.20}$$
 
-![500](Pasted%20image%2020240302134505.png)
+![500](attachments/Pasted%20image%2020240302134505.png)
 
-![500](Pasted%20image%2020240302134537.png)
+![500](attachments/Pasted%20image%2020240302134537.png)
 
 > **定义 3.6**（距离和度量）
 > 考虑一个内积空间$(V, \left\langle \cdot, \cdot \right\rangle)$，任取向量$x, y \in V$，称
@@ -303,7 +303,7 @@ $$
 \cos\omega = \frac{\left\langle x, y \right\rangle}{\|x\| \|y\|}. \tag{3.25}
 $$
 
-![300](Pasted%20image%2020240627164202.png)
+![300](attachments/Pasted%20image%2020240627164202.png)
 
 Figure 3.4 When restricted to [0, π] then f(ω) = cos(ω) returns a unique number in the interval [−1, 1].
 图3.4 定义域为$[0, \pi]$时的余弦函数图像，此时角度值和余弦函数值一一对应
@@ -320,7 +320,7 @@ The number ω is the angle between the vectors x and y. Intuitively, the angle a
 > 于是两个向量的夹角余弦值为$\displaystyle \arccos\left( \frac{3}{\sqrt{ 10 }} \right) \approx 0.32\text{ rad}$，大约为$18^{\circ}$。
 >  
 
-![150](Pasted%20image%2020240627165050.png)
+![150](attachments/Pasted%20image%2020240627165050.png)
 
 > Figure 3.5 The angle ω between two vectors x, y is computed using the inner product.
 > 图3.5 使用向量$x$和$y$之间的内积计算它们之间的夹角$\omega$。
@@ -344,7 +344,7 @@ Remark. Orthogonality is the generalization of the concept of perpendicularity t
 > **示例3.7（单位正交向量）**
 >  
 
-![300](Pasted%20image%2020240627170238.png)
+![300](attachments/Pasted%20image%2020240627170238.png)
 
 > 图3.6 使用不同的内积定义计算得到的两向量$x$和$y$之间的夹角不同
 > 如图3.6所示，考虑向量$x=[1, 1]^{\top}, y = [-1, 1]^{\top} \in \mathbb{R}^{2}$，考虑它们在不同内积定义下的夹角大小。如果使用通常的点积作为内积，则它们之间的夹角为$90^{\circ}$，也即$x \bot y$。但如果使用下面的内积定义则会得到不同的结果： $$ \left\langle x, y \right\rangle  = x^{\top} \left[ \begin{matrix} 2 & 0 \\ 0 & 1
@@ -456,7 +456,7 @@ where (b1, ... , bM) is a basis of U and (b⊥1, ... , b⊥D−M) is a basis of 
 
 其中$(b_{1}, \dots, b_{M})$是$U$的一个基，$(b^{\perp}_{1}, \dots, b^{\perp}_{D-M})$是$U^{\perp}$的一个基。
 
-![300](Pasted%20image%2020240809151317.png)
+![300](attachments/Pasted%20image%2020240809151317.png)
 
 <center>图3.7 三维向量空间的平面可被与其垂直单位向量唯一确定，后者是其正交补空间的基</center>
 
@@ -502,7 +502,7 @@ product evaluates to 0. Therefore, sin and cos are orthogonal functions.
 > 假如我们令$u = \sin(x)$，$v = \cos(x)$，则内积定义$(3.37)$中的被积函数为$f = u(x)v(x)$，如图3.38所示。我们发现这个函数是奇函数，也即$f(-x) = -f(x)$。所以积分限为$a=-\pi, b=\pi$的定积分的值为零，因此我们可以得到$\sin$和$\cos$互相正交的结论。
 >  
 
-![300](Pasted%20image%2020240811182908.png)
+![300](attachments/Pasted%20image%2020240811182908.png)
 
 > <center>图3.8 被积函数 f(x) = sin(x)cos(x) 的图像</center>
 >  
@@ -551,7 +551,7 @@ Even linear regression, which we discuss in Chapter 9, can be interpreted using 
 For a given lower-dimensional subspace, orthogonal projections of high-dimensional data retain as much information as possible and minimize the difference/error between the original data and the corresponding projection. 
 给定一个低维子空间，来自高维空间中数据的正交投影会保留尽可能多的信息，并最小化元数据和投影数据的区别或损失。
 
-![400](Pasted%20image%2020240813213937.png)
+![400](attachments/Pasted%20image%2020240813213937.png)
 <center>图 3.9 二维数据点（蓝色点）至一维子空间（直线）的投影（橙色点）</center>
 
 An illustration of such an orthogonal projection is given in Figure 3.9. Before we detail how to obtain these projections, let us define what a projection actually is.
@@ -637,7 +637,7 @@ In the following three steps, we determine the coordinate λ, the projection
     $$
 
     
-![600](Pasted%20image%2020240813214150.png)
+![600](attachments/Pasted%20image%2020240813214150.png)
 <center>图 3.10 投影至一位子空间的示例。</center>
 
 Here, ω is the angle between x and b. This equation should be familiar from trigonometry: If k xk = 1, then x lies on the unit circle. It follows that the projection onto the horizontal axis spanned by b is exactly cos ω, and the length of the corresponding vector πU (x) = |cos ω|. An
@@ -784,7 +784,7 @@ $$
 
 回忆 3.4 节中讨论的内容，保长和保角是正交矩阵所表示的变换之特征。接下来我们将详细讨论那些描述旋转变换的正交矩阵。
 
-![350](Pasted%20image%2020240819153205.png)
+![350](attachments/Pasted%20image%2020240819153205.png)
 <center>图 3.14 某旋转变换让一个图形绕原点旋转，转角为正表示逆时针旋转。</center>
 
 一个 **旋转（rotation）** 是指一个将某个平面关于原点旋转角度 $\theta$ 的线性映射（具体而言，它是Euclid空间的**自同构(automorphism)**），也就是说旋转过程中不变的点原点。根据通常的约定，旋转角 $\theta > 0$ 表示逆时针旋转。如图 3.14 所示，其中的旋转矩阵如下：
@@ -796,7 +796,7 @@ $$
 $$
 旋转在机器人和计算机图形学中有重要的应用。如在机器人学中（图 3.15），我们需要知道如何旋转机器人的各关节，使其可以抓取或放置某个物件。
 
-![400](Pasted%20image%2020240819153335.png)
+![400](attachments/Pasted%20image%2020240819153335.png)
 <center>图 3.15 机械臂的各关节需要正确旋转才能正确地拿起或放置物件</center>
 <center>图片来源于 Deisenroth et al.. 2015</center>
 
@@ -822,7 +822,7 @@ $$
 \sin\theta & \cos\theta
 \end{bmatrix}. \tag{3.76}
 $$
-![450](Pasted%20image%2020240819154748.png)
+![450](attachments/Pasted%20image%2020240819154748.png)
 <center>图 3.16 将二维Euclid平面中的正交基旋转角度 θ</center>
 
 ### 3.9.2 $\mathbb{R}^{3}$中的旋转
@@ -838,7 +838,7 @@ $$
 * 关于 $\boldsymbol{e}_{2}$ 方向的轴的旋转：$$\boldsymbol{R}_{3}(\theta) = \begin{bmatrix}\Phi(\boldsymbol{e}_{1}) & \Phi(\boldsymbol{e}_{2}) & \Phi(\boldsymbol{e}_{3})\end{bmatrix} = \begin{bmatrix}\cos\theta & -\sin\theta & 0\\sin\theta & \cos\theta & 0 \\0 & 0 & 1\end{bmatrix}. \tag{3.79}$$
   图 3.17 显示了这种情形。
 
-![350](Pasted%20image%2020240819160152.png)
+![350](attachments/Pasted%20image%2020240819160152.png)
 <center>图 3.17 将三维空间中的一个向量（灰色）绕着 e3 轴旋转了 θ 角度（蓝色）</center>
 
 ### 3.9.3 $n$维空间中的旋转
