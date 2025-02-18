@@ -720,7 +720,7 @@ $$
 
 > **示例 3.11（向二维子空间投影）**
 > 对于子空间 $\displaystyle U = \text{span} \left\{ \begin{bmatrix} 1\\1\\1 \end{bmatrix}, \begin{bmatrix}0\\1\\2\end{bmatrix}\right\} \subset \mathbb{R}^{3}$ 和向量 $x = \begin{bmatrix}6\\0\\0\end{bmatrix} \in \mathbb{R}^{3}$，找到 $x$ 投影在 $U$ 中的坐标 $\boldsymbol{\lambda}$，投影向量 $\pi_{U}(\boldsymbol{x})$ 以及投影矩阵 $\boldsymbol{P}_{\pi}$
-> ---
+> ****
 > 首先，我们检查张成 $U$ 的两个向量，发现它们线性无关，于是可以写成一个矩阵 $\boldsymbol{B} = \begin{bmatrix}1 & 0 \\ 1 & 1 \\ 1 & 2\end{bmatrix}$。
 > 然后我们计算正规矩阵和 $\boldsymbol{x}$ 对两个向量的点积：$$\begin{align}\boldsymbol{B}^{\top}\boldsymbol{B} &= \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2\end{matrix} \right] \left[ \begin{matrix} 1 & 0\\1 & 1\\1 & 2\end{matrix} \right] = \left[ \begin{matrix} 3 & 3 \\ 3 & 5\end{matrix} \right], \\\boldsymbol{B}^{\top}x &= \left[ \begin{matrix} 1 & 1 & 1\\0 & 1 & 2\end{matrix} \right] \left[ \begin{matrix} 6\\0\\0\end{matrix} \right] = \left[ \begin{matrix} 6\\0\end{matrix} \right]. \end{align} \tag{3.60}$$
 > 第三步，我们解正规方程 $\boldsymbol{B}^{\top}\boldsymbol{B\lambda} = \boldsymbol{B}^{\top}x$ 得到 $\boldsymbol{\lambda}$：$$\left[ \begin{matrix} 3 & 3 \\ 3 & 5\end{matrix} \right] \left[ \begin{matrix} \lambda_{1}\\\lambda_{2}\end{matrix} \right] = \left[ \begin{matrix} 6\\0\end{matrix} \right] \iff \boldsymbol{\lambda} = \left[ \begin{matrix}5\\-3\end{matrix} \right] $$

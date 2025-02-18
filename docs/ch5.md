@@ -49,7 +49,8 @@ $f$ 的导数时刻指向 $f$ 提升最快的方向。
 
 > **示例 5.2 （多项式函数的导数）**
 > 我们想计算多项式函数 $f(x) = x^{n}, n \in \mathbb{N}$ 的导数。即使我们可能已经知道答案是 $n x^{n-1}$，但我们依然希望使用导数和差商的定义导出它。
-> 使用导数的定义 $(5.4)$，我们有$$\begin{align}\frac{\mathrm{d}f}{\mathrm{d}x} &= \lim_{h \to 0} \frac{{\color{blue} f(x+h)} - {\color{orange} f(x)}}{h} \tag{5.5a}\\&= \lim_{h \to 0} \frac{{\color{blue} (x + h)^n} - {\color{orange} x^n}}{h} \tag{5.5b}  \\&= \lim_{h \to 0} \frac{{\color{blue}\sum\limits_{i=0}^{n} \binom{n}{i} x^{n-i} h^i} - {\color{orange}x^n}}{h}. \tag{5.5c}\end{align}$$
+> 使用导数的定义 $(5.4)$，我们有
+> $$\begin{align}\frac{\mathrm{d}f}{\mathrm{d}x} &= \lim_{h \to 0} \frac{{\color{blue} f(x+h)} - {\color{orange} f(x)}}{h} \tag{5.5a}\\&= \lim_{h \to 0} \frac{{\color{blue} (x + h)^n} - {\color{orange} x^n}}{h} \tag{5.5b}  \\&= \lim_{h \to 0} \frac{{\color{blue}\sum\limits_{i=0}^{n} \binom{n}{i} x^{n-i} h^i} - {\color{orange}x^n}}{h}. \tag{5.5c}\end{align}$$
 > 注意到 $\displaystyle {\color{orange} x^{n}} = \binom{n}{i} x^{n-0}h^{0}$，所以上式分子相当于求和项从 $1$ 开始，于是上式变为$$\begin{align} \frac{\mathrm{d}f}{\mathrm{d}x} &= \lim_{ h \to 0 } \frac{\sum\limits_{i=1}^{n} \binom{n}{i} x^{n-i}h^{i}}{h} \tag{5.6a}\\ &= \lim_{ h \to 0 } \sum\limits_{i=1}^{n} \binom{n}{i} x^{n-i}h^{i-1} \tag{5.6b}\\ &= \lim_{ h \to 0 } \left( \binom{n}{1} x^{n-1} + \underbrace{\sum\limits_{i=2}^{n} \binom{n}{i} x^{n-i}h^{i-1}}_{\to 0 \text{ as } h \rightarrow 0} \right) \tag{5.6c}\\ &= \frac{n!}{1!(n-1)!}x^{n-1} = nx^{n-1}. \tag{5.6d} \end{align}$$
 
 ### 5.1.1 Taylor 级数
