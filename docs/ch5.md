@@ -180,7 +180,7 @@ $$
 以上的写法 $(5.53)$ 当且仅当梯度被写为行向量时才是正确的，否则我们需要对结果进行转置，以保证矩阵的维度对应。在梯度为向量或矩阵时这样看来似乎比较显然，但当之后讨论中涉及的梯度变成 **张量（tensor）** 时对其进行转置就不那么容易了。
 
 > **验证梯度是否正确**
-> 将差商去极限而得到梯度的方法在计算机程序中的数值算法处被加以利用。当我们计算函数梯度时，我们可以通过数值的微小改变计算差商，然后校验梯度的正确性：取一个较小的值（例如 $h=10^{-4}$）然后计算有限差商和梯度的解析计算结果，如果误差足够小则说明梯度的解析结果大概率是正确的。误差足够小是指 $\displaystyle \sqrt{ \frac{\sum_{i} (dh_{i} - df_{i})^{2}}{\sum_{i} (dh_{i} + df_{i})^{2}} } < 10^{-6}$，其中 $dh_{i}$ 是指 $f$ 关于 $x_{i}$ 得到的有限差商的估计结果，$df_{i}$ 是指 $f$ 关于 $x_{i}$ 的解析梯度的计算结果。
+> 将差商取极限而得到梯度的方法在计算机程序中的数值算法处被加以利用。当我们计算函数梯度时，我们可以通过数值的微小改变计算差商，然后校验梯度的正确性：取一个较小的值（例如 $h=10^{-4}$）然后计算有限差商和梯度的解析计算结果，如果误差足够小则说明梯度的解析结果大概率是正确的。误差足够小是指 $\displaystyle \sqrt{ \frac{\sum_{i} (dh_{i} - df_{i})^{2}}{\sum_{i} (dh_{i} + df_{i})^{2}} } < 10^{-6}$，其中 $dh_{i}$ 是指 $f$ 关于 $x_{i}$ 得到的有限差商的估计结果，$df_{i}$ 是指 $f$ 关于 $x_{i}$ 的解析梯度的计算结果。
 
 ## 5.3 向量值函数的梯度
 
@@ -198,19 +198,15 @@ $$
 
 这样写可以让我们将向量值函数 $\boldsymbol{f}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$ 看成一个全部由实值函数 $f_{i}: \mathbb{R}^{n} \rightarrow \mathbb{R}$  构成的向量 $[f_{1}, \dots, f_{m}]^{\top}$，而对于每一个 $f_{i}$ 我们可以不加修改的直接应用 5.2 节中的所有微分法则。这样一来，向量值函数对变元 $x_{i} \in \mathbb{R}, i=1, \dots, n$ 的偏导数由下式给出
 
-$$
-\frac{ \partial \boldsymbol{f} }{ \partial x_{i} } = \begin{bmatrix}
+$$\frac{ \partial \boldsymbol{f} }{ \partial x_{i} } = \begin{bmatrix}
 \displaystyle \frac{ \partial f_{1} }{ \partial x_{i} } \\
 \vdots\\
 \displaystyle \frac{ \partial f_{m} }{ \partial x_{i} } 
-\end{bmatrix}
-= 
-\begin{bmatrix}
+\end{bmatrix} = \begin{bmatrix}
 \displaystyle \lim_{ h \to 0 } \frac{f_{1}(x_{1}, \dots, x_{i-1}, x_{i}+h, x_{i+1}, x_{n}) - f_{1}(\boldsymbol{x})}{h}\\
 \vdots\\
 \displaystyle \lim_{ h \to 0 } \frac{f_{m}(x_{1}, \dots, x_{i-1}, x_{i}+h, x_{i+1}, x_{n}) - f_{m}(\boldsymbol{x})}{h}\\
-\end{bmatrix} \in \mathbb{R}^{m}\tag{5.55}
-$$
+\end{bmatrix} \in \mathbb{R}^{m}\tag{5.55}$$
 
 从 $(5.40)$ 中我们了解到函数 $\boldsymbol{f}$ 对向量求导得到的是由一系列偏导数组合得到的行向量。在 $(5.55)$ 中，每个偏导数 $\displaystyle \frac{ \partial \boldsymbol{f}(\boldsymbol{x}) }{ \partial x_{i} }$ 自己就是一个列向量，于是我们可以将它们组合起来得到函数 $\boldsymbol{f}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$ 对向量 $\boldsymbol{x} \in \mathbb{R}^{n}$ 的梯度：
 
