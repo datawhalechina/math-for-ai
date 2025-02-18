@@ -751,7 +751,7 @@ $$
 在式 $(3.68)$ 中，第 $k$ 个基向量 $\boldsymbol{b}_{k}$ 被投影至前 $k-1$ 个构造得到的单位正交向量 $\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{k-1}$ 张成的子空间上（参见 3.8.2 节）。向量 $\boldsymbol{b}_{k}$ 减去这个投影向量所得的向量 $\boldsymbol{u}_{k}$ 与 $\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{k-1}$ 张成的 $k-1$ 维子空间垂直。对所有 $n$ 个基向量 $\boldsymbol{b}_{1}, \dots, \boldsymbol{b}_{n}$ 逐个应用这个算法，就得到了空间 $V$ 的一个正交基 $(\boldsymbol{u}_{1}, \dots, \boldsymbol{u}_{n})$ 。如果我们将正交基中的向量全部标准化，使得对所有的 $k = 1, \dots, n$ 都有 $\|\boldsymbol{u}_{k}\| = 1$，我们就得到了原空间的一个标准正交基（ONB）。
 
 > **示例 3.12（Gram-Schmidt 正交化）**
-> ![](Pasted%20image%2020240817143850.png)
+> ![](attachments/Pasted%20image%2020240817143850.png)
 > <center>图 3.12 Gram-Schmidt 正交化</center>
 > 如图 3.12 所示，考虑 $\mathbb{R}^{2}$ 的一个基 $(\boldsymbol{b}_{1}, \boldsymbol{b}_{2})$，其中
 > $$\boldsymbol{b}_{1} = \begin{bmatrix}2\\0\end{bmatrix}, \quad \boldsymbol{b}_{2} = \begin{bmatrix}1\\1\end{bmatrix}; \tag{3.69}$$
@@ -762,7 +762,7 @@ $$
 
 直到现在我们讨论的都是如何讲一个向量投影到低维的子空间 $U$ 上。本节将讨论如何解决投影至仿射子空间的问题。
 
-![](Pasted%20image%2020240817145017.png)
+![](attachments/Pasted%20image%2020240817145017.png)
 <center>图 3.13 向仿射空间投影</center>
 
 考虑像图 3.13(a) 这样的问题：给定一个仿射空间 $L = \boldsymbol{x}_{0} + U$，其中 $\boldsymbol{b}_{1}, \boldsymbol{b_{2}}$ 是 $U$ 的一个基。为确定向量 $\boldsymbol{x}$ 到仿射空间 $L$ 的投影 $\pi_{L}(\boldsymbol{x})$，我们选择将其转换为我们已解决的投影至低维子空间的问题。我们对 $\boldsymbol{x}$ 和 $L$ 同时减去支持点 $\boldsymbol{x}_{0}$，这样一来 $L - \boldsymbol{x}_{0}$ 恰好就是子空间 $U$。这样我们可以使用前文中 3.8.2 节讨论的正交投影至子空间的方法得到 $\pi_{U}(\boldsymbol{x} - \boldsymbol{x}_{0})$（如图 3.13 (b) 所示），然后我们可以把 $\boldsymbol{x}_{0}$ 加回投影向量，将它重新放入 $L$ 中，这样我们就得到了 $\boldsymbol{x}$ 到 $L$ 的投影：

@@ -7,10 +7,10 @@
 
 本证的核心概念是函数。一个函数 $f$ 是一个数学对象，它将两个数学对象进行联系。本书中涉及的数学对象即为模型输入 $\boldsymbol{x} \in \mathbb{R}^{D}$ 以及拟合目标（函数值）$f(\boldsymbol{x})$，若无额外说明，默认拟合目标都是实数。这里 $\mathbb{R}^{D}$ 称为 $f$ 的**定义域（domain）**，而相对应的函数值 $f(\boldsymbol{x})$ 所在的集合被称为 $f$ 的**像集（image）或陪域（codomain）**。
 
-![](Pasted%20image%2020240825122538.png)
+![](attachments/Pasted%20image%2020240825122538.png)
 <center>图 5.1 向量微积分在 (a) 回归问题（曲线拟合）和 (b) 分布密度估计（建模数据分布） <br>中有重要应用。</center>
 
-![](Pasted%20image%2020240825122711.png)
+![](attachments/Pasted%20image%2020240825122711.png)
 <center>图 5.2 本章的概念地图及与其他章节的联系</center>
 
 2.7.3 节中有对线性函数更为细致的讨论，但一般而言，我们将函数写为下面的形式
@@ -32,7 +32,7 @@ $$
 
 接下来我们简要复习一下学过高中数学读者较为熟悉的一元函数的微分。我们从用于定义微分的重要概念——一元函数 $y = f(x), x,y \in \mathbb{R}$ 的差商开始。
 
-![](Pasted%20image%2020240827204933.png)
+![](attachments/Pasted%20image%2020240827204933.png)
 <center>图 5.3 </center>
 
 > **定义 5.1 (差商）**
@@ -70,7 +70,7 @@ $f$ 的导数时刻指向 $f$ 提升最快的方向。
 > 考虑多项式 $$f(x) = x^{4} \tag{5.9}$$并求它在 $x_{0} = 1$ 处的 Taylor 多项式 $T_{6}$。我们先求函数在该点的各阶导数 $f^{(k)}(1), k=0, \dots, 6$：$$\begin{align}f(1) &= 1 \tag{5.10} \\f'(1) &= 4 \tag{5.11} \\f''(1) &= 12 \tag{5.12} \\f^{(3)}(1) &= 24 \tag{5.13} \\f^{(4)}(1) &= 24 \tag{5.14} \\f^{(5)}(1) &= 0 \tag{5.15} \\f^{(6)}(1) &= 0 \tag{5.16}\end{align}$$于是所求的 Taylor 多项式为$$\begin{align}T_6(x) &= \sum_{k=0}^{6} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \tag{5.17a}\\&= 1 + 4(x-1) + 6(x-1)^{2} + 4(x-1)^{3} + (x-1)^{4} + 0.\tag{5.17b}\end{align}$$整理得到$$\begin{align}T_{6}(x) &= (1-4+6-4+1) + x(4-12+12-4) \\&~ ~ ~+ x^{2}(6-12+6) + x^{3}(4-4) + x^{4}\tag{5.18a}\\&= x^{4} = f(x).\tag{5.18b}\end{align}$$
 > 我们得到了和原函数一模一样的 Taylor 多项式。
 
-![](Pasted%20image%2020240829103047.png)
+![](attachments/Pasted%20image%2020240829103047.png)
 <center>图 5.4</center>
 
 > **示例 5.4（Taylor 级数）**
@@ -274,7 +274,7 @@ $$
 上面提到的 Jacobian 行列式和变量替换在 6.7 节中对随机变量和分布进行变换时会涉及，它们在机器学习和深度学习中的 **重参数技巧（Reparametrization Trick）** 中十分重要，也被称为 **无穷摄动分析（Infinite Perturbation Analysis）**。
 
 
-![](Pasted%20image%2020250106153605.png)
+![](attachments/Pasted%20image%2020250106153605.png)
 <center>图5.6 （偏）导数的维度和形状</center>
 
 在本章讨论了函数的导数，图5.6给出它们的形状。如果$f: \mathbb{R} \rightarrow \mathbb{R}$，其梯度只是一个标量（左上角）。如果$f: \mathbb{R}^{D} \rightarrow \mathbb{R}$，它的梯度是一个形状为 $1 \times D$ 的行向量（右上角）。如果$\boldsymbol{f}: \mathbb{R} \rightarrow \mathbb{R}^{E}$，它的梯度是一个形状为 $E×1$ 的列向量，而如果 $\boldsymbol{f}: \mathbb{R}^{D} \rightarrow \mathbb{R}^{E}$，梯度则是一个形状为 $E×D$ 的矩阵。
@@ -313,7 +313,7 @@ $$计算 $h$ 关于 $t$ 的梯度。
 
 由于矩阵代表着线性变换。我们可以用这样的事实构造形状为 $m \times n$ 矩阵空间 $\mathbb{R}^{m \times n}$ 到 $mn$ 长度的向量空间 $\mathbb{R}^{mn}$ 的向量空间同构（可逆的线性映射）。这样一来我们就可以调整矩阵 $\boldsymbol{A}$ 和 $\boldsymbol{B}$ 的形状，使其分别变成长度为 $mn$ 和长度为 $pq$ 的向量。因此对这样的向量求梯度就得到形状为 $mn \times pq$ 的Jacobi矩阵。图 5.7 画出了上面两种方法的示意图。实际操作中，将矩阵压扁成向量然后继续处理Jacobi矩阵的方法较受欢迎，因为这样一来链式法则（5.48）就变成简单的矩阵乘法；而如果处理的是Jacobi张量，我们就得对于二者相乘时求和的维度倍加小心。
 
-![](Pasted%20image%2020250106171552.png)
+![](attachments/Pasted%20image%2020250106171552.png)
 
 > **示例 5.12（向量对矩阵的梯度）**
 > 考虑下面的例子：$$\boldsymbol{f} = \boldsymbol{A}\boldsymbol{x}, \quad \boldsymbol{f} \in \mathbb{R}^{M}, \quad \boldsymbol{A} \in \mathbb{R}^{M \times N}, \quad \boldsymbol{x} \in \mathbb{R}^{N},\tag{5.85}$$求梯度 $\displaystyle \frac{ \mathrm{d}\boldsymbol{f} }{ \mathrm{d}\boldsymbol{A} }$。
