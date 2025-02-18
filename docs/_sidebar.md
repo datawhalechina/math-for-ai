@@ -1,4 +1,4 @@
-- 第一章 [导引](【MML 翻译】Chapter 1 Introduction and Motivation.md)
-- 第三章 [解析几何](【MML 翻译】Chapter 3 Analytic Geometry.md)
-- 第五章 [向量微积分](【MML 翻译】Chapter 5 Vector Calculus.md)
-- 第七章 [连续优化](【MML 翻译】Chapter 7 Continuous Optimizations.md)
+- 第一章 [导引](ch1.md)
+- 第三章 [解析几何](ch3.md)
+- 第五章 [向量微积分](ch5.md)
+- 第七章 [连续优化](ch7.md)
