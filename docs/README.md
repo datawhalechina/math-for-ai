@@ -9,13 +9,13 @@ Math-for-ai 项目组旨在帮助学习ML相关领域的学生快速掌握所需
 
 | 章节 | 翻译 | 审校 |
 | ---- | ---- | ---- |
-| 第一章 导引 | :heavy_multiplication_x: | :heavy_multiplication_x: |
+| 第一章 导引 | :large_blue_diamond: @王子丞 | :heavy_multiplication_x: |
 | 第二章 线性代数 |:large_blue_diamond: @马世拓| :large_blue_diamond: @左春生 |
 | 第三章 解析几何 |:white_check_mark: @何瑞杰| :large_blue_diamond: @左春生|
 | 第四章 矩阵分解 |:white_check_mark: @马世拓| :large_blue_diamond: @左春生|
 | 第五章 向量微积分 |:large_blue_diamond: @何瑞杰| :large_blue_diamond: @左春生|
 | 第六章 概率与统计 |:white_check_mark: @马世拓| :large_blue_diamond: @左春生|
-| 第七章 连续优化 | :heavy_multiplication_x: | :heavy_multiplication_x: |
+| 第七章 连续优化 | :large_blue_diamond: @王子丞 | :heavy_multiplication_x: |
 | 第八章 模型和数据 |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
 | 第九章 线性回归 | :large_blue_diamond: @王耀晨 | :large_blue_diamond: @胡博毓 |
 | 第十章 降维和主成分分析 |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
