@@ -2,38 +2,24 @@
 
 # 第三章 解析几何（70）
 
-In Chapter 2, we studied vectors, vector spaces, and linear mappings at a general but abstract level.
 在第二章中，我们从一般但抽象的角度研究了向量、向量空间和线性映射。在本章中，我们将从几何直觉的视角考虑这些概念。
-
-In particular, we will look at geometric vectors and compute their lengths and distances or angles between two vectors. 
-例如，我们将考虑（欧几里得空间中的）两个向量的几何表示，计算它们的长度、它们之间的距离和夹角。
-
-To be able to do this, we equip the vector space with an inner product that induces the geometry of the vector space. 
+例如，我们将考虑（欧几里得空间中的）两个向量的几何表示，计算它们的长度、它们之间的距离和夹角。 
 我们需要将向量空间装配上诱导出其几何特征的内积以完成上面所说的事情。
-
-Inner products and their corresponding norms and metrics capture the intuitive notions of similarity and distances, which we use to develop the support vector machine in Chapter 12. 
 内积及其诱导的范数和度量与我们直觉中的“相似度”和“距离”相对应；我们将在第十二章中使用它们构建支持向量机模型。
-
-We will then use the concepts of lengths and angles between vectors to discuss orthogonal projections, which will play a central role when we discuss principal component analysis in Chapter 10 and regression via maximum likelihood estimation in Chapter 9. 
 随后我们将使用上面定义的向量的长度和向量间的夹角讨论正交投影。它将在第九章中的极大似然估计和第十章中的主成分分析中占中心地位。
 
-Figure 3.1 gives an overview of how concepts in this chapter are related and how they are connected to other chapters of the book.
+
 图 3.1 给出了本章中概念之间及与本书中其他章节关系的概览。
 
 #TODO 图片汉化
 
 ![500](attachments/Pasted%20image%2020240302105358.png)
 
-<center>Figure 3.1 A mind map of the concepts introduced in this chapter, <br>
-along with when they are used in other parts of the book.</center>
 <center>图 3.1：本章中概念之间和与本书中其他章节间联系的思维导图</center>
 
 ## 3.1 范数（71）
 
-When we think of geometric vectors, i.e., directed line segments that start at the origin, then intuitively the length of a vector is the distance of the “end” of this directed line segment from the origin. 
 当我们考虑几何意义下的向量，也就是原点出发的有向线段时，其长度显然是原点到有向线段终点之间的直线距离。
-
-In the following, we will discuss the notion of the length of vectors using the concept of a norm.
 下面我们将使用范数的概念讨论向量的长度。
 
 ![500](attachments/Pasted%20image%2020240302110312.png)
@@ -45,7 +31,6 @@ In the following, we will discuss the notion of the length of vectors using the 
 > * （三角不等式）$\|x + y\| \leqslant \|x\| + \|y\|$，
 > * （半正定）$\|x\| \geqslant 0$，当且仅当$x = 0$时取等
 
-In geometric terms, the triangle inequality states that for any triangle, the sum of the lengths of any two sides must be greater than or equal to the length of the remaining side; see Figure 3.2 for an illustration.
 如图 3.2 所示，在几何中，三角不等式是说任意三角形的两边之和一定大于等于第三边。
 
 ![150](attachments/Screenshot%202024-03-02%20at%2011.10.09.png)
@@ -53,10 +38,8 @@ In geometric terms, the triangle inequality states that for any triangle, the su
 <center>Figure 3.2 Triangle inequality.</center>
 <center>图 3.2：三角不等式的几何表示</center>
 
-Definition 3.1 is in terms of a general vector space V (Section 2.4), but in this book we will only consider a finite-dimensional vector space Rn.
 虽然定义 3.1 考虑的是所有向量空间（2.4 节），但在本书中，我们仅考虑有限维向量空间$\mathbb{R}^{n}$。
 
-Recall that for a vector x ∈ Rn we denote the elements of the vector using a subscript, that is, xi is the ith element of the vector x.
 最后别忘了，我们使用下标$i$表示$\mathbb{R}^{n}$中的向量$x$的第$i$个分量。
 
 ![500](attachments/Pasted%20image%2020240302111756.png)
@@ -75,37 +58,28 @@ Recall that for a vector x ∈ Rn we denote the elements of the vector using a s
 
 ![600](attachments/Pasted%20image%2020240302111733.png)
 
-<center>Figure 3.3 For different norms, the red lines indicate the set of vectors with norm 1.<br> Left: Manhattan norm; Right: Euclidean distance.</center>
 <center>图 3.3：平面上满足向量在不同范数的度量下值为1的情况：左侧为曼哈顿范数，右侧为欧几里得范数</center>
 
 注：在本书中，若不指明，范数一般是指欧几里得范数（式 3.4）。
 
 ## 3.2 内积（72）
 
-Inner products allow for the introduction of intuitive geometrical concepts, such as the length of a vector and the angle or distance between two vectors. 
 内积的引入是后面若干几何直觉上的概念，如向量长度、向量间夹角的铺垫。
 
-A major purpose of inner products is to determine whether vectors are orthogonal to each other.
 引入内积的一个主要目的是确认两个向量是否*正交*。
 
 ### 3.2.1 点积
 
-We may already be familiar with a particular type of inner product, the scalar product/dot product in Rn, which is given by
 我们已经熟悉一些特殊形式的点积，如标量积或$\mathbb{R}^{n}$中的点积，由下面的式子给出：
 $$
 x^{\top}y = \sum\limits_{i=1}^{n} x_{i}y_{i}. \tag{3.5}
 $$
 
-We will refer to this particular inner product as the dot product in this book. However, inner products are more general concepts with specific properties, which we will now introduce
 在本书中，我们称这样的内积形式为*点积*。需要注意的是，我们将介绍的内积是更加一般的概念，只要满足一些条件即可。
 
 ### 3.2.2 一般的点积
 
-> #HELP 感觉怪怪的
-> Recall the linear mapping from Section 2.7, where we can rearrange the mapping with respect to addition and multiplication with a scalar. 
-> 回忆在 2.7 节中提到的线性映射：我们可以利用其性质对加法和标量乘法进行重排。
-
-A bilinear mapping linear mapping Ω is a mapping with two arguments, and it is linear in each argument, i.e., when we look at a vector space V then it holds that for all x, y, z ∈ V, λ, ψ ∈ R that
+回忆在 2.7 节中提到的线性映射：我们可以利用其性质对加法和标量乘法进行重排。
 一个$V$上的*双线性映射*$\Omega$接受两个参数，并对其中的任意一个参数保持线性（译者注：即双重线性）。任取$x, y, z \in \Omega$，$\lambda, \psi \in \mathbb{R}$，我们有
 $$
 \begin{align}
@@ -113,7 +87,7 @@ $$
 \Omega(x, \lambda y + \psi z) = \lambda \cdot \Omega(x, y) + \psi \cdot \Omega(x, z). \tag{3.7}\\
 \end{align}
 $$
-Here, (3.6) asserts that Ω is linear in the first argument, and (3.7) asserts that Ω is linear in the second argument (see also (2.87)).
+
 在式中，（式 3.6）表示函数对第一个变量线性；（式 3.7）表示函数对第二个变量线性（见式 2.87）。
 
 ![500](attachments/Pasted%20image%2020240302120456.png)
@@ -132,7 +106,6 @@ Here, (3.6) asserts that Ω is linear in the first argument, and (3.7) asserts 
 > * 对称且正定的双线性映射$\Omega$叫做$V$上的一个*内积*，并简写$\Omega(x, y)$为$\left\langle x, y \right\rangle$。
 > * 二元组$(V, \left\langle \cdot, \cdot \right\rangle)$称为*内积空间*或*装配有内积的（实）向量空间*。特别地，如果内积采用（式 3.5）中定义的点积，则称$(V, \left\langle \cdot, \cdot \right\rangle)$为欧几里得向量空间（译者注：简称欧氏空间）
 
-We will refer to these spaces as inner product spaces in this book.
 本书中我们称这些空间为内积空间。
 
 ![500](attachments/Pasted%20image%2020240302120624.png)
@@ -144,7 +117,6 @@ We will refer to these spaces as inner product spaces in this book.
 
 ### 3.2.3 对称和正定矩阵
 
-Symmetric, positive definite matrices play an important role in machine learning, and they are defined via the inner product. 
 对称和正定矩阵在机器学习中十分重要，它们是由内积定义的。
 
 In Section 4.3, we will return to symmetric, positive definite matrices in the context of matrix decompositions. 

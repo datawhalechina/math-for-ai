@@ -215,13 +215,12 @@ $$
 \frac{\mathrm{d}\boldsymbol{f}}{\mathrm{d}\boldsymbol{x}} &= 
 \begin{bmatrix}
 {\color{blue} \displaystyle \frac{ \partial \boldsymbol{f}(x) }{ \partial x_{1} }}  & \cdots & \color{orange} \displaystyle \frac{ \partial \boldsymbol{f}(x) }{ \partial x_{n} } 
-\end{bmatrix} \tag{5.56a}\\[0.2em]
-&= \begin{bmatrix}
+\end{bmatrix} \\[0.2em] &= \begin{bmatrix}
 \color{blue} \displaystyle \frac{ \partial f_{1}(\boldsymbol{x}) }{ \partial x_{1} } &\cdots &  \color{orange} \displaystyle \frac{ \partial f_{1}(\boldsymbol{x}) }{ \partial x_{n} } \\
 \color{blue} \vdots & \ddots & \color{orange} \vdots\\
 \color{blue} \displaystyle \frac{ \partial f_{m}(\boldsymbol{x}) }{ \partial x_{1} } & \cdots & \color{orange}  \displaystyle \frac{ \partial f_{m}(\boldsymbol{x}) }{ \partial x_{n} } \\
-\end{bmatrix} \in \mathbb{R}^{m \times n} \tag{5.56b}
-\end{align}
+\end{bmatrix} \in \mathbb{R}^{m \times n} 
+\end{align} \tag{5.56}
 $$
 
 > **定义 5.6 (Jacobian 矩阵)**
@@ -341,8 +340,6 @@ $$
 $$
 注：本书中我们仅讨论矩阵的迹和转置。然而，我们已看到求导的结果可能是高维张量，通常的迹和转置在其范畴中没有定义。在这些情况下，形状为 $D×D×E×F$ 的张量的迹将是一个 $E×F$ 形状的矩阵。这是 *张量缩并（tensor contraction）* 的一种特殊情况。类似地，当我们“转置”一个张量时，我们说的是交换前两个维度。具体而言，在（5.99）到（5.102）中，当我们计算多元函数 $\boldsymbol{f}(\cdot)$ 对矩阵的导数时，我们需要张量相关的计算，而像在 5.4 节中那样将其拉直成向量。
 
-【以下为机器翻译结果，需要进行后期修正】
-
 ## 5.6 反向传播与自动微分
 
 在许多机器学习的应用中，我们通过计算学习目标关于模型参数的梯度，然后执行梯度下降（见 7.1 节）找好的模型参数。对于给定的目标函数，我们可以利用微积分的链式法则得到其对模型参数的梯度（见 5.2.2 节）。我们在 5.3 节已经尝试对平方损失结果关于线性回归模型参数求梯度。
@@ -376,6 +373,9 @@ $$
 <center>图 5.8 多层神经网络的前向传播</center>
 
 在一般的多层神经网络中，第 $i$ 层中有函数  $f_{i}(\boldsymbol{x}_{i-1}) = \sigma(\boldsymbol{A}_{i-1}\boldsymbol{x}_{i-1} + \boldsymbol{b}_{i-1})$ 。其中 $x_{i-1}$ 是 $i=1$ 层的输出和一个激活函数 $\sigma$，例如 sigmoid 函数 $\displaystyle \frac{1}{1-e^{-x}}$，$\tanh$ 或修正线性单元（rectified linear unit, ReLU）。为了训练这样的模型，我们需要一个损失函数 $L$，对其值求关于所有模型参数 $\boldsymbol{A}_j, \boldsymbol{b}_{j}, j=1, \dots, K$ 的梯度。这同时要求我们求其对模型中各层的输入的梯度。例如，如果我们有输入x和观测值y和一个网络结构，则它被定义为
+
+<!-- TODO【以下为机器翻译结果，需要进行后期修正】 -->
+
 $$
 \begin{align}
 \boldsymbol{f}_{0} &:= \boldsymbol{x} \tag{5.112}\\
