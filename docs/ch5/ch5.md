@@ -7,10 +7,10 @@
 
 本证的核心概念是函数。一个函数 $f$ 是一个数学对象，它将两个数学对象进行联系。本书中涉及的数学对象即为模型输入 $\boldsymbol{x} \in \mathbb{R}^{D}$ 以及拟合目标（函数值）$f(\boldsymbol{x})$，若无额外说明，默认拟合目标都是实数。这里 $\mathbb{R}^{D}$ 称为 $f$ 的**定义域（domain）**，而相对应的函数值 $f(\boldsymbol{x})$ 所在的集合被称为 $f$ 的**像集（image）或陪域（codomain）**。
 
-![](.../attachments/Pasted%20image%2020240825122538.png)
+![](../attachments/Pasted%20image%2020240825122538.png)
 <center>图 5.1 向量微积分在 (a) 回归问题（曲线拟合）和 (b) 分布密度估计（建模数据分布） <br>中有重要应用。</center>
 
-![](.../attachments/Pasted%20image%2020240825122711.png)
+![](../attachments/Pasted%20image%2020240825122711.png)
 <center>图 5.2 本章的概念地图及与其他章节的联系</center>
 
 2.7.3 节中有对线性函数更为细致的讨论，但一般而言，我们将函数写为下面的形式

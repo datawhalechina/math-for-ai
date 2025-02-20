@@ -13,7 +13,7 @@
 
 #TODO 图片汉化
 
-![500](.../attachments/Pasted%20image%2020240302105358.png)
+![500](../attachments/Pasted%20image%2020240302105358.png)
 
 <center>图 3.1：本章中概念之间和与本书中其他章节间联系的思维导图</center>
 
