@@ -4,7 +4,7 @@
 计算$f(x)=\log(x^{4})\sin(x^{3})$的导数$f'(x)$。
 
 ### 5.2 
-计算 Logistic 函数$f(x)=\frac{1}{1 + \exp(-x)}$的导数$f'(x)$。
+计算 Logistic 函数$\displaystyle f(x)=\frac{1}{1 + \exp(-x)}$的导数$f'(x)$。
 
 ### 5.3
 计算函数$\displaystyle f(x)=\exp\left[ -\frac{1}{2\sigma^{2}}(x - \mu)^{2} \right]$的导数$f'(x)$，其中$\mu,\sigma\in \mathbb{R}$是常数。
