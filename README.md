@@ -8,7 +8,7 @@ Math-for-ai 项目组旨在帮助学习ML相关领域的学生快速掌握所需
 | 章节 | 翻译 | 审校 |
 | ---- | ---- | ---- |
 | 第一章 导引 | :large_blue_diamond: @王子丞 | :large_blue_diamond: @何瑞杰 |
-| 第二章 线性代数 |:large_blue_diamond: @马世拓| :large_blue_diamond: @左春生 |
+| 第二章 线性代数 |:large_blue_diamond: @马世拓, @何瑞杰| :large_blue_diamond: @左春生 |
 | 第三章 解析几何 |:white_check_mark: @何瑞杰| :large_blue_diamond: @左春生|
 | 第四章 矩阵分解 |:white_check_mark: @马世拓| :large_blue_diamond: @左春生|
 | 第五章 向量微积分 |:white_check_mark: @何瑞杰| :large_blue_diamond: @左春生|
