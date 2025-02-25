@@ -10,7 +10,7 @@
 ![](../attachments/Pasted%20image%2020240825122538.png)
 <center>图 5.1 向量微积分在 (a) 回归问题（曲线拟合）和 (b) 分布密度估计（建模数据分布） <br>中有重要应用。</center>
 
-![](../attachments/Pasted%20image%2020240825122711.png)
+![](./attachments/Pasted%20image%2020250225235825.png)
 <center>图 5.2 本章的概念地图及与其他章节的联系</center>
 
 2.7.3 节中有对线性函数更为细致的讨论，但一般而言，我们将函数写为下面的形式
