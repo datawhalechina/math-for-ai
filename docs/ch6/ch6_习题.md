@@ -102,7 +102,7 @@ c. 随机变量 $y$ 根据测量映射进行变换
 
 $$z=Cy+v\:,$$
 
-其中 $z\in\mathbb{R}^F,C\in\mathbb{R}^{F\times E}$，且 $v\sim\mathcal{N}(v\mid\mathbf{0},\boldsymbol{R})$ 是独立的高斯（测量）噪声。
+其中 $z\in\mathbb{R}^F,C\in\mathbb{R}^{F\times E}$，且 $v\sim\mathcal{N}(v\mid\boldsymbol{0},\boldsymbol{R})$ 是独立的高斯（测量）噪声。
 
 \- 写下 $p(\boldsymbol z\mid\boldsymbol y)$。
 
