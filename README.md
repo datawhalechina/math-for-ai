@@ -22,7 +22,7 @@
 | [第六章 概率与统计](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch6/ch6.md) |:white_check_mark: @马世拓| :large_blue_diamond: @左春生|
 | [第七章 连续优化](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch7/ch7.md) | :large_blue_diamond: @王子丞 | :large_blue_diamond: @何瑞杰 |
 | [第八章 模型和数据](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch8/ch8.md) |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
-| [第九章 线性回归](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch9/ch9.md) | :large_blue_diamond: @王耀晨 | :large_blue_diamond: @胡博毓 |
+| [第九章 线性回归](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch9/ch9.md) | :white_check_mark: @王耀晨 | :large_blue_diamond: @胡博毓 |
 | [第十章 降维和主成分分析](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch10/ch10.md) |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
 | [第十一章 密度估计和混合Gauss模型](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch11/ch11.md) | :large_blue_diamond: @王耀晨 | :large_blue_diamond: @胡博毓 |
 | [第十二章 分类和支持向量机](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch12/ch13.md) |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
