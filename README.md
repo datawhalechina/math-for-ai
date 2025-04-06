@@ -15,14 +15,14 @@
 | 章节 | 翻译 | 审校 |
 | ---- | ---- | ---- |
 | [第一章 导引](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch1/ch1.md) | :large_blue_diamond: @王子丞 | :large_blue_diamond: @何瑞杰 |
-| [第二章 线性代数](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch2/ch2.md) |:large_blue_diamond: @马世拓, @何瑞杰| :large_blue_diamond: @左春生 |
+| [第二章 线性代数](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch2/ch2.md) |:white_check_mark: @马世拓, @何瑞杰| :large_blue_diamond: @左春生 |
 | [第三章 解析几何](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch3/ch3.md) |:white_check_mark: @何瑞杰| :large_blue_diamond: @左春生|
 | [第四章 矩阵分解](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch4/ch4.md) |:white_check_mark: @马世拓| :large_blue_diamond: @左春生|
 | [第五章 向量微积分](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch5/ch5.md) |:white_check_mark: @何瑞杰| :large_blue_diamond: @左春生|
 | [第六章 概率与统计](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch6/ch6.md) |:white_check_mark: @马世拓| :large_blue_diamond: @左春生|
 | [第七章 连续优化](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch7/ch7.md) | :large_blue_diamond: @王子丞 | :large_blue_diamond: @何瑞杰 |
 | [第八章 模型和数据](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch8/ch8.md) |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
-| [第九章 线性回归](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch9/ch9.md) | :large_blue_diamond: @王耀晨 | :large_blue_diamond: @胡博毓 |
+| [第九章 线性回归](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch9/ch9.md) | :white_check_mark: @王耀晨 | :large_blue_diamond: @胡博毓 |
 | [第十章 降维和主成分分析](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch10/ch10.md) |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
 | [第十一章 密度估计和混合Gauss模型](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch11/ch11.md) | :large_blue_diamond: @王耀晨 | :large_blue_diamond: @胡博毓 |
 | [第十二章 分类和支持向量机](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch12/ch13.md) |:white_check_mark: @马世拓| :large_blue_diamond: @胡博毓 |
@@ -36,12 +36,12 @@
 
 | 姓名 | 职责 | 简介 |
 | :----| :---- | :---- |
-| 何瑞杰 | 项目负责人<br>第2, 3, 5章翻译贡献者<br>第 1, 7 章审校人 | 香港科技大学 |
-| 马世拓 | 第 2, 4, 6, 8, 10, 12章翻译贡献者 | 中国科学院大学网络空间安全学院，中国科学院信息工程研究所 |
-| 王子丞 | 第 1, 7 章贡献者 |  |
-| 王耀晨 | 第 9, 11 章贡献者 |  |
-| 胡博毓 | 第 2 ~ 6 章审校人 |  |
-| 左春生 | 第 8 ~ 12 章审校人 |  |
+| $何瑞杰$ | 项目负责人<br>第2, 3, 5章翻译贡献者<br>第 1, 7 章审校人 | 香港科技大学 |
+| $马世拓$ | 第 2, 4, 6, 8, 10, 12章翻译贡献者 | 中国科学院大学网络空间安全学院，中国科学院信息工程研究所 |
+| $王子丞$ | 第 1, 7 章贡献者 |  |
+| $王耀晨$ | 第 9, 11 章贡献者 |  |
+| $胡博毓$ | 第 2 ~ 6 章审校人 |  |
+| $左春生$ | 第 8 ~ 12 章审校人 |  |
 
 ## 参与贡献
 
