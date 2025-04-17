@@ -14,8 +14,8 @@
 
 | 章节 | 翻译 | 审校 |
 | ---- | ---- | ---- |
-| [第一章 导引](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch1/ch1.md) | :large_blue_diamond: @王子丞 | :large_blue_diamond: @何瑞杰 |
-| [第二章 线性代数](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch2/ch2.md) |:white_check_mark: @马世拓, @何瑞杰| :large_blue_diamond: @左春生 |
+| [第一章 导引](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch1/ch1.md) | :white_check_mark: @王子丞 | :large_blue_diamond: @何瑞杰 |
+| [第二章 线性代数](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch2/ch2.md) |:white_check_mark: @马世拓, @何瑞杰| :white_check_mark: @左春生 |
 | [第三章 解析几何](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch3/ch3.md) |:white_check_mark: @何瑞杰| :large_blue_diamond: @左春生|
 | [第四章 矩阵分解](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch4/ch4.md) |:white_check_mark: @马世拓| :large_blue_diamond: @左春生|
 | [第五章 向量微积分](https://github.com/datawhalechina/math-for-ai/blob/main/docs/ch5/ch5.md) |:white_check_mark: @何瑞杰| :large_blue_diamond: @左春生|
