@@ -32,11 +32,12 @@
       repo: 'datawhalechina/math-for-ai',
 
       loadSidebar: true,
-      subMaxLevel: 4,
+      hideSidebar: false,
+      subMaxLevel: 2,
 
       auto2top: true,
       executeScript: true,
-      mergeNavbar: true,
+      mergeNavbar: true, 
 
       themeable: {
         responsiveTables: false // default
@@ -91,7 +92,10 @@
   <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/marked@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script><!-- 在index.html的<head>中引入CSS（选一种样式） -->
+  
+  <!-- 在<body>末尾引入JS -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 </body>
 
 </html>
