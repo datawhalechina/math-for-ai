@@ -1,0 +1,12 @@
+/* 添加到 docsify 的 index.html 或自定义 CSS 文件中 */
+.aside-nav .sidebar-nav li a {
+  white-space: normal !important;
+  word-break: break-word !important;
+  padding: 8px 10px !important;
+  line-height: 1.5 !important;
+}
+
+/* 修复箭头图标位置（可选） */
+.aside-nav .sidebar-nav li.app-sub-sidebar > a::after {
+  top: 12px; /* 根据换行后的位置调整 */
+}
