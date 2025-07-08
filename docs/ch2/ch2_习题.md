@@ -7,8 +7,8 @@ $$
 a \star b := ab + a + b, \quad a, b \in \mathbb{R}\backslash\{-1\} 
 $$
 
-a. 证明 $(\mathbb{R}\backslash\{-1\}, \star)$ 是一个阿贝尔群。
-b. 在阿贝尔群 $(\mathbb{R}\backslash\{-1\}, \star)$ 中解方程
+a. 证明 $(\mathbb{R}\backslash\{-1\}, \star)$ 是一个 Abel 群。
+b. 在 Abel 群 $(\mathbb{R}\backslash\{-1\}, \star)$ 中解方程
 
 $$ 
 3 \star x \star x = 15 
@@ -37,14 +37,14 @@ $$
 a \oplus b := a + b 
 $$
 
-a. 证明 $(\mathbb{Z}_n, \oplus)$ 是一个群。它是阿贝尔群吗？
+a. 证明 $(\mathbb{Z}_n, \oplus)$ 是一个群。它是 Abel 群吗？
 b. 现在我们为所有 $a$ 和 $b$ 在 $\mathbb{Z}_n$ 中定义另一个运算 $\otimes$：
 
 $$ 
 a \otimes b = a \times b 
 $$
 
-其中 $a \times b$ 表示 $\mathbb{Z}$ 中的通常乘法。设 $n = 5$。绘制 $\mathbb{Z}_5\backslash\{0\}$ 中元素在 $\otimes$ 下的乘法表，即计算所有 $a$ 和 $b$ 在 $\mathbb{Z}_5\backslash\{0\}$ 中的乘积 $a \otimes b$。由此，证明 $\mathbb{Z}_5\backslash\{0\}$ 在 $\otimes$ 下是封闭的，并且存在单位元。列出 $\mathbb{Z}_5\backslash\{0\}$ 中所有元素在 $\otimes$ 下的逆元。得出结论：$(\mathbb{Z}_5\backslash\{0\}, \otimes)$ 是一个阿贝尔群。
+其中 $a \times b$ 表示 $\mathbb{Z}$ 中的通常乘法。设 $n = 5$。绘制 $\mathbb{Z}_5\backslash\{0\}$ 中元素在 $\otimes$ 下的乘法表，即计算所有 $a$ 和 $b$ 在 $\mathbb{Z}_5\backslash\{0\}$ 中的乘积 $a \otimes b$。由此，证明 $\mathbb{Z}_5\backslash\{0\}$ 在 $\otimes$ 下是封闭的，并且存在单位元。列出 $\mathbb{Z}_5\backslash\{0\}$ 中所有元素在 $\otimes$ 下的逆元。得出结论：$(\mathbb{Z}_5\backslash\{0\}, \otimes)$ 是一个 Abel 群。
 c. 证明 $(\mathbb{Z}_8\backslash\{0\}, \otimes)$ 不是一个群。
 d. 回忆贝祖定理指出，两个整数 $a$ 和 $b$ 互质（即 $\gcd(a, b) = 1$）当且仅当存在两个整数 $u$ 和 $v$ 使得 $au + bv = 1$。证明 $(\mathbb{Z}_n\backslash\{0\}, \otimes)$ 是一个群当且仅当 $n \in \mathbb{N}\backslash\{0\}$ 是质数。
 
@@ -55,7 +55,7 @@ $$
 G = \left\{ \begin{pmatrix} 1 & x & z \\ 0 & 1 & y \\ 0 & 0 & 1 \end{pmatrix} \in \mathbb{R}^{3 \times 3} \,\Bigg|\, x, y, z \in \mathbb{R} \right\} 
 $$
 
-我们将 $\cdot$ 定义为标准矩阵乘法。$(G, \cdot)$ 是一个群吗？如果是，它是阿贝尔群吗？请证明你的答案。
+我们将 $\cdot$ 定义为标准矩阵乘法。$(G, \cdot)$ 是一个群吗？如果是，它是 Abel 群吗？请证明你的答案。
 
 ## 练习 2.4
 计算以下矩阵乘积（如果可能的话）：
