@@ -284,7 +284,7 @@ $$
 求变换矩阵 $A_\Phi$。确定 $\text{rk}(A_\Phi)$。计算 $\Phi$ 的核和像。$\text{dim}(\text{ker}(\Phi))$ 和 $\text{dim}(\text{Im}(\Phi))$ 分别是多少？
 
 ## 练习 2.18
-设 $E$ 是一个向量空间。设 $f$ 和 $g$ 是 $E$ 上的两个自同构，使得 $f \circ g = \text{id}_E$（即 $f \circ g$ 是恒等映射 $\text{id}_E$）。证明 $\text{ker}(f) = \text{ker}(g \circ f)$，$\text{Im}(g) = \text{Im}(g \circ f)$，并且 $\text{ker}(f) \cap \text{Im}(g) = \{0_E\}$。
+设 $E$ 是一个线性空间。设 $f$ 和 $g$ 是 $E$ 上的两个自同构，使得 $f \circ g = \text{id}_E$（即 $f \circ g$ 是恒等映射 $\text{id}_E$）。证明 $\text{ker}(f) = \text{ker}(g \circ f)$，$\text{Im}(g) = \text{Im}(g \circ f)$，并且 $\text{ker}(f) \cap \text{Im}(g) = \{0_E\}$。
 
 ## 练习 2.19
 考虑一个内态射 $\Phi: \mathbb{R}^3 \to \mathbb{R}^3$，其变换矩阵（相对于 $\mathbb{R}^3$ 的标准基）为
