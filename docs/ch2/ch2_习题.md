@@ -25,7 +25,7 @@ $$
 = \{x \in \mathbb{Z} \mid \exists a \in \mathbb{Z}, \text{ 使得 } x - k = n \cdot a\} 
 $$
 
-我们现在定义 $\mathbb{Z}/n\mathbb{Z}$（有时写作 $\mathbb{Z}_n$）为所有模 $n$ 的同余类的集合。欧几里得除法表明这个集合是一个包含 $n$ 个元素的有限集：
+我们现在定义 $\mathbb{Z}/n\mathbb{Z}$（有时写作 $\mathbb{Z}_n$）为所有模 $n$ 的同余类的集合。 Euclid 除法表明这个集合是一个包含 $n$ 个元素的有限集：
 
 $$ 
 \mathbb{Z}_n = \{0, 1, \ldots, n - 1\} 
