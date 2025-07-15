@@ -17,7 +17,7 @@ $
 \begin{matrix}
 1 \\ 2 \\3
 \end{matrix}
-\right ]\in \R^3
+\right ]\in \R^3 \tag{2.1}
 $
 就是一个三元数组的实例。对两个向量 $\boldsymbol{a}$, $\boldsymbol{b}$ 按分量相加会得到一个新的向量  $\boldsymbol{a}+\boldsymbol{b}=\boldsymbol{c}\in \R^n$ 。进一步说，用一个标量 $\lambda \in \R$ 乘一个向量 $\boldsymbol{a}$ 会得到一个放缩后的新向量 $\lambda\boldsymbol{a}\in\R^n$ 。将向量作为 $\R^n$ 的元素有一个额外的好处，就是能够自然对应于计算机上的实数数组。许多编程语言都支持数组操作，这允许方便地实现涉及向量操作的算法。
 
