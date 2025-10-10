@@ -1,5 +1,5 @@
 <center>
-<img src="docs/logo_lr.png" alt="logo" style="zoom:40%;" />
+<img src="logo_lr.png" alt="logo" style="zoom:40%;" />
 </center>
 
 # 人工智能的数学基础
