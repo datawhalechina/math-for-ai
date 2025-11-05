@@ -1,6 +1,6 @@
 
 <center>
-<img src="docs/logo_lr.png" alt="logo" style="zoom:40%;" />
+<img src="docs/logo_lr.png" alt="logo" style="zoom:30%;" />
 </center>
 
 # 人工智能的数学基础
