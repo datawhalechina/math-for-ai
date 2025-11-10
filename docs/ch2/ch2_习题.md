@@ -1,4 +1,5 @@
 
+<center><big><font color="red">本教程由 <a href="https://github.com/datawhalechina/math-for-ai">Datawhale 开源社区</a>编译，与对应的英文原版均开源免费</font></big></center>
 
 ## 练习 2.1
 我们考虑 $(\mathbb{R}\backslash\{-1\}, \star)$，其中

@@ -4,6 +4,8 @@
 
 # 人工智能的数学基础
 
+<center><big><font color="red">本教程由 <a href="https://github.com/datawhalechina/math-for-ai">Datawhale 开源社区</a>编译，与对应的英文原版均开源免费</font></big></center>
+
 本项目致力于为机器学习和人工智能学习者提供全面的数学基础支持。该项目旨在通过整理和整合各种数学资源，帮助学习者更好地理解和掌握机器学习背后的数学原理。项目内容可能包括但不限于数学教程、书籍翻译、在线课程推荐以及相关数学工具的介绍。
 
 目前我们正翻译 [MML book](https://mml-book.github.io/) 的内容，后续将添加更多内容
@@ -11,6 +13,7 @@
 [项目在线阅读](https://datawhalechina.github.io/math-for-ai/#/)
 
 ## 项目受众
+
 
 * 大学工科学生：尤其是计算机科学、电子工程、自动化等专业的学生，他们在学习机器学习和人工智能课程时，往往需要更扎实的数学基础。
 * 机器学习和人工智能的初学者：包括自学者和在职人员，他们希望通过系统学习数学知识来提升自己在该领域的竞争力。
@@ -39,6 +42,8 @@
 * :heavy_multiplication_x: 未开始​
 
 ## 贡献者名单
+
+<center><big><font color="red">本教程由 <a href="https://github.com/datawhalechina/math-for-ai">Datawhale 开源社区</a>编译，与对应的英文原版均开源免费</font></big></center>
 
 | 姓名 | 职责 | 简介 |
 | :----| :---- | :---- |
