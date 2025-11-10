@@ -7,6 +7,8 @@
 
 <center><big><font color="red">本教程由 <a href="https://github.com/datawhalechina/math-for-ai">Datawhale 开源社区</a>编译，与对应的英文原版均开源免费</font></big></center>
 
+为了您的阅读体验，请使用右上角的在线阅读链接，或克隆仓库后在项目根目录运行 `docsify serve docs`。
+
 本项目致力于为机器学习和人工智能学习者提供全面的数学基础支持。该项目旨在通过整理和整合各种数学资源，帮助学习者更好地理解和掌握机器学习背后的数学原理。项目内容可能包括但不限于数学教程、书籍翻译、在线课程推荐以及相关数学工具的介绍。
 
 目前我们正翻译 [MML book](https://mml-book.github.io/) 的内容，后续将添加更多内容
@@ -67,7 +69,7 @@
 
 ## 感谢名单（排名不分先后）
 ### 微信 id
-@lewis56654281, @Basil_Co, @星, @团子猪猪, @以太, @鹏, @牧之, @Young, @念头通达, @朱子静
+@lewis56654281, @Basil_Co, @星, @团子猪猪, @以太, @鹏, @牧之, @Young, @念头通达, @朱子静, @klutz, @AAAAD钙批发
 
 ### Github id
 @liandxxxxxxxxxx
