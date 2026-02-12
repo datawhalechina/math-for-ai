@@ -9,6 +9,7 @@ a \star b := ab + a + b, \quad a, b \in \mathbb{R}\backslash\{-1\}
 $$
 
 a. 证明 $(\mathbb{R}\backslash\{-1\}, \star)$ 是一个 Abel 群。
+
 b. 在 Abel 群 $(\mathbb{R}\backslash\{-1\}, \star)$ 中解方程
 
 $$ 
@@ -39,6 +40,7 @@ a \oplus b := a + b
 $$
 
 a. 证明 $(\mathbb{Z}_n, \oplus)$ 是一个群。它是 Abel 群吗？
+
 b. 现在我们为所有 $a$ 和 $b$ 在 $\mathbb{Z}_n$ 中定义另一个运算 $\otimes$：
 
 $$ 
@@ -46,7 +48,9 @@ a \otimes b = a \times b
 $$
 
 其中 $a \times b$ 表示 $\mathbb{Z}$ 中的通常乘法。设 $n = 5$。绘制 $\mathbb{Z}_5\backslash\{0\}$ 中元素在 $\otimes$ 下的乘法表，即计算所有 $a$ 和 $b$ 在 $\mathbb{Z}_5\backslash\{0\}$ 中的乘积 $a \otimes b$。由此，证明 $\mathbb{Z}_5\backslash\{0\}$ 在 $\otimes$ 下是封闭的，并且存在单位元。列出 $\mathbb{Z}_5\backslash\{0\}$ 中所有元素在 $\otimes$ 下的逆元。得出结论：$(\mathbb{Z}_5\backslash\{0\}, \otimes)$ 是一个 Abel 群。
+
 c. 证明 $(\mathbb{Z}_8\backslash\{0\}, \otimes)$ 不是一个群。
+
 d. 回忆 Bezout 定理指出，两个整数 $a$ 和 $b$ 互质（即 $\gcd(a, b) = 1$）当且仅当存在两个整数 $u$ 和 $v$ 使得 $au + bv = 1$。证明 $(\mathbb{Z}_n\backslash\{0\}, \otimes)$ 是一个群当且仅当 $n \in \mathbb{N}\backslash\{0\}$ 是质数。
 
 ## 练习 2.3
@@ -145,9 +149,13 @@ $$
 
 ## 练习 2.9
 以下哪些集合是 $\mathbb{R}^3$ 的子空间？
+
 a. $A = \{(\lambda, \lambda + \mu^3, \lambda - \mu^3) \mid \lambda, \mu \in \mathbb{R}\}$
+
 b. $B = \{(\lambda^2, -\lambda^2, 0) \mid \lambda \in \mathbb{R}\}$
+
 c. 设 $\gamma \in \mathbb{R}$，$C = \{(\xi_1, \xi_2, \xi_3) \in \mathbb{R}^3 \mid \xi_1 - 2\xi_2 + 3\xi_3 = \gamma\}$
+
 d. $D = \{(\xi_1, \xi_2, \xi_3) \in \mathbb{R}^3 \mid \xi_2 \in \mathbb{Z}\}$
 
 ## 练习 2.10
@@ -199,7 +207,9 @@ A_1 = \begin{bmatrix} 1 & 0 & 1 & 1 \\ -2 & -1 & 2 & 1 \\ 3 & 1 & 0 & 1 \end{bma
 $$
 
 a. 确定 $U_1$ 和 $U_2$ 的维数。
+
 b. 确定 $U_1$ 和 $U_2$ 的基。
+
 c. 确定 $U_1 \cap U_2$ 的一个基。
 
 ## 练习 2.14
@@ -210,13 +220,18 @@ A_1 = \begin{bmatrix} 1 & 0 & 1 & 1 \\ -2 & -1 & 2 & 1 \\ 3 & 1 & 0 & 1 \end{bma
 $$
 
 a. 确定 $U_1$ 和 $U_2$ 的维数。
+
 b. 确定 $U_1$ 和 $U_2$ 的基。
+
 c. 确定 $U_1 \cap U_2$ 的一个基。
 
 ## 练习 2.15
 设 $F = \{(x, y, z) \in \mathbb{R}^3 \mid x + y - z = 0\}$ 和 $G = \{(a - b, a + b, a - 3b) \mid a, b \in \mathbb{R}\}$。
+
 a. 证明 $F$ 和 $G$ 是 $\mathbb{R}^3$ 的子空间。
+
 b. 不借助基向量，计算 $F \cap G$。
+
 c. 找出 $F$ 和 $G$ 的基，使用这些基向量计算 $F \cap G$，并验证与上一问题的结果是否一致。
 
 ## 练习 2.16
@@ -288,7 +303,9 @@ $$
 \Phi\left( \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \right) = \begin{bmatrix} 3x_1 + 2x_2 + x_3 \\ x_1 + x_2 + x_3 \\ x_1 - 3x_2 \\ 2x_1 + 3x_2 + x_3 \end{bmatrix} 
 $$
 
-求变换矩阵 $A_\Phi$。确定 $\text{rk}(A_\Phi)$。计算 $\Phi$ 的核和像。$\text{dim}(\text{ker}(\Phi))$ 和 $\text{dim}(\text{Im}(\Phi))$ 分别是多少？
+* 求变换矩阵 $A_\Phi$。
+* 确定 $\text{rk}(A_\Phi)$。
+* 计算 $\Phi$ 的核和像。$\text{dim}(\text{ker}(\Phi))$ 和 $\text{dim}(\text{Im}(\Phi))$ 分别是多少？
 
 ## 练习 2.18
 设 $E$ 是一个线性空间。设 $f$ 和 $g$ 是 $E$ 上的两个自同构，使得 $f \circ g = \text{id}_E$（即 $f \circ g$ 是恒等映射 $\text{id}_E$）。证明 $\text{ker}(f) = \text{ker}(g \circ f)$，$\text{Im}(g) = \text{Im}(g \circ f)$，并且 $\text{ker}(f) \cap \text{Im}(g) = \{0_E\}$。
@@ -317,8 +334,11 @@ b_1 = \begin{bmatrix} 2 \\ 1 \end{bmatrix}, \quad b_2 = \begin{bmatrix} -1 \\ -1
 $$
 
 我们定义两个有序基 $B = (b_1, b_2)$ 和 $B' = (b'_1, b'_2)$。
+
 a. 证明 $B$ 和 $B'$ 是 $\mathbb{R}^2$ 的两个基，并绘制这些基向量。
+
 b. 计算从 $B'$ 到 $B$ 的基变换矩阵 $P^1$。
+
 c. 考虑 $\mathbb{R}^3$ 中的三个向量 $c_1, c_2, c_3$，它们在 $\mathbb{R}^3$ 的标准基下的定义为
 
 $$ 
@@ -326,8 +346,11 @@ c_1 = \begin{bmatrix} 1 \\ 2 \\ -1 \end{bmatrix}, \quad c_2 = \begin{bmatrix} 0 
 $$
 
 我们定义 $C = (c_1, c_2, c_3)$。
+
 (i) 证明 $C$ 是 $\mathbb{R}^3$ 的一个基，例如通过使用行列式（见第 4.1 节）。
+
 (ii) 设 $C' = (c'_1, c'_2, c'_3)$ 是 $\mathbb{R}^3$ 的标准基。确定从 $C$ 到 $C'$ 的基变换矩阵 $P^2$。
+
 d. 考虑一个同态 $\Phi: \mathbb{R}^2 \to \mathbb{R}^3$，使得
 
 $$ 
@@ -339,9 +362,15 @@ $$
 $$
 
 其中 $B = (b_1, b_2)$ 和 $C = (c_1, c_2, c_3)$ 分别是 $\mathbb{R}^2$ 和 $\mathbb{R}^3$ 的有序基。确定 $\Phi$ 相对于有序基 $B$ 和 $C$ 的变换矩阵 $A_\Phi$。
+
 e. 确定 $A'$，即 $\Phi$ 相对于基 $B'$ 和 $C'$ 的变换矩阵。
+
 f. 考虑向量 $x \in \mathbb{R}^2$，其在 $B'$ 中的坐标为 $[2, 3]^\top$。换句话说，$x = 2b'_1 + 3b'_2$。
+
 (i) 计算 $x$ 在 $B$ 中的坐标。
+
 (ii) 基于此，计算 $\Phi(x)$ 在 $C$ 中的坐标。
+
 (iii) 然后，将 $\Phi(x)$ 用 $c'_1, c'_2, c'_3$ 表示。
+
 (iv) 使用 $x$ 在 $B'$ 中的表示和矩阵 $A'$ 直接找到这个结果。
