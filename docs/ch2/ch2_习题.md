@@ -41,7 +41,7 @@ $$
 
 a. 证明 $(\mathbb{Z}_n, \oplus)$ 是一个群。它是 Abel 群吗？
 
-b. 现在我们为所有 $a$ 和 $b$ 在 $\mathbb{Z}_n$ 中定义另一个运算 $\otimes$：
+b. 现在我们为所有 $\overline{a}$ 和 $\overline{b}$ 在 $\mathbb{Z}_n$ 中定义另一个运算 $\otimes$：
 
 $$ 
 a \otimes b = a \times b 
