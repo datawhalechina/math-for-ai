@@ -33,21 +33,21 @@ $$
 \mathbb{Z}_n = \{\bar{0}, \bar{1}, \ldots, \overline{n-1}\} 
 $$
 
-对于所有 $a, b \in \mathbb{Z}_n$，我们定义
+对于所有 $\overline{a}, \overline{b} \in \mathbb{Z}_n$，我们定义
 
 $$ 
-a \oplus b := a + b 
+\overline{a} \oplus \overline{b} := \overline{a + b} 
 $$
 
 a. 证明 $(\mathbb{Z}_n, \oplus)$ 是一个群。它是 Abel 群吗？
 
-b. 现在我们为所有 $a$ 和 $b$ 在 $\mathbb{Z}_n$ 中定义另一个运算 $\otimes$：
+b. 现在我们为所有 $\overline{a}$ 和 $\overline{b}$ 在 $\mathbb{Z}_n$ 中定义另一个运算 $\otimes$：
 
 $$ 
-a \otimes b = a \times b 
+\overline{a} \otimes \overline{b} = \overline{a \times b} 
 $$
 
-其中 $a \times b$ 表示 $\mathbb{Z}$ 中的通常乘法。设 $n = 5$。绘制 $\mathbb{Z}_5\backslash\{0\}$ 中元素在 $\otimes$ 下的乘法表，即计算所有 $a$ 和 $b$ 在 $\mathbb{Z}_5\backslash\{0\}$ 中的乘积 $a \otimes b$。由此，证明 $\mathbb{Z}_5\backslash\{0\}$ 在 $\otimes$ 下是封闭的，并且存在单位元。列出 $\mathbb{Z}_5\backslash\{0\}$ 中所有元素在 $\otimes$ 下的逆元。得出结论：$(\mathbb{Z}_5\backslash\{0\}, \otimes)$ 是一个 Abel 群。
+其中 $a \times b$ 表示 $\mathbb{Z}$ 中的通常乘法。设 $n = 5$。绘制 $\mathbb{Z}_5\backslash\{0\}$ 中元素在 $\otimes$ 下的乘法表，即计算所有 $\overline{a}$ 和 $\overline{b}$ 在 $\mathbb{Z}_5\backslash\{0\}$ 中的乘积 $\overline{a} \otimes \overline{b}$。由此，证明 $\mathbb{Z}_5\backslash\{0\}$ 在 $\otimes$ 下是封闭的，并且存在单位元。列出 $\mathbb{Z}_5\backslash\{0\}$ 中所有元素在 $\otimes$ 下的逆元。得出结论：$(\mathbb{Z}_5\backslash\{0\}, \otimes)$ 是一个 Abel 群。
 
 c. 证明 $(\mathbb{Z}_8\backslash\{0\}, \otimes)$ 不是一个群。
 
