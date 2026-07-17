@@ -11,7 +11,7 @@
 
 本项目致力于为机器学习和人工智能学习者提供全面的数学基础支持。该项目旨在通过整理和整合各种数学资源，帮助学习者更好地理解和掌握机器学习背后的数学原理。项目内容可能包括但不限于数学教程、书籍翻译、在线课程推荐以及相关数学工具的介绍。
 
-目前我们正翻译 [MML book](https://mml-book.github.io/) 的内容，后续将添加更多内容
+目前我们正翻译 [MML book](https://mml-book.github.io/) 的内容，后续将添加更多内容。正文中引用文献的完整参考书目请参见[原书参考文献页面](https://mml-book.github.io/)。
 
 [项目在线阅读](https://datawhalechina.github.io/math-for-ai/#/)
 
