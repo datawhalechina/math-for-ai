@@ -12,7 +12,6 @@
 图 3.1 给出了本章的概念地图。
 
 
-![](./attachments/Pasted%20image%2020250226200009.png)
-
+<center><img src="./attachments/Pasted%20image%2020250226200009.png" style="zoom:50%;" /></center>
 <center>图 3.1：本章的概念地图</center>
 
