@@ -1,3 +1,9 @@
 /.vscode
 *.ipynb
 **/.DS_Store
+.python-version
+main.py
+uv.lock
+pyproject.toml
+null
+__pycache__/

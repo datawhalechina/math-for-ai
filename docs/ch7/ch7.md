@@ -3,7 +3,7 @@
 机器学习算法跑在计算机上，因此一切优化相关的数学设定需要被翻译为数值优化的方法。本章讲解了用于训练机器学习模型的简单数值方法。要训练一个机器学习模型，往往需要寻找一个最佳的参数集合，何谓 “最佳” 由目标函数或概率模型所确定（见本书的后半部分）。给定一个目标函数，我们会用优化算法找到它的最值（以及对应的最优参数集合）。
 
 <center>
-<img src="ch7/attachments/Pasted%20image%2020250625153238.png" alt="alt text" style="zoom:50%;">
+<img src="./attachments/Pasted%20image%2020250625153238.png" alt="第七章概念地图" style="zoom:50%;">
 </center>
 <center>图 7.1 本章的概念地图</center>
 
@@ -13,7 +13,7 @@
 > 我们考虑的数据和模型工作在 $\mathbb{R}^{d}$ 上，我们处理的优化问题称为 **连续优化 (continuous optimization)** ；在另一边，也就是离散的世界，对应的优化问题称为 **组合优化 (combinatorial optimization)**。
 
 <center>
-<img src="ch7/attachments/Pasted%20image%2020250625151536.png" alt="alt text" style="zoom:50%;">
+<img src="./attachments/Pasted%20image%2020250625151536.png" alt="目标函数与负梯度方向示例" style="zoom:50%;">
 </center>
 <center>图 7.2 一个目标函数示例。负梯度的方向用箭头表示，全局最小值点用蓝色虚线表示</center>
 
