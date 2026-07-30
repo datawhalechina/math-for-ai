@@ -10,6 +10,6 @@
 
 这一章中讲述的一些方法对后续的一些数学理论性章节例如[第6章](../ch6/ch6.md)以及一些应用性章节例如[第10章](../ch10/ch10.md)中的降维和[第11章](../ch11/ch11.md)中的密度估计都有重要作用。本章的整体结构如图4.1所示：
 
-<center><img src="../attachments/map_ch4.png" style="zoom:50%;" /></center>
+<center><img src="attachments/map_ch4.png" style="zoom:50%;" /></center>
 <center>图4.1 本章介绍的概念的思维导图，以及它们在本书其他部分的使用位置。</center>
 
