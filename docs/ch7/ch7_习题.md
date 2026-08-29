@@ -47,7 +47,7 @@ x_{1}\\x_{2}
 \end{bmatrix}
 \end{align}
 $$
-使用 Lagrangre 对偶求该问题的对偶线性规划问题
+使用 Lagrange 对偶求该问题的对偶线性规划问题
 
 ## 7 
 考虑图 7.4 中所示的二次规划问题：
@@ -73,7 +73,7 @@ x_{1}\\x_{2}
 \end{bmatrix}
 \end{align}
 $$
-使用 Lagrangre 对偶求该问题的对偶二次规划问题
+使用 Lagrange 对偶求该问题的对偶二次规划问题
 
 ## 8
 考虑下面的凸优化问题
@@ -83,7 +83,7 @@ $$
 \text{subject to}~&~ \boldsymbol{w}^{\top}\boldsymbol{x} \geqslant 1.
 \end{align}
 $$
-引入 Lagrange 乘子 $\lambda$，求该问题的 Lagrangre 对偶
+引入 Lagrange 乘子 $\lambda$，求该问题的 Lagrange 对偶
 
 ## 9
 考虑向量 $\boldsymbol{x} \in \mathbb{R}^{D}$ 的负熵
